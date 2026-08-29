@@ -1,0 +1,7 @@
+# build artifacts
+*.o
+*.gen.c
+
+# build outputs
+/out/
+/build/

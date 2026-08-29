@@ -1,0 +1,8 @@
+
+tt_descent() {
+  int ret_i = (import ttmet)[4];
+} return int ret_i;
+
+tt_gap() {
+  int ret_i = (import ttmet)[5];
+} return int ret_i;

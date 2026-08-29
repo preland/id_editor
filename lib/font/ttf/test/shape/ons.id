@@ -1,0 +1,8 @@
+
+tt_onsl(string[] parts) {
+  int i = 0;
+  while(i < len((import ttpon))) {
+    push(parts, "" + (import ttpon)[i]);
+    i = i + 1;
+  }
+} return void;
