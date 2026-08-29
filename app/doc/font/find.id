@@ -1,0 +1,23 @@
+// Font path resolution: extract argument, resolve, return path or abort.
+
+ed_font_arg(int argc, string[] argv) {
+  string explicit = "";
+  if(argc > 2) {
+    explicit = argv[2];
+  }
+  string ret = ed_font_find(explicit);
+} return string ret;
+
+ed_font_find(string explicit) {
+  string ret = "";
+  if(explicit != "" && explicit != "--ppm") {
+    ret = explicit;
+  } else {
+    ret = ed_font_resolve();
+  }
+} return string ret;
+
+ed_font_resolve() {
+  string doc = ed_font_doc0();
+  string ret = ed_font_try_resolve(doc);
+} return string ret;

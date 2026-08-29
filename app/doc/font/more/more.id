@@ -1,0 +1,19 @@
+// One more candidate prefix, and the face the document asked for.
+
+ed_font_more(string p, string name, string prefix) {
+  string ret = p;
+  if(p == "") {
+    ret = ed_font_try_suff(name, prefix);
+  }
+} return string ret;
+
+// A document with no styled run names no font at all, and reading past the end
+// of a list aborts, so the empty case is answered here rather than discovered
+// in the renderer.
+ed_font_doc0() {
+  string ret = "";
+  int n = len((import odt_fonts));
+  if(n > 0) {
+    ret = (import odt_fonts)[0];
+  }
+} return string ret;

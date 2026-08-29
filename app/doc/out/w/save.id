@@ -1,8 +1,10 @@
 // Where the page goes. With --ppm it is an image and the program exits, which
 // is how it is tested; without, the listing is all there is to see until there
-// is a window.
+// is a window. --ppm can be at argv[2] (no font) or argv[3] (with font).
 ed_save(int argc, string[] argv) {
-  if(argc > 4 && argv[3] == "--ppm") {
+  if(argc > 3 && argv[2] == "--ppm") {
+    ed_write(argv[3]);
+  } else if(argc > 4 && argv[3] == "--ppm") {
     ed_write(argv[4]);
   } else {
     ed_win();

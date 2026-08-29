@@ -1,0 +1,28 @@
+// One character of the squash, the substitution notice, and the give-up.
+
+ed_font_keep(string out, string name, int i) {
+  string ret = out;
+  int c = charat(name, i);
+  if(c != 32) {
+    ret = out + chr(c);
+  }
+} return string ret;
+
+// Silence here would be the bug: a document rendered in a face it did not ask
+// for looks like a working program, so the substitution is always said aloud.
+ed_font_warn(string want, string got) {
+  if(got == "") {
+    ed_font_abort(want);
+  } else {
+    print("editor: no font file for '" + want + "' -- rendering with " + got);
+  }
+} return void;
+
+// `id` has no exit builtin and no early return, so the only way to stop is to
+// do something the runtime refuses. Popping an empty list is that, and it is
+// deliberate: rendering a blank page would be worse than aborting.
+ed_font_abort(string want) {
+  int[] none = [];
+  print("editor: no font found for '" + want + "', and no fallback either -- tried /run/current-system/sw/share/X11/fonts/, /usr/share/fonts/TTF/ and /usr/share/fonts/truetype/");
+  pop(none);
+} return void;

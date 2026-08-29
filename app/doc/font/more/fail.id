@@ -1,0 +1,26 @@
+// The fallback face, and the decision to use it.
+//
+// Resolution is in two halves on purpose: finding the document's own font and
+// deciding what to do when it is missing. Folding them together is what hid
+// the substitution, because the caller could no longer tell the two apart.
+
+ed_font_default() {
+  string p = ed_font_try_prefixes("DejaVuSans");
+  if(p == "") {
+    p = ed_font_try_prefixes("LiberationSans");
+  }
+} return string p;
+
+ed_font_try_resolve(string doc) {
+  string sq = ed_font_squash(doc);
+  string got = ed_font_try_prefixes(sq);
+  string ret = ed_font_fallback(doc, got);
+} return string ret;
+
+ed_font_fallback(string doc, string got) {
+  string ret = got;
+  if(got == "") {
+    ret = ed_font_default();
+    ed_font_warn(doc, ret);
+  }
+} return string ret;
