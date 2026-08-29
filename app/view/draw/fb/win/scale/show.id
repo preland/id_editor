@@ -1,0 +1,28 @@
+// Presenting a frame at whatever size the window is now.
+//
+// The page buffer is handed straight to the backend when the sizes already
+// agree, because a copy that changes nothing is a copy worth not making. When
+// they differ the scaled buffer is built fresh each frame: `id` has no way to
+// empty a list in place (docs/TODO.md item 13), so a cached one could not be
+// refilled, and this is the honest cost of that until it can.
+
+ed_scale_fill(int w, int h, int pw, int ph) {
+  int[] sbuf = [];
+  int i = 0;
+  while(i < w * h) {
+    ed_fill_one(sbuf, i, w, h, pw, ph);
+    i = i + 1;
+  }
+} return int[] sbuf;
+
+ed_present_frame() {
+  int w = gfx_width();
+  int h = gfx_height();
+  ed_present2(w, h);
+} return void;
+
+ed_present2(int w, int h) {
+  int pw = ed_w();
+  int ph = ed_h();
+  ed_present3(w, h, pw, ph);
+} return void;

@@ -1,0 +1,25 @@
+// Cursor movement: left and right with boundaries clamped.
+// Pure functions: no state, all arguments and return values explicit.
+
+ed_left(int at) {
+  int ret_i = at - 1;
+  if(ret_i < 0) {
+    ret_i = 0;
+  }
+} return int ret_i;
+(0):(0)
+(3):(2)
+(1):(0)
+(100):(99)
+
+ed_right(string s, int at) {
+  int max_pos = len(s);
+  int ret_i = at + 1;
+  if(ret_i > max_pos) {
+    ret_i = max_pos;
+  }
+} return int ret_i;
+("abc", 3):(3)
+("abc", 0):(1)
+("", 0):(0)
+("hello", 4):(5)

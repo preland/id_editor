@@ -1,0 +1,26 @@
+// Where a window pixel reads from on the page.
+//
+// The backend copies the framebuffer it is handed into the window by linear
+// index, so it is only correct when the two are the same size. The moment they
+// are not, every row lands a little further along than the last and the picture
+// shears. Sampling the page through these two functions is what makes the
+// buffer the window's size, which is the size the backend's contract asks for.
+
+ed_map(int d, int dlen, int slen) {
+  int ret_i = d * slen / dlen;
+} return int ret_i;
+(0, 100, 50):(0)
+(99, 100, 50):(49)
+(50, 100, 50):(25)
+(0, 50, 100):(0)
+(49, 50, 100):(98)
+
+ed_src(int dx, int dy, int dw, int dh, int sw, int sh) {
+  int sy = ed_map(dy, dh, sh);
+  int sx = ed_map(dx, dw, sw);
+  int ret_i = sy * sw + sx;
+} return int ret_i;
+(0, 0, 100, 100, 50, 50):(0)
+(99, 99, 100, 100, 50, 50):(2499)
+(0, 2, 100, 100, 50, 50):(50)
+(2, 0, 100, 100, 50, 50):(1)

@@ -1,0 +1,19 @@
+// The choice itself. `if` and `else` are one action each, so the two of them
+// plus the two sizes they compare do not fit in one block with anything else.
+
+ed_present3(int w, int h, int pw, int ph) {
+  if(w == pw && h == ph) {
+    gfx_present((import ed_fb));
+  } else {
+    int[] sc = ed_scale_fill(w, h, pw, ph);
+    gfx_present(sc);
+  }
+} return void;
+
+// Sampling one window pixel out of the page. It reads the page framebuffer, so
+// it lives beside the code that owns that global rather than with the pure
+// arithmetic, which stays testable on its own.
+ed_fill_one(int[] sbuf, int i, int w, int h, int pw, int ph) {
+  int idx = ed_src(i % w, i / w, w, h, pw, ph);
+  push(sbuf, (import ed_fb)[idx]);
+} return void;

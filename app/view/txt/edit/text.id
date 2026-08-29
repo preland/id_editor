@@ -1,0 +1,28 @@
+// Insert and delete characters in a string.
+// Pure functions: no state, all arguments and return values explicit.
+
+ed_ins(string s, int at, string ch) {
+  int n = len(s) - at;
+  string ret_s = str_slice(s, 0, at) + ch + str_slice(s, at, n);
+} return string ret_s;
+("ab", 0, "X"):("Xab")
+("ab", 2, "X"):("abX")
+("ab", 1, "X"):("aXb")
+("", 0, "X"):("X")
+
+// Deleting at the end of the string is not an error, it is what happens every
+// time someone presses delete with the cursor at the end of a line. Without
+// the guard the slice length goes negative and the program aborts.
+ed_del(string s, int at) {
+  int n = len(s) - at - 1;
+  string ret_s = s;
+  if(n >= 0) {
+    ret_s = str_slice(s, 0, at) + str_slice(s, at + 1, n);
+  }
+} return string ret_s;
+("abc", 0):("bc")
+("abc", 2):("ab")
+("abc", 1):("ac")
+("a", 0):("")
+("abc", 3):("abc")
+("", 0):("")

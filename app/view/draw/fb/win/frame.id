@@ -1,6 +1,7 @@
+// One frame: present the page at the window's current size, then read input.
 
 ed_frame() {
-  gfx_present((import ed_fb));
+  ed_present_frame();
   sleep_ms(16);
   int ret_i = gfx_poll();
 } return int ret_i;
