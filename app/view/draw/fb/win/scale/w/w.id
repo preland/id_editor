@@ -1,0 +1,16 @@
+// The column the text is laid out in: the window less its margins, but never
+// so narrow that it cannot hold a word. `lay_wrap` breaks a line when the pen
+// passes `w * 64`, so a width at or below zero breaks after every word and
+// lays the document out one word to a line. A window can be dragged that
+// narrow, so the floor is not hypothetical.
+ed_lay_w(int w) {
+  int lw = w - 40;
+  if(lw < 40) {
+    lw = 40;
+  }
+} return int lw;
+(640):(600)
+(80):(40)
+(0):(40)
+(10):(40)
+(200):(160)
