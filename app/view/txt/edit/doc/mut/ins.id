@@ -1,0 +1,22 @@
+// Typing a character into the document.
+//
+// The caret moves after the insert rather than before it, because the insert
+// needs the position the caret had.
+
+ed_type(int c) {
+  int k = ed_car();
+  ed_type1(c, k);
+  ed_seek(k + 1);
+} return void;
+
+ed_type1(int c, int k) {
+  int r = ed_run_of(k);
+  int at = ed_off_of(r, k);
+  ed_type2(c, r, at);
+} return void;
+
+ed_type2(int c, int r, int at) {
+  string ch = chr(c);
+  string s = odt_run_text(r);
+  ed_ins2(r, s, at, ch);
+} return void;

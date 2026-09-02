@@ -1,0 +1,20 @@
+// Removing the character the caret sits on. The caret does not move: what was
+// after the deleted character is now at the caret, which is what every editor
+// does and what makes holding delete down work.
+
+ed_erase() {
+  int k = ed_car();
+  int r = ed_run_of(k);
+  ed_erase1(k, r);
+} return void;
+
+ed_erase1(int k, int r) {
+  int at = ed_off_of(r, k);
+  ed_erase2(r, at);
+} return void;
+
+ed_erase2(int r, int at) {
+  string s = odt_run_text(r);
+  string t = ed_del(s, at);
+  ed_set(r, t);
+} return void;

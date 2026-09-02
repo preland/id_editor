@@ -1,0 +1,20 @@
+// Where the caret is: one number, the index of the code point it sits before.
+//
+// A code-point index rather than a paragraph and a column, because the layout
+// emits exactly one glyph per code point in reading order -- so glyph number k
+// is code point number k, and the caret's pixel position is a lookup rather
+// than a second walk over the document.
+
+ed_cur_init() {
+  export int[] ed_cur = [0];
+  export int[] ed_dty = [1];
+} return void;
+
+ed_car() {
+  int ret_i = (import ed_cur)[0];
+} return int ret_i;
+
+ed_seek(int k) {
+  lset((import ed_cur), 0, k);
+  ed_dirt(1);
+} return void;

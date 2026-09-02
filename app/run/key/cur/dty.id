@@ -1,0 +1,21 @@
+// Whether the page on screen still matches the document.
+//
+// Presenting the pixels again is cheap and laying the document out again is
+// not, so a frame that changed nothing presents what it already has. A
+// keystroke is the only thing that can change the document, and every one of
+// them ends in ed_seek or ed_set, which is why this flag is raised in exactly
+// two places.
+
+ed_dirty() {
+  int ret_i = (import ed_dty)[0];
+} return int ret_i;
+
+ed_dirt(int v) {
+  lset((import ed_dty), 0, v);
+} return void;
+
+// The frame handed to the window, and the page marked as matching it.
+ed_flush() {
+  ed_dirt(0);
+  gfx_present((import ed_fb));
+} return void;

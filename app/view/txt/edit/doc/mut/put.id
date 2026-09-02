@@ -1,0 +1,20 @@
+// Writing a run back, and the last step of the caret-to-run translation.
+
+ed_ins2(int r, string s, int at, string ch) {
+  string t = ed_ins(s, at, ch);
+  ed_set(r, t);
+} return void;
+
+// The one place a run's text changes. Every edit ends here, which is why the
+// page can be marked stale here and nowhere else.
+ed_set(int r, string t) {
+  sset((import odt_txts), r, t);
+  ed_dirt(1);
+} return void;
+
+// The byte offset within run r that code point k lands on.
+ed_off_of(int r, int k) {
+  int j = k - ed_pre(r);
+  string s = odt_run_text(r);
+  int ret_i = ed_boff(s, j);
+} return int ret_i;

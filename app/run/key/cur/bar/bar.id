@@ -1,0 +1,30 @@
+// The caret, drawn.
+//
+// It sits with the caret rather than with the rest of the renderer for two
+// reasons: what it draws is keyboard state rather than document content, and
+// every directory under app/view/draw already holds its three entries.
+
+ed_bar() {
+  int k = ed_car();
+  int n = len((import lay_g));
+  ed_bar2(k, n);
+} return void;
+
+// Before glyph k, or past the last glyph when the caret is at the end of the
+// document. An empty document has no glyph to measure a caret against, so it
+// gets none.
+ed_bar2(int k, int n) {
+  if(n > 0 && k < n) {
+    ed_bar3((import lay_x)[k] / 64, (import lay_y)[k], (import lay_px)[k]);
+  } else if(n > 0) {
+    ed_tail(n);
+  }
+} return void;
+
+// The bar runs from one em above the baseline to a quarter of one below it,
+// which is roughly the ascender and the descender of the size it stands in.
+ed_bar3(int x, int y, int px) {
+  int lo = y - px;
+  int hi = y + px / 4;
+  ed_bar4(x, lo, hi);
+} return void;

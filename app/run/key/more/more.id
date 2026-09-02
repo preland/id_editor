@@ -1,0 +1,26 @@
+// The rest of the chain: delete, and the two arrows.
+
+ed_key3(int v) {
+  if(v == 265) {
+    ed_erase();
+  } else {
+    ed_key4(v);
+  }
+} return void;
+
+ed_key4(int v) {
+  if(v == 256) {
+    ed_step(0 - 1);
+  } else if(v == 257) {
+    ed_step(1);
+  }
+} return void;
+
+// The caret moved by one and clamped to the document. ed_left and ed_right
+// clamp against a string; the caret runs over the whole document, which is a
+// count rather than a string, so it needs its own bound.
+ed_step(int m) {
+  int k = ed_car();
+  int n = ed_total();
+  ed_step2(k + m, n);
+} return void;

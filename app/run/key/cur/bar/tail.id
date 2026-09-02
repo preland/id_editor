@@ -1,0 +1,23 @@
+// Drawing the bar, and finding where it goes when it is past the last glyph.
+
+ed_bar4(int x, int lo, int hi) {
+  while(lo < hi) {
+    ed_px(x, lo, 255);
+    lo = lo + 1;
+  }
+} return void;
+
+// The caret at the end of the document: the last glyph's pen position plus
+// that glyph's own advance. The advance is recomputed rather than stored
+// because this is the only place in the program that wants it after the fact.
+ed_tail(int n) {
+  int g = (import lay_g)[n - 1];
+  int px = (import lay_px)[n - 1];
+  ed_tail2(g, px, n);
+} return void;
+
+ed_tail2(int g, int px, int n) {
+  int lay_adv_v = lay_adv(g, px);
+  int x = ((import lay_x)[n - 1] + lay_adv_v) / 64;
+  ed_bar3(x, (import lay_y)[n - 1], px);
+} return void;

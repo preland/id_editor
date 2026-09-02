@@ -1,0 +1,31 @@
+// The keyboard, wired to the document.
+//
+// gfx_poll hands back one code per call: the byte a key produced, 256..265 for
+// the arrows and the editing keys, that code plus 65536 for a release, and -1
+// for nothing. A release is not an edit and neither is -1, so both fall off
+// the end of the chain having done nothing, which is why no branch tests for
+// them.
+//
+// The dispatch is a chain of two-way branches rather than one table because a
+// block performs three actions and an if/else pair costs two of them.
+
+ed_poll() {
+  int v = gfx_poll();
+  ed_key(v);
+} return int v;
+
+ed_key(int v) {
+  if(v >= 32 && v < 127) {
+    ed_type(v);
+  } else {
+    ed_key2(v);
+  }
+} return void;
+
+ed_key2(int v) {
+  if(v == 8 || v == 127) {
+    ed_back();
+  } else {
+    ed_key3(v);
+  }
+} return void;

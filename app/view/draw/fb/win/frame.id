@@ -3,12 +3,32 @@
 ed_frame() {
   ed_present_frame();
   sleep_ms(16);
-  int ret_i = gfx_poll();
+  int ret_i = ed_drain();
 } return int ret_i;
+
+// Every key that arrived, not one of them.
+//
+// The backend queues key events in a ring of 256 and drops silently once it is
+// full. A frame that consumed one key consumed about thirty a second, because a
+// keystroke re-lays the page -- so a held arrow filled the ring in eight
+// seconds and everything typed behind it was lost with nothing said. Measured:
+// 900 Right presses moved the caret about ninety characters and the text typed
+// after them never arrived at all.
+//
+// The loop stops on -1, which is "the queue is empty", and on a quit, which
+// gfx_poll repeats forever once the window has closed -- stopping only on -1
+// would spin there.
+ed_drain() {
+  int k = ed_poll();
+  while(k != 0 - 1 && ed_live(k) == 1) {
+    k = ed_poll();
+  }
+} return int k;
 
 // The window opened, and the frame loop started. Split out of ed_win so
 // that function's own actions stay under the limit.
 ed_win_out(int w, int h) {
   int ok = gfx_open(w, h, "id editor");
+  ed_cur_init();
   ed_frames(ok, 0);
 } return void;

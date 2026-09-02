@@ -1,0 +1,44 @@
+// Counting and finding UTF-8 code points in a string.
+//
+// The caret is a code-point index and every string in the document model is
+// UTF-8, so the two questions the caret asks a run are "how many characters is
+// this" and "where does character k start". A byte index would put the caret
+// inside a two-byte letter, delete half of it, and leave the document holding
+// text that is no longer UTF-8.
+//
+// The character's leading byte is named before utf_len is asked about it
+// because a call may not be an argument to a call.
+
+ed_cps(string s) {
+  int at = 0;
+  int n = 0;
+  while(at < len(s)) {
+    int c = charat(s, at);
+    at = at + utf_len(c);
+    n = n + 1;
+  }
+} return int n;
+(""):(0)
+("abc"):(3)
+("aéb"):(3)
+("é"):(1)
+
+// The byte at which code point k begins. Past the end of the string this is
+// len(s), which is where the caret sits when it is at the end of a run -- the
+// commonest position there is, and not an error.
+ed_boff(string s, int k) {
+  int at = 0;
+  while(k > 0 && at < len(s)) {
+    int c = charat(s, at);
+    at = at + utf_len(c);
+    k = k - 1;
+  }
+} return int at;
+("abc", 0):(0)
+("abc", 1):(1)
+("abc", 3):(3)
+("abc", 5):(3)
+("", 0):(0)
+("aéb", 1):(1)
+("aéb", 2):(3)
+("aéb", 3):(4)

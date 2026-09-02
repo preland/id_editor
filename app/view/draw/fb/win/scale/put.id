@@ -1,11 +1,17 @@
 // The choice, and the path that re-renders.
 //
-// Re-rendering resets ed_dim to the size it drew at, so the next frame finds
-// the sizes equal and takes the direct path. The re-lay therefore happens once
-// per resize rather than once per frame, with no state of its own to keep.
+// Two things make a frame stale: the window is a different size than the page
+// was drawn at, or a keystroke changed the document. Everything else presents
+// the pixels it already has, because laying a document out is not cheap and
+// presenting is.
+//
+// Re-rendering resets ed_dim to the size it drew at and lowers the stale flag,
+// so the next frame finds the sizes equal, finds nothing changed, and takes the
+// direct path. The re-lay therefore happens once per resize and once per
+// keystroke rather than once per frame.
 
 ed_present3(int w, int h, int pw, int ph) {
-  if(w == pw && h == ph) {
+  if(w == pw && h == ph && ed_dirty() == 0) {
     gfx_present((import ed_fb));
   } else {
     ed_rerender(w, h);
@@ -20,5 +26,6 @@ ed_rerender(int w, int h) {
 
 ed_redraw(int w, int h) {
   ed_draw(w, h);
-  gfx_present((import ed_fb));
+  ed_bar();
+  ed_flush();
 } return void;

@@ -1,0 +1,28 @@
+// Clamping the caret, the document's length, and backspace.
+
+ed_step2(int k, int n) {
+  if(k < 0) {
+    k = 0;
+  } else if(k > n) {
+    k = n;
+  }
+  ed_seek(k);
+} return void;
+
+// How many code points the document holds, which is one past the last
+// position the caret may take.
+ed_total() {
+  int n = odt_runs();
+  int ret_i = ed_pre(n);
+} return int ret_i;
+
+// Backspace is the character before the caret, which is the character at the
+// caret once the caret has stepped back. Doing it in that order means the
+// program contains one delete rather than two.
+ed_back() {
+  int k = ed_car();
+  if(k > 0) {
+    ed_seek(k - 1);
+    ed_erase();
+  }
+} return void;
