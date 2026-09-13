@@ -10,7 +10,7 @@ ed_place(int i, int x, int y, int v) {
 } return void;
 
 ed_bold(int i, int at, int y, int v) {
-  if((import lay_st)[i] & 1 == 1) {
+  if(((import lay_st)[i] & 1) == 1) {
     int ras_by_v = ras_by();
     ed_over(at + 1, (import lay_y)[i] - ras_by_v + y, v);
   }
@@ -21,7 +21,7 @@ ed_bold(int i, int at, int y, int v) {
 // what an italic face leans.
 ed_lean(int i, int y) {
   int n = 0;
-  if((import lay_st)[i] & 2 == 2) {
+  if(((import lay_st)[i] & 2) == 2) {
     n = (ras_by() - y) / 5;
   }
 } return int n;
