@@ -9,14 +9,6 @@ utf_val(string s, int at, int n) {
 utf_mask(int n) {
   int c = 127;
   if(n > 1) {
-    c = 63 / utf_pow(n - 1);
-  }
-} return int c;
-
-utf_pow(int n) {
-  int c = 1;
-  while(n > 0) {
-    c = c * 2;
-    n = n - 1;
+    c = 63 / fx_pow(2, n - 1);
   }
 } return int c;
