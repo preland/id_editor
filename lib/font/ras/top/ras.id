@@ -52,7 +52,7 @@ ras_reset(int px) {
 } return void;
 
 // The six numbers that describe the transform and its result, in one list
-// for the reason editor/lib/font/ttf/font/dir/met/met/met.id gives: an export is
+// for the reason editor/lib/font/ttf/font/dir/met/read/met.id gives: an export is
 // initialised by the function that declares it, and a block declares at most
 // three things, so six scalars would be six functions.
 //
