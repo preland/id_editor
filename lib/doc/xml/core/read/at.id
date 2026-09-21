@@ -5,3 +5,22 @@ xml_space_at(int i) {
   int c = xml_ch(i);
   int ok = chr_is_space(c);
 } return int ok;
+given xml_doc_fixture (-1):(0)
+given xml_empty_fixture (0):(0)
+
+// A scanner state over a small document, so that anything reading xml_st or
+// xml_mem has a legal `given`. xml_open is the only initialiser and it takes
+// the document as a parameter, which a setup may not (docs/TESTS.md): without
+// a wrapper like this one, every reader of the scanner is untestable.
+xml_doc_fixture() {
+  xml_open("<a>hi</a>");
+} return void;
+():() then xml_len:(9)
+():() then xml_at:(-1)
+
+// The empty document, for the boundary every scanner has to get right.
+xml_empty_fixture() {
+  xml_open("");
+} return void;
+():() then xml_len:(0)
+():() then xml_at:(-1)

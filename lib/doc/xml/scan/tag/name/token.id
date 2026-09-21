@@ -6,6 +6,8 @@ xml_ntok(int i) {
     i = i + 1;
   }
 } return int i;
+given xml_doc_fixture (1):(2)
+given xml_doc_fixture (2):(2)
 
 // Whether a byte can be inside an element or attribute name.
 //
@@ -20,6 +22,8 @@ xml_isname(int c) {
     ok = 0;
   }
 } return int ok;
+(65):(1)
+(32):(0)
 
 // After the attributes: '/>' is an empty element, '>' a start element, and
 // anything else is a tag that never closed.
@@ -32,3 +36,5 @@ xml_endtag(int j) {
     k = xml_push(xml_need_v);
   }
 } return int k;
+given xml_doc_fixture (2):(1)
+given xml_doc_fixture (1):(5)

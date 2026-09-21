@@ -5,6 +5,8 @@ xml_attr_name(int i) {
   string xml_cut_v = xml_cut(i, j - i);
   push((import xml_ats), xml_cut_v);
 } return int j;
+given setup_xml_attr (0):(4)
+given setup_xml_attr (4):(4)
 
 // The value half: past the whitespace the name left behind, then whatever
 // xml_aval makes of what follows.
@@ -12,3 +14,10 @@ xml_attr2(int j, int i) {
   int xml_ws_v = xml_ws(j);
   int ret_i = xml_aval(xml_ws_v, i);
 } return int ret_i;
+given setup_xml_attr (4, 0):(13)
+given setup_xml_attr (5, 0):(15)
+
+// Setup for testing attribute functions with an XML input.
+setup_xml_attr() {
+  xml_open("name=\"value\" />");
+} return void;

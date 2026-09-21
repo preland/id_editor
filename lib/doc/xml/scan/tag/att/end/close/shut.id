@@ -5,3 +5,5 @@ xml_close4(int j, int i) {
   int xml_need_v = xml_need(xml_ws_v, 62, 2, "expected '>' to close an end tag");
   int ret_i = xml_shut(xml_need_v, i);
 } return int ret_i;
+given xml_doc_fixture (0, 5):(5)
+given xml_doc_fixture (10, 20):(5)

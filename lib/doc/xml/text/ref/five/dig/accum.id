@@ -10,6 +10,8 @@ xml_digit(int[] row, int v, int b) {
     lset(row, 0, row[0] * b + v);
   }
 } return void;
+([10, 1], 5, 16):([165, 1])
+([0, 1], -1, 10):([0, 0])
 
 // The accumulated value, or -1 if a digit was bad or there were none at all.
 xml_valv(int[] row, int n) {
@@ -18,6 +20,8 @@ xml_valv(int[] row, int n) {
     v = row[0];
   }
 } return int v;
+([42, 1], 1):(42)
+([99, 0], 5):(-1)
 
 // The value of a hexadecimal digit byte, or -1. idstd's chr_hex goes the other
 // way -- value to byte -- so this is not a duplicate of it.
@@ -30,3 +34,5 @@ xml_hv(int c) {
     v = xml_hv2(chr_lower_v);
   }
 } return int v;
+(48):(0)
+(65):(10)

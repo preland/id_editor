@@ -9,6 +9,8 @@ ras_hit(int[] tab, int[] row, int[] buf) {
     lset(row, buf[0] / 64, row[buf[0] / 64] + 1);
   }
 } return void;
+([5, 5], [0, 0], [0, 0]):([0, 5], [0, 0], [0, 0])
+([5, 5], [0, 0], [1, 1]):([5, 0], [1, 0], [1, 1])
 
 // The row's accumulators become coverage, and are zeroed for the next row
 // for the same reason.

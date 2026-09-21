@@ -6,6 +6,8 @@ xml_val_run(string t, int i, int b, int[] row) {
     j = j + 1;
   }
 } return int j;
+("", 0, 10, [0, 1]):(0)
+("a", 0, 10, [0, 1]):(1)
 
 // One digit of the loop above: read, valued in base b, folded into row.
 xml_val_step(string t, int j, int b, int[] row) {

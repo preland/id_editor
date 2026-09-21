@@ -5,3 +5,5 @@ utf_more(string s, int at, int hi, int c) {
     at = at + 1;
   }
 } return int c;
+("", 0, 0, 0):(0)
+("A", 0, 1, 0):(1)

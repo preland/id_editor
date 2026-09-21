@@ -9,6 +9,8 @@ ed_font_try_prefixes(string name) {
   p = ed_font_more(p, name, "/usr/share/fonts/TTF/");
   p = ed_font_more(p, name, "/usr/share/fonts/truetype/");
 } return string p;
+("DejaVuSans"):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+("NonExistent"):("")
 
 ed_font_try_suff(string name, string prefix) {
   string p = prefix + name + ".ttf";
@@ -19,6 +21,8 @@ ed_font_try_suff(string name, string prefix) {
     p = "";
   }
 } return string p;
+("DejaVuSans", "/run/current-system/sw/share/X11/fonts/"):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+("NonExistentFont", "/tmp/"):("")
 
 // An ODT names a face the way a person writes it -- "DejaVu Sans" -- and a
 // file is named the way a filesystem allows -- DejaVuSans.ttf. Dropping the
@@ -32,3 +36,5 @@ ed_font_squash(string name) {
     i = i + 1;
   }
 } return string out;
+("DejaVu Sans"):("DejaVuSans")
+("Liberation"):("Liberation")

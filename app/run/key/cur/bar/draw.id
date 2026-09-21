@@ -28,3 +28,4 @@ ed_bar3(int x, int y, int px) {
   int hi = y + px / 4;
   ed_bar4(x, lo, hi);
 } return void;
+(0, 0, 0):()

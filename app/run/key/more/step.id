@@ -8,6 +8,8 @@ ed_step2(int k, int n) {
   }
   ed_seek(k);
 } return void;
+given ed_cur_init (-5, 10):() then calls ed_seek:(0)
+given ed_cur_init (15, 10):() then calls ed_seek:(10)
 
 // How many code points the document holds, which is one past the last
 // position the caret may take.

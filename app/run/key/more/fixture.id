@@ -1,0 +1,5 @@
+ed_step_fixture() {
+  ed_cur_init();
+  odt_init_fixture();
+} return void;
+():()

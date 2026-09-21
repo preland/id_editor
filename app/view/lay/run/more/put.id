@@ -5,6 +5,8 @@ lay_char_out(string s, int at) {
   int charat_v = charat(s, at);
   int ret_i = at + utf_len(charat_v);
 } return int ret_i;
+("hello", 0):(1)
+("hello", 4):(5)
 
 // The advance found, the line wrapped if it runs past the page, and the
 // glyph emitted. Split out of lay_put so that function's own actions stay

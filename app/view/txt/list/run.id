@@ -25,3 +25,5 @@ ed_clip(string s) {
     t = ed_cut(s, 0, 57) + "...";
   }
 } return string t;
+("hello"):("hello")
+("the quick brown fox jumps over the lazy dog runs very fast home town"):("the quick brown fox jumps over the lazy dog runs very fas...")

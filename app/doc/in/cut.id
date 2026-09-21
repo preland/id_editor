@@ -8,6 +8,8 @@ ed_cut(string s, int lo, int hi) {
   word mem_of_str_v = mem_of_str(s);
   string ret_s = str_of_mem(mem_of_str_v + lo, hi - lo);
 } return string ret_s;
+("hello", 0, 3): ("hel")
+("hello", 2, 5): ("llo")
 
 // The write side of the same round trip: bytes poked into a fresh block,
 // then read back as the string they spell. Split out of ed_str so that

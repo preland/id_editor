@@ -5,6 +5,8 @@ utf_val(string s, int at, int n) {
   int c = charat(s, at) & utf_mask(n);
   int ret_i = utf_more(s, at + 1, at + n, c);
 } return int ret_i;
+("A", 0, 1):(65)
+("_", 0, 1):(95)
 
 utf_mask(int n) {
   int c = 127;
@@ -12,3 +14,5 @@ utf_mask(int n) {
     c = 63 / fx_pow(2, n - 1);
   }
 } return int c;
+(1):(127)
+(2):(31)

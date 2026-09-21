@@ -1,3 +1,13 @@
+// Fixture: initializes ed_fb and ed_dim for testing.
+setup_page() {
+  ed_page(10, 20);
+} return void;
+
+// Fixture: initializes for empty page tests.
+setup_empty() {
+  ed_page(0, 0);
+} return void;
+
 // The pixel at a resolved position, and its bold echo if the run asks for
 // one. Split out of ed_place so that function's own actions stay under the
 // limit.

@@ -30,3 +30,5 @@ xml_cp(string t) {
     v = xml_five(t);
   }
 } return int v;
+("#65"):(65)
+("#x41"):(65)

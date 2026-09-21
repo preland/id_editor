@@ -1,0 +1,16 @@
+// A fixture for testing functions that read odt and xml state.
+// Initializes both odt and xml with empty content so tests can run.
+
+odt_init_fixture() {
+  odt_init();
+  xml_open("");
+  push((import odt_fonts), "");
+} chain () {
+  push((import odt_fonts), "");
+  push((import odt_nums), 0);
+  push((import odt_nums), 0);
+} chain () {
+  push((import odt_flags), 0);
+  push((import odt_flags), 0);
+} return void;
+():() then xml_len:(0)

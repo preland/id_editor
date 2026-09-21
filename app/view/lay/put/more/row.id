@@ -12,3 +12,14 @@ lay_row3(int r, int lay_pt_v) {
   int lay_flag_v = lay_flag(r);
   push((import lay_st), lay_flag_v);
 } return void;
+
+// Layout state for a case that reads it. lay_init returns int, so it cannot
+// itself be a `given` (a setup returns void); this discards the result and
+// chains into lay_init2/lay_init3, which declare the rest. odt_init_fixture
+// comes with it so the document readers a layout case reaches are live too.
+lay_fixture() {
+  int r = lay_init();
+  odt_init_fixture();
+} return void;
+():() then odt_runs:(0)
+():() then xml_len:(0)

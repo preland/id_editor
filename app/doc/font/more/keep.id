@@ -7,6 +7,8 @@ ed_font_keep(string out, string name, int i) {
     ret = out + chr(c);
   }
 } return string ret;
+("ab", "c", 0): ("abc")
+("ab", " ", 0): ("ab")
 
 // Silence here would be the bug: a document rendered in a face it did not ask
 // for looks like a working program, so the substitution is always said aloud.
@@ -17,6 +19,8 @@ ed_font_warn(string want, string got) {
     print("editor: no font file for '" + want + "' -- rendering with " + got);
   }
 } return void;
+("Arial", "DejaVu"): () then prints:("editor: no font file for 'Arial' -- rendering with DejaVu\n")
+("Times", "Helvetica"): () then prints:("editor: no font file for 'Times' -- rendering with Helvetica\n")
 
 // `id` has no exit builtin and no early return, so the only way to stop is to
 // do something the runtime refuses. Popping an empty list is that, and it is

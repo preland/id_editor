@@ -13,12 +13,16 @@ xml_attrs(int i) {
   }
   int ret_i = xml_endtag(j);
 } return int ret_i;
+given setup_xml_attr (0):(3)
+given setup_xml_attr (15):(5)
 
 // One name="value" pair, pushed onto the flat list as name then value.
 xml_attr1(int i) {
   int j = xml_attr_name(i);
   int ret_i = xml_attr2(j, i);
 } return int ret_i;
+given setup_xml_attr (0):(13)
+given setup_xml_attr (5):(15)
 
 // The '=' between a name and its value. `i` is the start of the attribute and
 // is where the diagnostic points, because that is the thing a reader can find.
@@ -31,3 +35,5 @@ xml_aval(int j, int i) {
     xml_fail("expected '=' after an attribute name", i);
   }
 } return int hi;
+given setup_xml_attr (4, 0):(13)
+given setup_xml_attr (5, 0):(15)

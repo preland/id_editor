@@ -4,3 +4,5 @@ xml_tag4(int j) {
   xml_clear();
   int ret_i = xml_attrs(j);
 } return int ret_i;
+given setup_xml_attr (0):(3)
+given setup_xml_attr (15):(5)

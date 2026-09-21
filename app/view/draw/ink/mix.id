@@ -4,6 +4,8 @@ ed_dark(int x, int y, int n, int v) {
     ed_px(x, y, v);
   }
 } return void;
+given setup_page (1, 2, 2, 3):() then calls ed_px:(1, 2, 3)
+given setup_page (1, 2, 2, 2):() then calls ed_px:[0]
 
 // One glyph of the laid-out page.
 //

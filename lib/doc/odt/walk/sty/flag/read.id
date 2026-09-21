@@ -8,6 +8,8 @@ odt_props2(int i) {
   odt_props_size(i);
   odt_props_flags(i);
 } return void;
+given odt_init_fixture (0):() then calls odt_props_font:(0) then calls odt_props_size:(0) then calls odt_props_flags:(0)
+given odt_init_fixture (1):() then calls odt_props_font:(1) then calls odt_props_size:(1) then calls odt_props_flags:(1)
 
 // s if it says anything, otherwise t.
 odt_or(string s, string t) {
@@ -16,6 +18,8 @@ odt_or(string s, string t) {
     out = s;
   }
 } return string out;
+("hello", "world"):("hello")
+("", "world"):("world")
 
 // fo:font-size is written with its unit, "12pt", and to_int reads the leading
 // integer and stops. Only points are modelled: a size in another unit comes
@@ -27,3 +31,5 @@ odt_pt(string s, int n) {
     m = to_int(s);
   }
 } return int m;
+("12", 8):(12)
+("", 8):(8)

@@ -5,6 +5,8 @@
 xml_kind() {
   int ret_i = (import xml_st)[1];
 } return int ret_i;
+given xml_doc_fixture ():(0)
+given xml_empty_fixture ():(0)
 
 // The element name of a start, end or empty element, namespace prefix and all.
 //
@@ -16,9 +18,13 @@ xml_kind() {
 xml_name() {
   string ret_s = (import xml_strs)[0];
 } return string ret_s;
+given xml_doc_fixture ():("")
+given xml_empty_fixture ():("")
 
 // The first malformed-input message, or "" if the document is well formed so
 // far. Only the first is kept: everything after a fault is a guess.
 xml_err() {
   string ret_s = (import xml_strs)[1];
 } return string ret_s;
+given xml_doc_fixture ():("")
+given xml_empty_fixture ():("")

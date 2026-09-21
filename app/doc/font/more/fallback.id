@@ -6,6 +6,8 @@ ed_font_more(string p, string name, string prefix) {
     ret = ed_font_try_suff(name, prefix);
   }
 } return string ret;
+("/found/path", "DejaVuSans", "/usr/share/fonts/"):("/found/path")
+("", "NonExistent", "/tmp/"):("")
 
 // A document with no styled run names no font at all, and reading past the end
 // of a list aborts, so the empty case is answered here rather than discovered
@@ -17,3 +19,4 @@ ed_font_doc0() {
     ret = (import odt_fonts)[0];
   }
 } return string ret;
+given odt_init3 ():("")

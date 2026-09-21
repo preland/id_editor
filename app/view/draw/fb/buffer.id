@@ -13,12 +13,16 @@ ed_page(int w, int h) {
   export int[] ed_dim = [];
   ed_dims(w, h);
 } return int 0;
+(10, 20):(0)
+(0, 0):(0)
 
 ed_dims(int w, int h) {
   push((import ed_dim), w);
   push((import ed_dim), h);
   ed_white(w * h, 0);
 } return void;
+given setup_page (5, 3):()
+given setup_page (1, 1):()
 
 // Paper. A page that starts black and is written on in black is a page that
 // looks like it failed.
@@ -28,3 +32,5 @@ ed_white(int n, int i) {
     i = i + 1;
   }
 } return void;
+given setup_page (3, 0):()
+given setup_page (0, 0):()

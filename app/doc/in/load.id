@@ -31,3 +31,5 @@ ed_str(int[] xs) {
   word a = alloc(len_v + 1);
   string ret_s = ed_str_out(xs, a, len_v);
 } return string ret_s;
+([72, 101, 108, 108, 111]): ("Hello")
+([65, 66, 67]): ("ABC")

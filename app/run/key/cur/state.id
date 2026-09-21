@@ -9,12 +9,17 @@ ed_cur_init() {
   export int[] ed_cur = [0];
   export int[] ed_dty = [1];
 } return void;
+():() then ed_car:(0)
+():() then ed_dirty:(1)
 
 ed_car() {
   int ret_i = (import ed_cur)[0];
 } return int ret_i;
+given ed_cur_init ():(0)
 
 ed_seek(int k) {
   lset((import ed_cur), 0, k);
   ed_dirt(1);
 } return void;
+given ed_cur_init (5):() then ed_car:(5)
+given ed_cur_init (0):() then ed_car:(0)

@@ -21,3 +21,5 @@ ed_pt(string key) {
     n = 12;
   }
 } return int n;
+given odt_init ("unknown"): (12)
+given odt_init ("notfound"): (12)

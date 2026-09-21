@@ -29,6 +29,8 @@ xml_open(string s) {
   export int[] xml_st = [0, 0, 0, 0, 0, -1, len(s)];
   xml_begin(s);
 } return void;
+(""):() then xml_len:(0)
+("hello"):() then xml_len:(5)
 
 // A fresh attribute list per element. `pop` in a loop is the only way to empty
 // a list in `id`, and re-running the export is both shorter and O(1); it is
@@ -45,3 +47,5 @@ xml_begin(string s) {
   export string[] xml_els = [];
   xml_clear();
 } return void;
+given xml_empty_fixture (""):() then xml_len:(0)
+given xml_empty_fixture ("test"):() then xml_len:(0)

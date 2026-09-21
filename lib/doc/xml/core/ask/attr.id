@@ -5,6 +5,8 @@
 xml_at() {
   int ret_i = (import xml_st)[5];
 } return int ret_i;
+given xml_doc_fixture ():(-1)
+given xml_empty_fixture ():(-1)
 
 // The value of an attribute by name, or "" when the element does not have it.
 // An absent attribute and an empty one are not distinguished, because no ODT
@@ -16,6 +18,8 @@ xml_attr(string name) {
     out = (import xml_ats)[i];
   }
 } return string out;
+given xml_empty_fixture ("foo"):("")
+given xml_doc_fixture ("bar"):("")
 
 // Where an attribute's value sits in the flat name/value list, or -1.
 //
@@ -31,3 +35,5 @@ xml_find(string name) {
     i = i + 2;
   }
 } return int at;
+given xml_empty_fixture ("notfound"):(-1)
+given xml_doc_fixture ("missing"):(-1)

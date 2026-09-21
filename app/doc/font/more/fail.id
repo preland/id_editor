@@ -10,12 +10,16 @@ ed_font_default() {
     p = ed_font_try_prefixes("LiberationSans");
   }
 } return string p;
+():("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+given odt_init3 ():("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
 
 ed_font_try_resolve(string doc) {
   string sq = ed_font_squash(doc);
   string got = ed_font_try_prefixes(sq);
   string ret = ed_font_fallback(doc, got);
 } return string ret;
+("DejaVu Sans"):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+("DejaVu Serif"):("/run/current-system/sw/share/X11/fonts/DejaVuSerif.ttf")
 
 ed_font_fallback(string doc, string got) {
   string ret = got;
@@ -24,3 +28,5 @@ ed_font_fallback(string doc, string got) {
     ed_font_warn(doc, ret);
   }
 } return string ret;
+("Arial", "/path/to/font"):("/path/to/font")
+("Arial", ""):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")

@@ -5,3 +5,5 @@ xml_isname_at(int i) {
   int c = xml_ch(i);
   int ok = xml_isname(c);
 } return int ok;
+given xml_doc_fixture (0):(0)
+given xml_doc_fixture (1):(1)

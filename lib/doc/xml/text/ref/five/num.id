@@ -9,6 +9,8 @@ xml_num(string t) {
     v = xml_val(t, 1, 10);
   }
 } return int v;
+("#9"):(9)
+("#x10"):(16)
 
 // The digits of t from i, in base b, or -1 if any byte is not a digit of that
 // base or there are none.
@@ -21,6 +23,8 @@ xml_val(string t, int i, int b) {
   int j = xml_val_run(t, i, b, row);
   int ret_i = xml_valv(row, j - i);
 } return int ret_i;
+("1", 0, 10):(1)
+("99", 0, 16):(153)
 
 // The value of byte c as a digit in base b, or -1.
 xml_dv(int c, int b) {
@@ -30,3 +34,5 @@ xml_dv(int c, int b) {
     m = v;
   }
 } return int m;
+(48, 10):(0)
+(65, 10):(-1)

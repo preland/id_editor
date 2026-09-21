@@ -24,6 +24,8 @@ odt_parse(string s) {
   xml_open(s);
   odt_walk();
 } return void;
+(""):() then calls odt_init:() then calls xml_open:("") then calls odt_walk:()
+("<root>x</root>"):() then calls odt_init:() then calls xml_open:("<root>x</root>") then calls odt_walk:()
 
 // One pass over the document. There is no second pass and no tree: every
 // question this model answers is answered by the time the input ends.
@@ -47,3 +49,5 @@ odt_ev(int k) {
     odt_char();
   }
 } return void;
+given odt_init_fixture (1):() then calls odt_open:(1)
+given odt_init_fixture (2):() then calls odt_shut:()

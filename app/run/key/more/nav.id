@@ -7,6 +7,7 @@ ed_key3(int v) {
     ed_key4(v);
   }
 } return void;
+given ed_step_fixture (256):() then calls ed_key4:[1]
 
 ed_key4(int v) {
   if(v == 256) {
@@ -15,6 +16,8 @@ ed_key4(int v) {
     ed_step(1);
   }
 } return void;
+given ed_step_fixture (256):() then calls ed_step:(-1)
+given ed_step_fixture (257):() then calls ed_step:(1)
 
 // The caret moved by one and clamped to the document. ed_left and ed_right
 // clamp against a string; the caret runs over the whole document, which is a
@@ -24,3 +27,5 @@ ed_step(int m) {
   int n = ed_total();
   ed_step2(k + m, n);
 } return void;
+given ed_step_fixture (1):() then calls ed_step2:[1]
+given ed_step_fixture (-1):() then calls ed_step2:[1]

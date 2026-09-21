@@ -22,6 +22,8 @@ xml_base() {
 xml_len() {
   int ret_i = (import xml_st)[6];
 } return int ret_i;
+given xml_doc_fixture ():(9)
+given xml_empty_fixture ():(0)
 
 // One byte of the input, or -1 at either end -- the same contract charat has,
 // so that a scan can detect its own end without a separate bound. peek8 traps

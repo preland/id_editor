@@ -2,10 +2,14 @@
 ed_w() {
   int ret_i = (import ed_dim)[0];
 } return int ret_i;
+given setup_page ():(10)
+given setup_empty ():(0)
 
 ed_h() {
   int ret_i = (import ed_dim)[1];
 } return int ret_i;
+given setup_page ():(20)
+given setup_empty ():(0)
 
 // One pixel, darkened by coverage. Coverage is how much of the pixel the glyph
 // covers, so it is a blend rather than a write: a stem that lands between two

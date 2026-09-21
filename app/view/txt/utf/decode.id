@@ -12,6 +12,8 @@ utf_len(int c) {
     n = utf_len2(c);
   }
 } return int n;
+(240):(4)
+(239):(3)
 
 utf_len2(int c) {
   int n = 1;
@@ -21,9 +23,13 @@ utf_len2(int c) {
     n = 2;
   }
 } return int n;
+(224):(3)
+(223):(2)
 
 utf_at(string s, int at) {
   int c = charat(s, at);
   int n = utf_len(c);
   int ret_i = utf_val(s, at, n);
 } return int ret_i;
+("A", 0):(65)
+("AB", 1):(66)
