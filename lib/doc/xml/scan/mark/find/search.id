@@ -16,6 +16,8 @@ xml_upto(int i, int c) {
     i = i + 1;
   }
 } return int i;
+given xml_doc_fixture (0, 60):(0)
+given xml_doc_fixture (1, 62):(2)
 
 // The first index at or after i where the string t occurs, or -1.
 xml_seek(int i, string t) {
@@ -23,6 +25,8 @@ xml_seek(int i, string t) {
   int j = xml_find_from(i, t, c);
   int ret_i = xml_seek2(j);
 } return int ret_i;
+given xml_doc_fixture (0, "<a>"):(0)
+given xml_doc_fixture (0, "hi"):(3)
 
 // The loop above stops on a match or on the end of the input, and only the end
 // of the input means "not found".
@@ -32,3 +36,5 @@ xml_seek2(int j) {
     at = -1;
   }
 } return int at;
+given xml_doc_fixture (0):(0)
+given xml_doc_fixture (9):(-1)

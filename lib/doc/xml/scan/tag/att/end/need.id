@@ -9,6 +9,8 @@ xml_aput2(int j, int hi) {
   push((import xml_ats), xml_dec_v);
   int ret_i = xml_ws(hi + 1);
 } return int ret_i;
+given setup_xml_attr (0, 4):(5)
+given setup_xml_attr (0, 5):(6)
 
 // Require byte c at i, step past it and answer kind k; or report msg.
 xml_need(int i, int c, int k, string msg) {
@@ -19,9 +21,15 @@ xml_need(int i, int c, int k, string msg) {
     m = xml_fail(msg, i);
   }
 } return int m;
+given setup_xml_attr (13, 34, 2, "expected '\"'"):(5)
+given setup_xml_attr (15, 32, 1, "expected space"):(5)
+given xml_nested_fixture (6, 62, 2, "expected '>' to close an end tag"):(2)
 
 // An end tag. i is the first byte of the name, just past '</'.
 xml_close(int i) {
   int j = xml_ntok(i);
   int ret_i = xml_close2(i, j);
 } return int ret_i;
+given xml_doc_fixture (0):(5)
+given xml_empty_fixture (0):(5)
+given xml_nested_fixture (5):(2)

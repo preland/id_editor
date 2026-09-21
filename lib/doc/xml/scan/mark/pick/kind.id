@@ -10,6 +10,9 @@ xml_mark(int i) {
     k = xml_mark2(i);
   }
 } return int k;
+given xml_doc_fixture (0):(1)
+given xml_end_tag_fixture (0):(5)
+given xml_nested_fixture (3):(2)
 
 // The two remaining introducers. A three-way `if / else if / else` would fit a
 // block exactly, but only with nothing else in it -- and the `int k = 0` a
@@ -23,6 +26,8 @@ xml_mark2(int i) {
     k = xml_mark3(i);
   }
 } return int k;
+given xml_doc_fixture (0):(1)
+given xml_empty_fixture (0):(5)
 
 // A processing instruction, including the `<?xml ... ?>` declaration, carries
 // nothing a document model needs, so it is passed over rather than reported.
@@ -35,3 +40,5 @@ xml_mark3(int i) {
     k = xml_tag(i + 1);
   }
 } return int k;
+given xml_doc_fixture (0):(1)
+given xml_empty_fixture (0):(5)

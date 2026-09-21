@@ -11,3 +11,17 @@ xml_hv2(int c) {
 (97):(10)
 (102):(15)
 (50):(-1)
+
+// Document with a numeric entity reference: &#65;
+xml_ent_fixture() {
+  xml_open("&#65;");
+} return void;
+():() then xml_len:(5)
+given xml_doc_fixture ():() then xml_len:(5)
+
+// Document with a named entity reference: &lt;
+xml_ent2_fixture() {
+  xml_open("&lt;");
+} return void;
+():() then xml_len:(4)
+given xml_ent_fixture ():() then xml_len:(4)

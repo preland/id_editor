@@ -35,3 +35,5 @@ xml_ch(int i) {
     c = peek8(xml_base_v + i);
   }
 } return int c;
+given xml_doc_fixture (0):(60)
+given xml_doc_fixture (1):(97)

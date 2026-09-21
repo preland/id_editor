@@ -5,6 +5,8 @@ xml_tag(int i) {
   int j = xml_ntok(i);
   int ret_i = xml_tag2(i, j);
 } return int ret_i;
+given xml_doc_fixture (1):(1)
+given xml_empty_fixture (0):(5)
 
 // A '<' with nothing name-shaped after it is not markup this parser will
 // guess at: '<' is not legal as data in XML, so the document is wrong.
@@ -16,6 +18,8 @@ xml_tag2(int i, int j) {
     k = xml_tag3(i, j);
   }
 } return int k;
+given xml_doc_fixture (1, 1):(5)
+given xml_doc_fixture (1, 2):(1)
 
 // The name is sliced once, here, and the attribute list is emptied before the
 // attributes are read into it.
@@ -24,3 +28,5 @@ xml_tag3(int i, int j) {
   sset((import xml_strs), 0, xml_cut_v);
   int ret_i = xml_tag4(j);
 } return int ret_i;
+given xml_doc_fixture (1, 2):(1)
+given xml_empty_fixture (0, 0):(5)

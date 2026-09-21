@@ -11,12 +11,16 @@ xml_aval2(int j, int i) {
     xml_fail("expected a quoted attribute value", i);
   }
 } return int hi;
+given xml_empty_fixture (0, 0):(0)
+given xml_doc_fixture (0, 0):(9)
 
 // j is the first byte of the value, c the quote that has to end it.
 xml_aval3(int j, int c, int i) {
   int hi = xml_upto(j, c);
   int ret_i = xml_aput(j, hi, i);
 } return int ret_i;
+given xml_doc_fixture (1, 34, 0):(9)
+given xml_empty_fixture (0, 34, 0):(0)
 
 // Running off the end of the input inside a value is a document that stops
 // mid-tag, and there is nothing sensible to do with what came before it.
@@ -28,3 +32,5 @@ xml_aput(int j, int hi, int i) {
     m = xml_aput2(j, hi);
   }
 } return int m;
+given xml_empty_fixture (0, 0, 0):(0)
+given xml_doc_fixture (0, 9, 0):(9)

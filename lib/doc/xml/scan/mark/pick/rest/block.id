@@ -5,6 +5,8 @@ xml_cdata(int i) {
   int xml_seek_v = xml_seek(i, "]]>");
   int ret_i = xml_cdata2(i, xml_seek_v);
 } return int ret_i;
+given xml_empty_fixture (0):(5)
+given xml_doc_fixture (3):(5)
 
 // Text inside CDATA is exact: no entity is recognised in it. That is why the
 // raw flag rides along inside the event record rather than being worked out
@@ -17,6 +19,8 @@ xml_cdata2(int i, int j) {
     k = xml_span(i, j, 1, j + 3);
   }
 } return int k;
+given xml_doc_fixture (0, 9):(4)
+given xml_doc_fixture (0, -1):(5)
 
 // A DOCTYPE declares entities and elements this parser does not read, so it is
 // stepped over whole.
@@ -24,3 +28,5 @@ xml_doctype(int i) {
   int xml_dt_end_v = xml_dt_end(i);
   int ret_i = xml_skip(i, xml_dt_end_v, 1, "unterminated DOCTYPE");
 } return int ret_i;
+given xml_empty_fixture (0):(5)
+given xml_doc_fixture (0):(-1)

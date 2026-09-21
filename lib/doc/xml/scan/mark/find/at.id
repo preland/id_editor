@@ -6,3 +6,17 @@ xml_find_from(int i, string t, int c) {
     j = xml_upto(j + 1, c);
   }
 } return int j;
+given xml_doc_fixture (0, "<", 60):(0)
+given xml_doc_fixture (0, ">", 62):(2)
+
+// An element that is open, so that an end tag has something to match against.
+// xml_end_tag_fixture holds "</a>" with nothing on the stack, which can only
+// ever be the unbalanced case: kind 2 is unreachable until a start tag has
+// been seen and pushed.
+xml_nested_fixture() {
+  xml_open("<a></a>");
+  int xml_mark_v = xml_mark(0);
+  int xml_push_v = xml_push(xml_mark_v);
+} return void;
+():() then xml_len:(7)
+():() then xml_at:(-1)

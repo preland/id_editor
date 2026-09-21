@@ -11,6 +11,8 @@ xml_scan(int i, int hi, int c) {
     i = i + 1;
   }
 } return int i;
+given xml_doc_fixture (0, 9, 60):(0)
+given xml_doc_fixture (1, 9, 62):(2)
 
 // Stop on malformed input.
 //
@@ -27,9 +29,13 @@ xml_fail(string msg, int i) {
   int xml_len_v = xml_len();
   lset((import xml_st), 0, xml_len_v);
 } return int 5;
+given xml_empty_fixture ("error", 0):(5)
+given xml_doc_fixture ("error2", 1):(5)
 
 // Step over the byte at i and answer kind k. The counterpart of xml_need's
 // success branch, and separate from it because the branch is a whole block.
 xml_pass(int i, int k) {
   lset((import xml_st), 0, i + 1);
 } return int k;
+given xml_doc_fixture (0, 1):(1)
+given xml_doc_fixture (1, 4):(4)

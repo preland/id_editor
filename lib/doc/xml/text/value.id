@@ -8,6 +8,8 @@ xml_text() {
     out = xml_dec((import xml_st)[2], (import xml_st)[3], (import xml_st)[4]);
   }
 } return string out;
+given xml_empty_fixture ():("")
+given xml_doc_fixture ():("")
 
 // The bytes [lo, hi) as a string, with entities expanded unless raw.
 //
@@ -23,6 +25,8 @@ xml_dec(int lo, int hi, int raw) {
     out = xml_dec2(lo, hi);
   }
 } return string out;
+given xml_doc_fixture (3, 5, 1):("hi")
+given xml_empty_fixture (0, 0, 0):("")
 
 // Whether an '&' falls inside [lo, hi). The search is bounded: an '&' further
 // down the document is not this text node's problem, and finding one before
@@ -33,3 +37,5 @@ xml_amp(int lo, int hi) {
     ok = 1;
   }
 } return int ok;
+given xml_doc_fixture (3, 5):(0)
+given xml_empty_fixture (0, 0):(0)

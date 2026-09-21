@@ -7,3 +7,23 @@ xml_dec4(int[] row, int hi, word a) {
     xml_put(row, a, c);
   }
 } return void;
+given xml_doc_buf_fixture ([3, 0], 9, (import xml_buf)):([4, 1])
+given xml_doc_buf_fixture ([1, 0], 9, (import xml_buf)):([2, 1])
+
+// The same buffer with a different byte in it, so a reader of it has two
+// states to tell apart. It writes through the address xml_buf_fixture
+// exported rather than exporting its own -- a name may only be exported once.
+xml_buf_hi() {
+  xml_buf_fixture();
+  poke8((import xml_buf), 90);
+} return void;
+():() then xml_buf_first:(90)
+given xml_buf_fixture ():() then xml_buf_first:(90)
+
+// Set up both document and buffer for decoding tests.
+xml_doc_buf_fixture() {
+  xml_doc_fixture();
+  xml_buf_fixture();
+} return void;
+():() then xml_len:(9)
+():() then xml_buf_first:(65)

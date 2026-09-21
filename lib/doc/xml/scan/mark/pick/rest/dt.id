@@ -10,6 +10,8 @@ xml_dt_end(int i) {
     j = xml_dt_sub(hi + 1);
   }
 } return int j;
+given xml_empty_fixture (0):(-1)
+given xml_doc_fixture (0):(2)
 
 // Past the internal subset: its ']', then the '>' after it. Answers -1 if
 // either is missing, which xml_skip turns into the unterminated report.
@@ -20,3 +22,12 @@ xml_dt_sub(int i) {
     hi = xml_seek(j, ">");
   }
 } return int hi;
+given xml_empty_fixture (0):(-1)
+given xml_doc_fixture (0):(-1)
+
+// A simple end tag for testing xml_mark.
+xml_end_tag_fixture() {
+  xml_open("</a>");
+} return void;
+():() then xml_len:(4)
+():() then xml_at:(-1)

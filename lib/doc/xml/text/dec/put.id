@@ -13,6 +13,8 @@ xml_emit(int[] row, word a, int c) {
   poke8(a + row[1], c);
   lset(row, 1, row[1] + 1);
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 67):([0, 1]) then xml_buf_first:(67)
+given xml_buf_fixture ([0, 1], (import xml_buf), 68):([0, 2]) then xml_buf_first:(65)
 
 // Abandon the decode: report, and drive the read cursor past any possible end
 // so the loop finishes. There is no break, and the alternative -- passing the
@@ -23,3 +25,5 @@ xml_stop(int[] row, string msg) {
   int xml_len_v = xml_len();
   lset(row, 0, xml_len_v);
 } return void;
+given xml_empty_fixture ([0, 0], "bad"):([0, 0])
+given xml_doc_fixture ([0, 0], "error"):([9, 0])

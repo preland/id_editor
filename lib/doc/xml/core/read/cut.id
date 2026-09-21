@@ -10,6 +10,8 @@ xml_cut(int i, int n) {
   word xml_base_v = xml_base();
   string ret_s = str_of_mem(xml_base_v + i, n);
 } return string ret_s;
+given xml_doc_fixture (0, 3):("<a>")
+given xml_doc_fixture (1, 1):("a")
 
 // Past any whitespace at i.
 xml_ws(int i) {
@@ -17,6 +19,8 @@ xml_ws(int i) {
     i = i + 1;
   }
 } return int i;
+given xml_doc_fixture (0):(0)
+given xml_doc_fixture (1):(1)
 
 // Does t appear at i? charat on t is fine -- t is a two- or seven-byte literal
 // and it is the *document* that must not be re-measured.
@@ -27,3 +31,5 @@ xml_eqat(int i, string t) {
   }
   int ret_i = charat(t, j) < 0;
 } return int ret_i;
+given xml_doc_fixture (0, "<"):(1)
+given xml_doc_fixture (1, "a"):(1)

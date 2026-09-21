@@ -13,6 +13,8 @@ xml_next() {
   }
   lset((import xml_st), 1, k);
 } return int k;
+given xml_empty_fixture ():(0)
+given xml_doc_fixture ():(1)
 
 // One attempt. End of input is kind 0, and it is the only thing that stops the
 // caller's loop; a fault stops the scan by driving the position to the end.
@@ -28,6 +30,8 @@ xml_step() {
     k = xml_eof();
   }
 } return int k;
+given xml_empty_fixture ():(0)
+given xml_doc_fixture ():(1)
 
 // Markup or text: the only decision at the top of the grammar.
 xml_step2(int i) {
@@ -38,3 +42,5 @@ xml_step2(int i) {
     k = xml_run(i);
   }
 } return int k;
+given xml_doc_fixture (0):(1)
+given xml_doc_fixture (1):(4)

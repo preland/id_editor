@@ -14,12 +14,16 @@ xml_ent3(int[] row, int at, word a, int v) {
     xml_done(row, at, a, v);
   }
 } return void;
+given xml_ent_buf_fixture ([1, 0], 4, (import xml_buf), 65):([5, 1])
+given xml_ent_buf_fixture ([1, 0], 4, (import xml_buf), 0):([5, 0])
 
 // The character's bytes, then the read cursor past the closing ';'.
 xml_done(int[] row, int at, word a, int v) {
   xml_utf8(row, a, v);
   lset(row, 0, at + 1);
 } return void;
+given xml_ent_buf_fixture ([1, 0], 4, (import xml_buf), 65):([5, 1])
+given xml_ent_buf_fixture ([1, 0], 4, (import xml_buf), 200):([5, 2])
 
 // The code point a reference name stands for, or -1.
 xml_cp(string t) {

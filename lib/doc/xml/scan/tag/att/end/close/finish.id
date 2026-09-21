@@ -12,6 +12,7 @@ xml_close2(int i, int j) {
 } return int k;
 given xml_doc_fixture (0, 0):(5)
 given xml_doc_fixture (0, 5):(5)
+given xml_nested_fixture (5, 6):(2)
 
 // The name, then whitespace, then '>'. An end tag carries no attributes, so
 // anything else between the name and the '>' is malformed.
@@ -21,6 +22,8 @@ xml_close3(int i, int j) {
   int ret_i = xml_close4(j, i);
 } return int ret_i;
 given xml_doc_fixture (0, 5):(5)
+given xml_empty_fixture (0, 0):(5)
+given xml_nested_fixture (5, 6):(2)
 
 // The end tag is well formed; whether it is the *right* one is xml_shut2's
 // question. Split because the check is a block of its own.
@@ -31,3 +34,5 @@ xml_shut(int k, int i) {
   }
 } return int m;
 given xml_doc_fixture (2, 5):(5)
+given xml_doc_fixture (5, 0):(5)
+given xml_nested_fixture (2, 5):(2)

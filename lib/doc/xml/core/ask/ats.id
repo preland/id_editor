@@ -1,0 +1,17 @@
+// Readers and fixtures for testing xml_ats operations.
+
+// Check if xml_ats length (for testing xml_clear)
+xml_ats_len() {
+  int ret_i = len((import xml_ats));
+} return int ret_i;
+given odt_init_fixture ():(0)
+given xml_clear_setup ():(2)
+
+// Setup with attributes for xml_clear testing
+xml_clear_setup() {
+  xml_open("");
+  push((import xml_ats), "attr1");
+  push((import xml_ats), "value1");
+} return void;
+():() then xml_len:(0)
+():() then xml_ats_len:(2)

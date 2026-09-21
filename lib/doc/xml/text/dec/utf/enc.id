@@ -7,14 +7,20 @@ xml_two(int[] row, word a, int v) {
   xml_emit(row, a, 192 + v / 64);
   xml_emit(row, a, 128 + v % 64);
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 64):([0, 2]) then xml_buf_first:(193)
+given xml_buf_fixture ([0, 0], (import xml_buf), 2047):([0, 2]) then xml_buf_first:(223)
 
 xml_three(int[] row, word a, int v) {
   xml_emit(row, a, 224 + v / 4096);
   xml_tail(row, a, v);
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 2048):([0, 3]) then xml_buf_first:(224)
+given xml_buf_fixture ([0, 0], (import xml_buf), 65535):([0, 3]) then xml_buf_first:(239)
 
 xml_four(int[] row, word a, int v) {
   xml_emit(row, a, 240 + v / 262144);
   xml_emit(row, a, 128 + (v / 4096) % 64);
   xml_tail(row, a, v);
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 65536):([0, 4]) then xml_buf_first:(240)
+given xml_buf_fixture ([0, 0], (import xml_buf), 1114111):([0, 4]) then xml_buf_first:(244)

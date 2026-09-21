@@ -13,6 +13,8 @@ xml_push(int k) {
     push((import xml_els), xml_name_v);
   }
 } return int k;
+given xml_doc_fixture (0):(0)
+given xml_doc_fixture (1):(1)
 
 // The name in the end tag against the innermost element still open.
 xml_shut2(int i) {
@@ -23,6 +25,9 @@ xml_shut2(int i) {
     pop((import xml_els));
   }
 } return int k;
+given xml_empty_fixture (0):(5)
+given xml_doc_fixture (0):(5)
+given xml_nested_fixture (5):(2)
 
 // End of input. An element still open here is a truncated document, and saying
 // so is the difference between "this is the whole file" and "this is as much of
@@ -34,3 +39,5 @@ xml_eof() {
     xml_fail("element is still open at the end of the input", xml_len_v);
   }
 } return int 0;
+given xml_empty_fixture ():(0)
+given xml_doc_fixture ():(0)

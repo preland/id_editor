@@ -12,6 +12,8 @@ xml_utf8(int[] row, word a, int v) {
     xml_utf8b(row, a, v);
   }
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 65):([0, 1]) then xml_buf_first:(65)
+given xml_buf_fixture ([0, 0], (import xml_buf), 200):([0, 2]) then xml_buf_first:(195)
 
 xml_utf8b(int[] row, word a, int v) {
   if(v < 2048) {
@@ -20,6 +22,8 @@ xml_utf8b(int[] row, word a, int v) {
     xml_utf8c(row, a, v);
   }
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 200):([0, 2]) then xml_buf_first:(195)
+given xml_buf_fixture ([0, 0], (import xml_buf), 3000):([0, 3]) then xml_buf_first:(224)
 
 xml_utf8c(int[] row, word a, int v) {
   if(v < 65536) {
@@ -28,3 +32,5 @@ xml_utf8c(int[] row, word a, int v) {
     xml_four(row, a, v);
   }
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 3000):([0, 3]) then xml_buf_first:(224)
+given xml_buf_fixture ([0, 0], (import xml_buf), 70000):([0, 4]) then xml_buf_first:(240)

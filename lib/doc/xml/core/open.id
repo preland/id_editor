@@ -38,6 +38,8 @@ xml_open(string s) {
 xml_clear() {
   export string[] xml_ats = [];
 } return void;
+given xml_clear_setup ():() then xml_ats_len:(0)
+given odt_init_fixture ():() then xml_ats_len:(0)
 
 // The input goes into the flat store, and the element stack and the attribute
 // list start empty. Split from xml_open because a block performs three actions
