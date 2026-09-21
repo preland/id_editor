@@ -10,6 +10,8 @@
 inf_emit(int v) {
   push((import inf_out), v);
 } return void;
+given inf_stream_fixture (1):() then inf_outlen:(1)
+given inf_stream_fixture (65):() then inf_outlen:(1)
 
 // Length code 257 + i means inf_lb[i] bytes plus inf_le[i] extra bits. The
 // last entry is the exception the table exists to record: code 285 is 258
@@ -19,6 +21,8 @@ inf_tabs() {
   export int[] inf_le = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0];
   inf_tabs2();
 } return void;
+():() then inf_lb_first:(3)
+():() then inf_le_last:(0)
 
 // Distance code i means inf_db[i] back plus inf_de[i] extra bits. Thirty
 // codes, so 30 and 31 never appear in a valid stream and are absent here --
@@ -27,3 +31,8 @@ inf_tabs2() {
   export int[] inf_db = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577];
   export int[] inf_de = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13];
 } return void;
+():() then inf_db_first:(1)
+():() then inf_de_last:(13)
+
+
+

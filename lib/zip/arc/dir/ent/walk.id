@@ -9,6 +9,7 @@ zip_init() {
   export int[] zip_meth = [];
   zip_init2();
 } return void;
+():()
 
 // The three numeric columns, in a second function because three exports and
 // a call are four actions. The sizes and the offset are 32-bit fields held in
@@ -19,6 +20,7 @@ zip_init2() {
   export int[] zip_usz = [];
   export int[] zip_off = [];
 } return void;
+():()
 
 // The entries are variable length, so the walk carries where it is as well as
 // how many it has seen: buf is [offset, count].
@@ -28,3 +30,5 @@ zip_walk(int[] xs, int n, int at) {
     zip_ent(xs, buf);
   }
 } return void;
+([0, 0, 0, 0], 0, 0):()
+([0, 0, 0, 0], 0, 1):()

@@ -7,6 +7,8 @@ zip_row2(int[] xs, int at) {
   zip_row_usz(xs, at);
   zip_row_off(xs, at);
 } return void;
+given zip_init2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 6, 0], 0):()
+given zip_init2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255], 0):()
 
 // An entry name is bytes in the archive and a `string` to everyone who looks
 // one up, so it is converted once here rather than compared byte by byte at
@@ -20,6 +22,8 @@ zip_name(int[] xs, int at, int n) {
     i = i + 1;
   }
 } return string s;
+([116, 101, 115, 116], 0, 4):("test")
+([72, 105], 0, 2):("Hi")
 
 // rd_le32 returns a `word`, which is right for a CRC and wrong for an offset:
 // every use here is an index into a list, and a list index is an `int`. There
@@ -29,3 +33,5 @@ zip_name(int[] xs, int at, int n) {
 zip_u32(int[] xs, int at) {
   int ret_i = rd_le16(xs, at) + rd_le16(xs, at + 2) * 65536;
 } return int ret_i;
+([1, 0, 2, 0], 0):(131073)
+([255, 255, 255, 255], 0):(-1)

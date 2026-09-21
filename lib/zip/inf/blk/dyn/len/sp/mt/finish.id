@@ -5,3 +5,23 @@ inf_match2(int inf_decode_v, int k) {
   int inf_dist_v = inf_dist(inf_decode_v);
   inf_back(inf_dist_v, k);
 } return void;
+given inf_ready (0, 0):() then calls inf_back:[1]
+given inf_ready (1, 0):() then calls inf_back:[1]
+
+// The stream and tables with one byte already emitted, so that inf_back and
+// inf_copy have something behind them to copy from.
+inf_emitted() {
+  inf_ready();
+  inf_emit(65);
+} return void;
+():() then inf_outlen:(1)
+():() then inf_bit:(1)
+
+// The empty stored block with BFINAL taken, so inf_block2 has a second type
+// to dispatch on that emits nothing.
+inf_block2_empty() {
+  inf_empty_block();
+  int inf_bits_v = inf_bits(1);
+} return void;
+():() then inf_outlen:(0)
+():() then calls inf_bits:[1]

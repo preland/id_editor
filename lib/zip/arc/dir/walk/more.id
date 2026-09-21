@@ -11,3 +11,5 @@ zip_dir2(int[] xs, int at) {
   int zip_u32_v = zip_u32(xs, at + 16);
   zip_walk(xs, rd_le16_v, zip_u32_v);
 } return void;
+given zip_row_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0], 0):()
+given zip_row_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 80, 75, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0):()

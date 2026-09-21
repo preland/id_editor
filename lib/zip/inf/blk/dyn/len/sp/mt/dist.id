@@ -4,3 +4,5 @@
 inf_dist(int n) {
   int ret_i = (import inf_db)[n] + inf_bits((import inf_de)[n]);
 } return int ret_i;
+given inf_ready (0):(1)
+given inf_ready (1):(2)

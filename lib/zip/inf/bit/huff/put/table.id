@@ -1,0 +1,6 @@
+// Reader for inf_de table in test cases.
+
+// Read last entry of inf_de (should be 13).
+inf_de_last() {
+  int v = (import inf_de)[29];
+} return int v;

@@ -4,3 +4,6 @@ zip_need(int at) {
     inf_fail("zip: no end-of-central-directory record");
   }
 } return void;
+(0):()
+(100):()
+(65536):()

@@ -18,6 +18,8 @@ inf_inflate(int[] src, int at) {
   inf_tabs();
   inf_run();
 } return int[] (import inf_out);
+([1, 0, 0, 255, 255], 0):([])
+([1, 5, 0, 250, 255, 65, 66, 67, 68, 69], 0):([65, 66, 67, 68, 69])
 
 // inf_bp is a one-cell list rather than an exported int because only the
 // declaring function may assign an exported scalar, and the bit position is
@@ -28,6 +30,8 @@ inf_init(int[] src, int at) {
   export int[] inf_bp = [at * 8];
   export int[] inf_out = [];
 } return void;
+([], 0):()
+([1, 2, 3], 5):()
 
 // Blocks until the one whose BFINAL bit is set. The flag is a list because
 // the loop condition has to see what the body wrote, and there is no `break`.
@@ -37,3 +41,9 @@ inf_run() {
     inf_block(xs);
   }
 } return void;
+
+given inf_stream_fixture ():() then inf_outlen:(5)
+given inf_ready ():() then inf_outlen:(5)
+given inf_fixed_a ():() then inf_outlen:(1)
+given inf_match_stream ():() then inf_outlen:(10)
+given inf_dyn_stream ():() then inf_outlen:(304)

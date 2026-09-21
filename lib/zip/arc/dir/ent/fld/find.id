@@ -13,6 +13,8 @@ zip_find(int[] xs, string name) {
   }
   int ret_i = buf[1];
 } return int ret_i;
+given zip_init ([], "test"):(-1)
+given zip_init ([], ""):(-1)
 
 // buf is [where to look, what was found], the same pair zip_eocd uses, and
 // for the same reason: the loop condition has to stop on a hit.
@@ -22,6 +24,10 @@ zip_hit(int[] buf, string name) {
   }
   lset(buf, 0, buf[0] + 1);
 } return void;
+
+// -1 for a name that is not in the archive, which is a value rather than an
+// abort: a document reader asks for entries that are optional -- a thumbnail,
+// a settings file -- and has to be able to ask.
 
 // A stretch of a byte buffer, copied. Written once and shared with the
 // inflater, which needs it to cut one run of code lengths into two alphabets:
@@ -34,3 +40,5 @@ zip_slice(int[] xs, int at, int n) {
     i = i + 1;
   }
 } return int[] buf;
+([65, 66, 67, 68], 1, 2):([66, 67])
+([65, 66, 67, 68], 0, 4):([65, 66, 67, 68])

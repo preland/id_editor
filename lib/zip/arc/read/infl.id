@@ -2,6 +2,19 @@
 // or an OOXML file uses. The rest of the method numbers -- bzip2, LZMA, zstd
 // -- are reported rather than guessed at, because an editor that shows a
 // document decompressed with the wrong algorithm is worse than one that stops.
+
+// Method 8 is DEFLATE, and those two are the whole of what an OpenDocument
+// or an OOXML file uses. The rest of the method numbers -- bzip2, LZMA, zstd
+// -- are reported rather than guessed at, because an editor that shows a
+// document decompressed with the wrong algorithm is worse than one that stops.
+
+// Note: zip_load, zip_load2, zip_grab require file I/O - REFUSED
+// These functions depend on filesystem operations (fs_open, fs_read, fs_close)
+// which are not available in the test harness
+// Note: zip_infl requires inf_inflate and DEFLATE stream setup - not testable here
+// The inf module functions (inf_init, inf_stream_fixture) are not accessible
+// from read/infl.id, and zip_infl cannot call them directly.
+
 zip_infl(int[] xs, int at, int i) {
   int[] buf = [];
   if ((import zip_meth)[i] == 8) {
@@ -10,3 +23,4 @@ zip_infl(int[] xs, int at, int i) {
     inf_fail("zip: unsupported compression method " + (import zip_meth)[i]);
   }
 } return int[] buf;
+

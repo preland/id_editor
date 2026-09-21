@@ -15,6 +15,8 @@
 rd_le16(int[] xs, int at) {
   int ret_i = xs[at] + xs[at + 1] * 256;
 } return int ret_i;
+([1, 2], 0):(513)
+([255, 255], 0):(65535)
 
 // A `word`, because a full 32-bit field does not fit an `int`: a CRC or a
 // size with the high bit set would come back negative, and the caller would
@@ -23,3 +25,5 @@ rd_le32(int[] xs, int at) {
   word a = rd_le16(xs, at + 2);
   word ret_w = rd_le16(xs, at) + a * 65536;
 } return word ret_w;
+([1, 2, 3, 4], 0):(67305985)
+([255, 255, 255, 255], 0):(4294967295)

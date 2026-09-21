@@ -19,6 +19,8 @@ inf_bit() {
   int b = (import inf_in)[at >> 3];
   int ret_i = inf_bit2(at, b);
 } return int ret_i;
+given inf_init_one ():( 1)
+given inf_init_ff ():( 1)
 
 // The position is moved on before the bit is picked out of b, matching the
 // comment above: `at` is wanted twice and read once.
@@ -26,6 +28,8 @@ inf_bit2(int at, int b) {
   lset((import inf_bp), 0, at + 1);
   int ret_i = (b >> (at & 7)) & 1;
 } return int ret_i;
+given inf_init_one (0, 1):(1)
+given inf_init_one (1, 1):(0)
 
 // n bits as an integer, first bit read becoming bit 0. n may be 0, which is
 // how a length or distance code with no extra bits is read without a case.
@@ -36,3 +40,5 @@ inf_bits(int n) {
   }
   int ret_i = xs[0];
 } return int ret_i;
+given inf_init_one (0):(0)
+given inf_init_ff (1):(1)

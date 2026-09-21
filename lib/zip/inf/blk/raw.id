@@ -9,6 +9,8 @@ inf_stored() {
   int inf_bits_v = inf_bits(16);
   inf_raw(inf_bits_v);
 } return void;
+given inf_stored_ready ():() then inf_outlen:(5)
+given inf_stored_one ():() then inf_outlen:(1)
 
 // NLEN follows LEN and is its one's complement -- a check the format makes
 // available and this reader skips, because a wrong LEN shows up immediately

@@ -11,6 +11,8 @@ zip_eocd(int[] xs) {
   }
   int ret_i = zip_eocd2(buf);
 } return int ret_i;
+([80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0]):(0)
+([0, 0, 80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]):(2)
 
 // The loop above stops on a hit or on running off the front of the file, and
 // only the second of those is a missing record.
@@ -18,6 +20,8 @@ zip_eocd2(int[] buf) {
   zip_need(buf[1]);
   int ret_i = buf[1];
 } return int ret_i;
+([0, 100]):(100)
+([0, 1000]):(1000)
 
 // 101010256 is 0x06054b50, the signature little-endian as it sits in the
 // file. The signature alone is not enough -- an entry, or the archive comment
@@ -29,3 +33,5 @@ zip_scan(int[] xs, int[] buf) {
   }
   lset(buf, 0, buf[0] - 1);
 } return void;
+([80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0], [0, -1]):([80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0], [-1, 0])
+([80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, -1]):([80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, -1])

@@ -1,0 +1,27 @@
+// Fixtures for testing zip_read functions.
+// Initialize zip exports with values needed for test cases.
+
+zip_read_setup() {
+  zip_init();
+  push((import zip_off), 0);
+  push((import zip_meth), 0);
+} chain () {
+  push((import zip_csz), 5);
+} return void;
+():()
+():() then calls zip_init:[1]
+
+zip_data_setup() {
+  zip_init();
+  push((import zip_meth), 0);
+  push((import zip_csz), 5);
+} return void;
+():()
+():() then calls zip_init:[1]
+
+zip_infl_setup() {
+  zip_init();
+  push((import zip_meth), 8);
+} return void;
+():()
+():() then calls zip_init:[1]

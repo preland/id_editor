@@ -1,0 +1,32 @@
+// Streams positioned where a particular reader expects to find them. A block
+// reader is not written to be entered at bit zero: inf_stored wants the three
+// header bits already taken, and inf_block2 wants BFINAL taken and BTYPE not.
+// Calling either straight after inf_init reads the header as though it were
+// data, which traps somewhere further on and blames the wrong function.
+
+// LEN is the next thing in the stream: the five-byte block, ready for
+// inf_stored.
+inf_stored_ready() {
+  inf_stream_fixture();
+  int inf_bits_v = inf_bits(3);
+} return void;
+():() then inf_outlen:(0)
+():() then calls inf_bits:[1]
+
+// The same, over a stored block holding the single byte "Z", so inf_stored
+// has a second length to find rather than the same one twice.
+inf_stored_one() {
+  int[] src = [1, 1, 0, 254, 255, 90];
+  inf_init(src, 0);
+  int inf_bits_v = inf_bits(3);
+} return void;
+():() then inf_outlen:(0)
+():() then calls inf_bits:[1]
+
+// BFINAL taken and BTYPE still to come, for inf_block2.
+inf_block2_ready() {
+  inf_stream_fixture();
+  int inf_bits_v = inf_bits(1);
+} return void;
+():() then inf_outlen:(0)
+():() then calls inf_bits:[1]

@@ -18,6 +18,8 @@ inf_lens_one(int[] tab, int[] row, int[] xs) {
     inf_rep(xs, v);
   }
 } return void;
+given inf_ready ([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1], []):([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1], [1])
+given inf_ready ([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 16], [5]):([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 16], [5, 5, 5, 5])
 
 // 16 repeats the previous length 3-6 times, 17 writes 3-10 zeros and 18
 // writes 11-138. Only 16 looks backwards, and it aborts on an empty list --
@@ -35,3 +37,5 @@ inf_rep(int[] xs, int v) {
     lst_fill(xs, inf_bits_v3 + 11, 0);
   }
 } return void;
+given inf_ready ([1], 16):()
+given inf_ready ([1], 17):()

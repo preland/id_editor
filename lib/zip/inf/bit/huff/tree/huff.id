@@ -20,6 +20,8 @@ inf_tree(int[] xs) {
   push(rows, []);
   inf_grow(xs, rows);
 } return int[][] rows;
+([]): ([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []])
+([1]): ([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0]])
 
 // Splitting the sizing across two functions is the action limit talking: the
 // two pushes, the two sizings and the fill are five statements and no two of
@@ -29,6 +31,8 @@ inf_grow(int[] xs, int[][] rows) {
   lst_fill(rows[0], 16, 0);
   inf_fill(xs, rows[0], rows[1]);
 } return void;
+([], [[]]): ([], [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []])
+([1], [[]]): ([1], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0]])
 
 // The symbol list is sized to the alphabet rather than to the number of coded
 // symbols, which wastes a few cells and saves a pass counting them.
@@ -37,3 +41,5 @@ inf_fill(int[] xs, int[] tab, int[] row) {
   lst_fill(row, len_v, 0);
   inf_fill2(xs, tab, row);
 } return void;
+([], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []): ([], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [])
+([1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], []): ([1], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0])

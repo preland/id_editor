@@ -1,0 +1,16 @@
+// Readers for verifying table setup in test cases.
+
+// Read first entry of inf_lb (should be 3).
+inf_lb_first() {
+  int v = (import inf_lb)[0];
+} return int v;
+
+// Read last entry of inf_le (should be 0).
+inf_le_last() {
+  int v = (import inf_le)[28];
+} return int v;
+
+// Read first entry of inf_db (should be 1).
+inf_db_first() {
+  int v = (import inf_db)[0];
+} return int v;

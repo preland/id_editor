@@ -21,6 +21,8 @@ inf_dec_pick(int[] xs, int[] row, int n) {
     inf_dec_next(xs, n);
   }
 } return void;
+([1, 2, 3, 0, -1], [10, 20, 30], 1):([1, 2, 3, 0, 30], [10, 20, 30], 1)
+([0, 1, 3, 0, -1], [1, 2, 3], 2):([0, 1, 3, 0, 3], [1, 2, 3], 2)
 
 // On to codes one bit longer: skip this length's symbols, and shift both the
 // first code and the code in hand up to make room for the next bit.
@@ -29,3 +31,5 @@ inf_dec_next(int[] xs, int n) {
   lset(xs, 1, (xs[1] + n) * 2);
   lset(xs, 0, xs[0] * 2);
 } return void;
+([1, 2, 3], 1):([2, 6, 4])
+([0, 0, 0], 5):([0, 10, 5])
