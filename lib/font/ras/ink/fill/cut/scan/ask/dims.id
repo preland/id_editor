@@ -6,10 +6,14 @@
 ras_w() {
   int ret_i = (import rasmet)[2];
 } return int ret_i;
+given ras_glyph_fixture ():(9)
+given ras_space_fixture ():(0)
 
 ras_h() {
   int ret_i = (import rasmet)[3];
 } return int ret_i;
+given ras_glyph_fixture ():(9)
+given ras_space_fixture ():(0)
 
 // Coverage of one pixel, 0 for untouched and 255 for wholly inside. x runs
 // 0..ras_w()-1 left to right and y runs 0..ras_h()-1 downwards from the top
@@ -18,3 +22,5 @@ ras_h() {
 ras_cov(int x, int y) {
   int ret_i = (import rascov)[y * ras_w() + x];
 } return int ret_i;
+given ras_glyph_fixture (0, 0):(0)
+given ras_glyph_fixture (4, 3):(32)

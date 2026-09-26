@@ -2,3 +2,5 @@ tt_cmput_fmt(int[] tab, int at) {
   int rd_be16_v = rd_be16((import ttbuf), at);
   lset(tab, 1, rd_be16_v);
 } return void;
+given tt_fixture ([0, 0, 0], 51998):([0, 12, 0])
+given tt_fixture2 ([0, 0, 0], 11028):([0, 4, 0])

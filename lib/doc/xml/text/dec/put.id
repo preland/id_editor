@@ -5,6 +5,8 @@ xml_put(int[] row, word a, int c) {
   xml_emit(row, a, c);
   lset(row, 0, row[0] + 1);
 } return void;
+given xml_buf_fixture ([0, 0], (import xml_buf), 67):([1, 1]) then xml_buf_first:(67)
+given xml_buf_fixture ([1, 1], (import xml_buf), 68):([2, 2]) then xml_buf_first:(65)
 
 // One byte out. The read cursor is untouched, because a character reference
 // produces up to four bytes from one run of input and the two cursors move

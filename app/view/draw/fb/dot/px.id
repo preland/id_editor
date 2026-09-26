@@ -25,3 +25,5 @@ ed_px(int x, int y, int v) {
     lset((import ed_fb), y * ed_w_v + x, ed_grey_v);
   }
 } return void;
+given setup_page (9, 19, 255):() then calls lset:((import ed_fb), 199, 0)
+given setup_page (10, 19, 255):() then calls lset:[0]

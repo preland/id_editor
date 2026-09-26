@@ -7,12 +7,16 @@ odt_style() {
   push((import odt_keys), xml_attr_v);
   odt_style2();
 } return void;
+given odt_init_fixture ():() then calls odt_style2:[1]
+given odt_init_fixture ():() then calls xml_attr:("style:name")
 
 odt_style2() {
   push((import odt_fonts), "");
   push((import odt_nums), 0);
   push((import odt_flags), 0);
 } return void;
+given odt_init_fixture ():() then odt_fonts_len:(3)
+given odt_init ():() then odt_fonts_len:(1)
 
 // style:text-properties fills in the row that style:style most recently
 // opened. The guard is for a text-properties element outside any style, which
@@ -23,3 +27,5 @@ odt_props() {
     odt_props2(i);
   }
 } return void;
+given odt_init_fixture ():() then calls odt_props2:[0]
+given odt_props_fixture ():() then calls odt_props2:[1]

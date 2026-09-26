@@ -6,6 +6,8 @@ tt_endstr() {
   tt_endsl(names);
   string ret_s = str_join(names, ",");
 } return string ret_s;
+given tt_outline_a ():("2,10")
+given tt_outline_b ():("")
 
 tt_endsl(string[] names) {
   int i = 0;
@@ -14,9 +16,13 @@ tt_endsl(string[] names) {
     i = i + 1;
   }
 } return void;
+given tt_outline_a ([]):(["2", "10"])
+given tt_outline_b ([]):([])
 
 tt_onstr() {
   string[] parts = [];
   tt_onsl(parts);
   string ret_s = str_join(parts, "");
 } return string ret_s;
+given tt_outline_a ():("11111111111")
+given tt_outline_b ():("")

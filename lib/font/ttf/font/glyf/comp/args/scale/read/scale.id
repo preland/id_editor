@@ -7,6 +7,8 @@ tt_scale(int[] row, int k) {
   tt_sput(row, n);
   lset(row, 0, row[0] + n * 2);
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 4646):([81138, 0, 0, 0, 0, 16384, 0, 0, 16384])
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 8):([81140, 0, 0, 0, 0, 4646, 0, 0, 4646])
 
 // Reset to the identity every time: the same row is reused for every
 // component of the composite, and the previous one may have left a rotation
@@ -17,6 +19,8 @@ tt_sput(int[] row, int n) {
     tt_sput2(row, n);
   }
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 0):([81138, 0, 0, 0, 0, 16384, 0, 0, 16384])
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 1):([81138, 0, 0, 0, 0, 4646, 0, 0, 4646])
 
 tt_sput2(int[] row, int n) {
   tt_sput2a(row);
@@ -25,3 +29,5 @@ tt_sput2(int[] row, int n) {
     tt_sput4(row);
   }
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 1):([81138, 0, 0, 0, 0, 4646, 0, 0, 4646])
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 4):([81138, 0, 0, 0, 0, 4646, 72, 0, 4103])

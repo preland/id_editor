@@ -7,6 +7,8 @@ tt_g4at(int at, int k, int i) {
   int b = tt_g4at_b(at, k);
   int ret_i = at + b + i * 2;
 } return int ret_i;
+given tt_fixture2 (11028, 0, 0):(11042)
+given tt_fixture2 (11028, 1, 5):(11242)
 
 tt_g4at_b(int at, int k) {
   int n = rd_be16((import ttbuf), at + 6) / 2;
@@ -15,6 +17,8 @@ tt_g4at_b(int at, int k) {
     b = b + 2;
   }
 } return int b;
+given tt_fixture2 (11028, 0):(14)
+given tt_fixture2 (11028, 1):(204)
 
 // idDelta is signed in the file and is read unsigned here on purpose: it is
 // only ever added to a glyph id and taken modulo 2^16, and the two readings
@@ -23,3 +27,5 @@ tt_g4arr(int at, int k, int i) {
   int tt_g4at_v = tt_g4at(at, k, i);
   int ret_i = rd_be16((import ttbuf), tt_g4at_v);
 } return int ret_i;
+given tt_fixture2 (11028, 0, 0):(126)
+given tt_fixture2 (11028, 2, 0):(65507)

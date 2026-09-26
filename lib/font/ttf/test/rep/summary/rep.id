@@ -4,15 +4,21 @@ tt_report() {
   tt_report_nglyph();
   tt_report2();
 } return void;
+given tt_fixture ():() then prints:("upem 2048\nnglyph 6253\nvmet 1901 -483 0\nhmet 6238 loca 1\ncmap 12\ncp 65 g 36 adv 1401\ncp 103 g 74 adv 1300\ncp 48 g 19 adv 1303\ncp 32 g 3 adv 651\ncp 1046 g 939 adv 2206\ncp 8211 g 2806 adv 1024\nout 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\nout 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\nout 105 g 76 any 1 nc 2 np 8 bbox 193 0 377 1556 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 113 -29 1151 1638 ends 20,27,31 on 11100100110010010010010010011111\nsweep 16080 205976 135272\nmore 796423 106132\n")
+given tt_fixture2 ():() then prints:("upem 2048\nnglyph 2620\nvmet 1854 -434 67\nhmet 2620 loca 1\ncmap 4\ncp 65 g 36 adv 1366\ncp 103 g 74 adv 1139\ncp 48 g 19 adv 1139\ncp 32 g 3 adv 569\ncp 1046 g 967 adv 1891\ncp 8211 g 2015 adv 1139\nout 111 g 82 any 1 nc 2 np 23 bbox 86 -20 1053 1102 ends 10,22 on 10010010100100100100100\nout 65 g 36 any 1 nc 2 np 17 bbox 4 0 1362 1409 ends 7,16 on 11111111110111101\nout 105 g 76 any 1 nc 2 np 8 bbox 137 0 317 1484 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 87 -20 1048 1508 ends 18,25,31 on 10010011010010010111001001111111\nsweep 5288 71785 958570\nmore 825597 337539\n")
 
 tt_report2() {
   tt_report2_vmet();
   print("hmet " + (import ttmet)[2] + " loca " + (import ttmet)[1]);
   tt_report3();
 } return void;
+given tt_fixture ():() then prints:("vmet 1901 -483 0\nhmet 6238 loca 1\ncmap 12\ncp 65 g 36 adv 1401\ncp 103 g 74 adv 1300\ncp 48 g 19 adv 1303\ncp 32 g 3 adv 651\ncp 1046 g 939 adv 2206\ncp 8211 g 2806 adv 1024\nout 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\nout 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\nout 105 g 76 any 1 nc 2 np 8 bbox 193 0 377 1556 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 113 -29 1151 1638 ends 20,27,31 on 11100100110010010010010010011111\nsweep 16080 205976 135272\nmore 796423 106132\n")
+given tt_fixture2 ():() then prints:("vmet 1854 -434 67\nhmet 2620 loca 1\ncmap 4\ncp 65 g 36 adv 1366\ncp 103 g 74 adv 1139\ncp 48 g 19 adv 1139\ncp 32 g 3 adv 569\ncp 1046 g 967 adv 1891\ncp 8211 g 2015 adv 1139\nout 111 g 82 any 1 nc 2 np 23 bbox 86 -20 1053 1102 ends 10,22 on 10010010100100100100100\nout 65 g 36 any 1 nc 2 np 17 bbox 4 0 1362 1409 ends 7,16 on 11111111110111101\nout 105 g 76 any 1 nc 2 np 8 bbox 137 0 317 1484 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 87 -20 1048 1508 ends 18,25,31 on 10010011010010010111001001111111\nsweep 5288 71785 958570\nmore 825597 337539\n")
 
 tt_report3() {
   print("cmap " + (import ttcm)[1]);
   tt_lookups();
   tt_report4();
 } return void;
+given tt_fixture ():() then prints:("cmap 12\ncp 65 g 36 adv 1401\ncp 103 g 74 adv 1300\ncp 48 g 19 adv 1303\ncp 32 g 3 adv 651\ncp 1046 g 939 adv 2206\ncp 8211 g 2806 adv 1024\nout 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\nout 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\nout 105 g 76 any 1 nc 2 np 8 bbox 193 0 377 1556 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 113 -29 1151 1638 ends 20,27,31 on 11100100110010010010010010011111\nsweep 16080 205976 135272\nmore 796423 106132\n")
+given tt_fixture2 ():() then prints:("cmap 4\ncp 65 g 36 adv 1366\ncp 103 g 74 adv 1139\ncp 48 g 19 adv 1139\ncp 32 g 3 adv 569\ncp 1046 g 967 adv 1891\ncp 8211 g 2015 adv 1139\nout 111 g 82 any 1 nc 2 np 23 bbox 86 -20 1053 1102 ends 10,22 on 10010010100100100100100\nout 65 g 36 any 1 nc 2 np 17 bbox 4 0 1362 1409 ends 7,16 on 11111111110111101\nout 105 g 76 any 1 nc 2 np 8 bbox 137 0 317 1484 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 87 -20 1048 1508 ends 18,25,31 on 10010011010010010111001001111111\nsweep 5288 71785 958570\nmore 825597 337539\n")

@@ -21,6 +21,8 @@ ras_edge0() {
   export int[] rasy0 = [];
   ras_edge1();
 } return void;
+():() then calls ras_edge1:[1]
+given tt_fixture ():() then calls ras_edge1:[1]
 
 // rascov is the bitmap itself: ras_w() * ras_h() bytes, row major, 0..255.
 // It is declared beside the edges rather than where it is sized, because a
@@ -31,6 +33,8 @@ ras_edge1() {
   export int[] rasy1 = [];
   export int[] rascov = [];
 } return void;
+():() then ras_cov_len:(0)
+given tt_fixture ():() then ras_cov_len:(0)
 
 // Flatten, measure, fill. The measure and the fill are inside the test
 // because lst_min traps on an empty list, and an outline whose every contour
@@ -44,3 +48,5 @@ ras_ink() {
     ras_fill();
   }
 } return void;
+given ras_glyph_fixture ():() then calls ras_box:[1]
+given ras_space_fixture ():() then calls ras_box:[0]

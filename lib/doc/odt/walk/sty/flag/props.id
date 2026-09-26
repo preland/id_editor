@@ -5,14 +5,20 @@ odt_props_font(int i) {
   string odt_or_v = odt_or(xml_attr_v, (import odt_fonts)[i]);
   sset((import odt_fonts), i, odt_or_v);
 } return void;
+given odt_init_fixture (0):() then calls sset:[1]
+given odt_init_fixture (0):() then calls xml_attr:("style:font-name")
 
 odt_props_size(int i) {
   string xml_attr_v2 = xml_attr("fo:font-size");
   int odt_pt_v = odt_pt(xml_attr_v2, (import odt_nums)[i]);
   lset((import odt_nums), i, odt_pt_v);
 } return void;
+given odt_init_fixture (0):() then calls lset:[1]
+given odt_init_fixture (0):() then calls xml_attr:("fo:font-size")
 
 odt_props_flags(int i) {
   int odt_wt_v = odt_wt();
   lset((import odt_flags), i, (import odt_flags)[i] | odt_wt_v);
 } return void;
+given odt_init_fixture (0):() then calls lset:[1]
+given odt_init_fixture (0):() then calls odt_wt:[1]

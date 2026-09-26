@@ -18,9 +18,13 @@ ed_glyph(int i) {
   int ok = ras_scale((import lay_g)[i], px);
   ed_ink(i, ok);
 } return void;
+given setup_page given lay_real_fixture (0):() then calls ed_ink:[1]
+given setup_page given lay_real_fixture (1):() then calls ed_ink:[1]
 
 ed_ink(int i, int ok) {
   if(ok == 1) {
     ed_rows(i, 0);
   }
 } return void;
+(0, 0):()
+(5, 0):()

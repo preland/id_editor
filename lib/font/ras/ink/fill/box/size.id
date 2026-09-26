@@ -14,6 +14,8 @@ ras_box() {
   ras_box_y();
   ras_box_fill();
 } return void;
+given ras_glyph_fixture given ras_edge1 ():() then calls ras_box_fill:[1]
+given ras_glyph_fixture2 given ras_edge1 ():() then calls ras_box_x:[1]
 
 // The coverage list is sized from ras_w()/ras_h(), which read rasmet back,
 // so it cannot run until both spans above have been written.
@@ -22,3 +24,5 @@ ras_box_fill() {
   int ras_h_v = ras_h();
   lst_fill((import rascov), ras_w_v * ras_h_v, 0);
 } return void;
+given ras_glyph_fixture given ras_edge1 ():() then ras_cov_len:(81)
+given ras_space_fixture given ras_edge1 ():() then ras_cov_len:(0)

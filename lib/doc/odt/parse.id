@@ -36,6 +36,8 @@ odt_walk() {
     k = xml_next();
   }
 } return void;
+given odt_init_fixture ():() then calls odt_ev:[0]
+given odt_init_fixture ():() then calls xml_next:[1]
 
 // One event. Kind 5 is a fault, which needs nothing done here: the parser has
 // already recorded it and driven the input to its end, so the loop stops on

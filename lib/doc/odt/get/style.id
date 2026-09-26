@@ -15,6 +15,8 @@ odt_key(string key) {
     i = i + 1;
   }
 } return int at;
+given odt_init_fixture (""):(-1)
+given odt_init_fixture ("bold"):(-1)
 
 // The font family a style names, or "" if it names none or is not a style this
 // document declared.
@@ -25,6 +27,8 @@ odt_font(string key) {
     out = (import odt_fonts)[i];
   }
 } return string out;
+given odt_init_fixture (""):("")
+given odt_init_fixture ("bold"):("")
 
 // The size in points, or 0 when the style does not set one. Zero rather than a
 // default: what a missing size falls back to is the renderer's decision, not
@@ -36,3 +40,5 @@ odt_size(string key) {
     n = (import odt_nums)[i];
   }
 } return int n;
+given odt_init_fixture (""):(0)
+given odt_init_fixture ("bold"):(0)

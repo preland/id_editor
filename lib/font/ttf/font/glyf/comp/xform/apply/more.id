@@ -3,13 +3,19 @@ tt_xform1_go(int[] row, int i) {
   int y = (import ttpy)[i];
   tt_xput(row, i, x, y);
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0):() then tt_px0:(10)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 32768, 0, 0, 16384], 0):() then tt_px0:(20)
 
 tt_xput_x(int[] row, int i, int x, int y) {
   int tt_fix_v = tt_fix(row[5] * x + row[7] * y);
   lset((import ttpx), i, tt_fix_v);
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 10, 1):() then tt_px0:(10)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 32768, 0, 0, 16384], 0, 10, 1):() then tt_px0:(20)
 
 tt_xput_y(int[] row, int i, int x, int y) {
   int tt_fix_v2 = tt_fix(row[6] * x + row[8] * y);
   lset((import ttpy), i, tt_fix_v2);
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 10, 1):() then tt_py0:(1)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 32768], 0, 10, 1):() then tt_py0:(2)

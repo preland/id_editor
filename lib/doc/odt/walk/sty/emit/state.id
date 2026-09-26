@@ -1,0 +1,18 @@
+// State reads that no getter in get/ exposes: odt_fonts by row count rather
+// than by style key, and a document already holding one automatic style, for
+// cases elsewhere that need odt_props's guarded branch to actually run.
+
+odt_fonts_len() {
+  int n = len((import odt_fonts));
+} return int n;
+given odt_init_fixture ():(2)
+given odt_init ():(0)
+
+// odt_style() already run once, so odt_props's guard (a style is open) is
+// true rather than the fixture's own default of none.
+odt_props_fixture() {
+  odt_init_fixture();
+  odt_style();
+} return void;
+():() then calls odt_style2:[1]
+():() then odt_fonts_len:(3)

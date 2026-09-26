@@ -2,8 +2,12 @@ ras_ctr_open(int[] buf, int k) {
   int ras_lo_v = ras_lo(k);
   ras_open(buf, ras_lo_v, (import ttends)[k]);
 } return void;
+given ras_glyph_fixture ([], 0):() then calls ras_open:[1]
+given ras_glyph_fixture2 ([], 0):() then calls ras_open:[1]
 
 ras_ctr_run(int[] buf, int k) {
   ras_run(buf);
   int ret_i = k + 1;
 } return int ret_i;
+given ras_glyph_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0):(1) then calls ras_run:[1]
+given ras_glyph_fixture2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 5):(6) then calls ras_run:[1]

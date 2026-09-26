@@ -2,4 +2,31 @@ ed_step_fixture() {
   ed_cur_init();
   odt_init_fixture();
 } return void;
-():()
+():() then ed_car:(0)
+():() then odt_runs:(0)
+
+// A real (non-empty) document, with the caret past its first code point,
+// for the cases below that need odt_runs() > 0 rather than just an
+// initialised-but-empty one -- ed_key3's delete branch, ed_total, and
+// ed_back's k > 0 branch all need real run text to read or erase.
+ed_step_fixture2() {
+  ed_cur_init();
+  ed_seek(1);
+  odt_doc_fixture();
+} return void;
+():() then ed_car:(1)
+():() then odt_runs:(1)
+
+// The state ed_render and ed_page_out need before either has run: a real
+// font (so lay_lead's metrics reads don't hit an unloaded ttmet), an empty
+// but exported layout (so ed_all's read of lay_g doesn't hit an
+// undeclared export), and an initialised document.
+ed_page_fixture() {
+  ed_out_init();
+  lay_init();
+  tt_fixture();
+} chain () {
+  odt_init_fixture();
+} return void;
+():() then tt_upem:(2048)
+():() then odt_runs:(0)

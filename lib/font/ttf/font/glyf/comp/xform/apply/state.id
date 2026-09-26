@@ -1,0 +1,26 @@
+// Two synthetic points, for the transform cases below (tt_xform1_go,
+// tt_xput_x, tt_xput_y, tt_xform, tt_shift, tt_shift1, tt_after, ...) that
+// only ever read and write ttpx/ttpy by index -- real outline coordinates
+// would work just as well, but these are round numbers a hand-checked
+// expected value is easy to verify against.
+tt_pts_fixture() {
+  tt_clear();
+  push((import ttpx), 10);
+  push((import ttpx), 20);
+} chain () {
+  push((import ttpy), 1);
+  push((import ttpy), 2);
+} return void;
+():() then tt_px0:(10)
+():() then tt_py0:(1)
+
+tt_pts_fixture2() {
+  tt_clear();
+  push((import ttpx), 7);
+  push((import ttpx), 8);
+} chain () {
+  push((import ttpy), 3);
+  push((import ttpy), 4);
+} return void;
+():() then tt_px0:(7)
+():() then tt_py0:(3)

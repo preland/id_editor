@@ -7,6 +7,8 @@ odt_flush() {
     odt_emit();
   }
 } return void;
+given odt_init_fixture ():() then calls odt_emit:[0]
+given odt_parts_fixture ():() then calls odt_emit:[1]
 
 // The pieces are joined once.
 //
@@ -20,6 +22,8 @@ odt_emit() {
   push((import odt_txts), str_join_v);
   odt_emit2();
 } return void;
+given odt_init_fixture ():() then odt_runs:(1)
+given odt_parts_fixture ():() then odt_runs:(1)
 
 // The style the run was written in is recorded before the piece list that
 // held it is cleared.
@@ -28,3 +32,5 @@ odt_emit2() {
   push((import odt_stys), odt_top_v);
   odt_clear();
 } return void;
+given odt_init_fixture ():() then calls odt_clear:[1]
+given odt_init ():() then calls odt_clear:[1]

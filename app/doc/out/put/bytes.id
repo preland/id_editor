@@ -7,13 +7,19 @@ ed_bytes(int[] buf, string s, int i) {
   }
   ed_bytes_out(buf);
 } return void;
+given ed_out_fixture ([], "Hi", 0): ([72, 105])
+given ed_out_fixture ([], "", 0): ([])
 
 // The handle, in a cell, because ed_puts already spends its three actions on
 // the buffer and cannot also carry it.
 ed_fd() {
   int ret_i = (import ed_out)[0];
 } return int ret_i;
+given ed_out_fixture ():(0)
+given ed_out_fixture ():(0) then ed_w:(10)
 
 ed_fd_set(int fd) {
   lset((import ed_out), 0, fd);
 } return void;
+given ed_out_fixture (5):() then ed_fd:(5)
+given ed_out_fixture (0):() then ed_fd:(0)

@@ -11,6 +11,8 @@ odt_elem(int k) {
     odt_elem2();
   }
 } return void;
+given odt_init_fixture (1):() then calls odt_elem2:()
+given odt_init_fixture (2):() then calls odt_style:[0]
 
 // text:s and text:tab exist because XML collapses literal whitespace, so ODT
 // spells a run of spaces and a tab as elements instead.
@@ -31,6 +33,8 @@ odt_elem2() {
     odt_add(chr_v);
   }
 } return void;
+given odt_init_fixture ():() then calls odt_props:[0]
+given odt_init_fixture ():() then calls odt_add:[0]
 
 // text:c counts the spaces a text:s stands for, and is absent when it is one.
 odt_count() {
@@ -40,3 +44,5 @@ odt_count() {
     n = to_int(xml_attr_v);
   }
 } return int n;
+given odt_init_fixture ():(1)
+given odt_init_fixture ():(1) then calls xml_attr:("text:c")

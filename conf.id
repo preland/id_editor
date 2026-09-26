@@ -1,0 +1,1 @@
+string[] ed_font_dirs = ["/run/current-system/sw/share/X11/fonts/", "/usr/share/fonts/TTF/", "/usr/share/fonts/truetype/"];

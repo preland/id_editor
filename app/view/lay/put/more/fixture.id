@@ -1,0 +1,30 @@
+// A real font and the empty document together, for lay_doc's own
+// zero-paragraph case: lay_doc calls lay_init itself, so this leaves layout
+// state undeclared on purpose, and lay_lead(12) still needs real tt_
+// metrics even when there is nothing to lay out.
+lay_doc_fixture() {
+  tt_fixture();
+  odt_init_fixture();
+} return void;
+():() then tt_upem:(2048)
+():() then odt_runs:(0)
+
+// The same real font, with the real one-paragraph document odt_doc_fixture
+// parses, so lay_doc's own case can witness a paragraph actually laid out.
+lay_full_fixture() {
+  tt_fixture();
+  odt_doc_fixture();
+} return void;
+():() then tt_upem:(2048)
+():() then odt_runs:(1)
+
+// lay_full_fixture plus the layout tables lay_doc normally declares itself
+// -- for every function below lay_doc that assumes lay_g/lay_x/.../lay_pen
+// already exist, because it is not the function that creates them.
+lay_row_fixture() {
+  int r = lay_init();
+  tt_fixture();
+  odt_doc_fixture();
+} return void;
+():() then tt_upem:(2048)
+():() then odt_runs:(1)

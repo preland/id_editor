@@ -11,11 +11,15 @@ tt_place(int[] row, int x, int y) {
   tt_glyf(row[2], 0, 0);
   tt_after(row, b, x, y);
 } return void;
+given tt_fixture_clear ([81144, 0, 72, 0, 0, 16384, 0, 0, 16384], 0, 0):() then tt_any:(1)
+given tt_fixture_clear ([81152, 1, 118, 139, 0, 16384, 0, 0, 16384], 0, 0):() then tt_any:(1)
 
 tt_after(int[] row, int b, int x, int y) {
   tt_xform(row, b);
   tt_shift(b, x + row[3], y + row[4]);
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 5, 2):() then tt_px0:(15)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 0, 0):() then tt_px0:(10)
 
 // Dividing an F2Dot14 product back out, rounded half away from zero rather
 // than truncated -- `id`'s `/` truncates toward zero (docs/SPEC.md 2.2), and
@@ -34,3 +38,5 @@ tt_fix(int v) {
   }
   int ret_i = r / 16384;
 } return int ret_i;
+(8192):(1)
+(-8192):(-1)

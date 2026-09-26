@@ -8,12 +8,16 @@ odt_shut() {
   odt_close();
   odt_pop();
 } return void;
+given odt_init_fixture ():() then calls odt_end:[0]
+given odt_init_fixture ():() then calls odt_pop:[1]
 
 odt_close() {
   if(xml_name() == "text:p" || xml_name() == "text:h") {
     odt_end();
   }
 } return void;
+given odt_init_fixture ():() then calls odt_end:[0]
+given xml_doc_fixture ():() then calls odt_end:[0]
 
 // A start element can change the style in force, so the run in progress ends
 // here -- in the style it was written in, which is why the flush comes before
@@ -32,3 +36,5 @@ odt_stack(int k) {
     push((import odt_stk), odt_style_now_v);
   }
 } return void;
+given odt_init_fixture (1):() then calls odt_style_now:[1]
+given odt_init_fixture (2):() then calls odt_style_now:[0]

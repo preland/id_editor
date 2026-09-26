@@ -2,8 +2,12 @@ tt_sput2a(int[] row) {
   int rd_i16_v = rd_i16((import ttbuf), row[0]);
   lset(row, 5, rd_i16_v);
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0]):([81138, 0, 0, 0, 0, 4646, 0, 0, 0])
+given tt_fixture ([81144, 0, 0, 0, 0, 0, 0, 0, 0]):([81144, 0, 0, 0, 0, 4103, 0, 0, 0])
 
 tt_sput2b(int[] row, int n) {
   int rd_i16_v2 = rd_i16((import ttbuf), row[0] + (n - 1) * 2);
   lset(row, 8, rd_i16_v2);
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 1):([81138, 0, 0, 0, 0, 0, 0, 0, 4646], 1)
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 2):([81138, 0, 0, 0, 0, 0, 0, 0, 72], 2)

@@ -16,6 +16,8 @@ tt_comp(int at, int x, int y) {
     tt_comp0(row, x, y);
   }
 } return void;
+given tt_fixture_clear (81138, 0, 0):() then tt_endstr:("20,27,31")
+given tt_fixture_clear (81138, 0, 0):() then tt_any:(1)
 
 // MORE_COMPONENTS is bit 5. The loop's exit has to be computed before the
 // component is read, because the flags are the first thing in the record and
@@ -26,6 +28,8 @@ tt_comp0(int[] row, int x, int y) {
   lset(row, 1, 1 - (k & 32) / 32);
   tt_comp1(row, k, x, y);
 } return void;
+given tt_fixture_clear ([81138, 0, 0, 0, 0, 16384, 0, 0, 16384], 0, 0):([81144, 0, 72, 0, 0, 16384, 0, 0, 16384], 0, 0)
+given tt_fixture_clear ([81144, 0, 0, 0, 0, 16384, 0, 0, 16384], 0, 0):([81152, 1, 118, 139, 0, 16384, 0, 0, 16384], 0, 0)
 
 // Order matters: the arguments come before the transform in the file, and the
 // cursor has to be past both before the next component is looked for.
@@ -34,3 +38,5 @@ tt_comp1(int[] row, int k, int x, int y) {
   tt_scale(row, k);
   tt_place(row, x, y);
 } return void;
+given tt_fixture_clear ([81138, 0, 0, 0, 0, 16384, 0, 0, 16384], 4646, 0, 0):([81144, 0, 72, 0, 0, 16384, 0, 0, 16384], 4646, 0, 0)
+given tt_fixture_clear ([81144, 0, 0, 0, 0, 16384, 0, 0, 16384], 4103, 0, 0):([81152, 0, 118, 139, 0, 16384, 0, 0, 16384], 4103, 0, 0)

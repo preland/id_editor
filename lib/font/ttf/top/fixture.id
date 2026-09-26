@@ -1,0 +1,36 @@
+// The state a real font leaves behind, for every case below `tt_begin` in
+// the call graph that reads it through `(import ...)` rather than a
+// parameter. `tt_load` reaches `tt_begin`, `tt_recs` and `tt_ready` (which in
+// turn reaches `tt_metrics` and `tt_cmap`), so one call here declares ttbuf,
+// the table directory, ttmet and ttcm together -- everything downstream needs
+// is exported by the time this returns. The path is the same
+// DejaVuSans.ttf this NixOS host's other TrueType cases already read from
+// (editor/app/doc/font/more/fail.id), so a case here composes the same way.
+tt_fixture() {
+  int[] xs = tt_bytes("test_assets/DejaVuSans.ttf");
+  int ok = tt_load(xs);
+} return void;
+():() then tt_upem:(2048)
+():() then tt_nglyph:(6253)
+
+// Composes tt_fixture with tt_clear, for the point-list readers below
+// tt_glyf that take a real byte offset directly rather than a glyph id: they
+// need both real bytes in ttbuf and the four point lists declared, and
+// neither given alone reaches both.
+tt_fixture_clear() {
+  tt_fixture();
+  tt_clear();
+} return void;
+():() then tt_any:(0)
+():() then tt_upem:(2048)
+
+// How many entries ttoff and ttlen hold, for the cases on tt_rec_off and
+// tt_rec_len -- neither of the lists it pushes to has a shorter reader,
+// and tt_tab_n already does the same job for ttnames.
+tt_dir_counts() {
+  int off_n = len((import ttoff));
+  int len_n = len((import ttlen));
+  string ret_s = "" + off_n + "," + len_n;
+} return string ret_s;
+given tt_tabs ():("0,0")
+given tt_fixture ():("19,19")

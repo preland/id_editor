@@ -1,0 +1,38 @@
+// A real, on-disk .odt (a ZIP with one stored "content.xml" entry) for
+// main/ed_start/ed_go, which read a path from argv and cannot be driven any
+// other way. render.id's own fixtures start further in, after a document is
+// already parsed; these three read the file themselves, so the file has to
+// really be there. Each run's file is unique (fs_mktemp); ed_doc_zip_size
+// below removes it once read. The argv lists main.id's cases pass are built
+// here too, at the one ppm output path this fixture also makes, because a
+// case cannot splice an exported path into the middle of a list literal.
+ed_doc_zip_fixture() {
+  export string ed_doc_zip_path = fs_mktemp("ed_go_doc_", 0);
+  int h = fs_open(ed_doc_zip_path, "w");
+  fs_write(h, [80, 75, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 11, 0, 0, 0, 99, 111, 110, 116, 101, 110, 116, 46, 120, 109, 108, 104, 105, 80, 75, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 111, 110, 116, 101, 110, 116, 46, 120, 109, 108, 80, 75, 5, 6, 0, 0, 0, 0, 1, 0, 1, 0, 57, 0, 0, 0, 43, 0, 0, 0, 0, 0], 122);
+} chain () {
+  int c = fs_close(h);
+  export string ed_ppm_path = fs_mktemp("ed_ppm_case_", 0);
+  export string[] ed_deja_argv = ["editor", ed_doc_zip_path, "test_assets/DejaVuSans.ttf", "--ppm", ed_ppm_path];
+} chain () {
+  export string[] ed_lib_argv = ["editor", ed_doc_zip_path, "test_assets/LiberationSans-Regular.ttf", "--ppm", ed_ppm_path];
+} return void;
+():() then ed_doc_zip_size:(122) then ed_ppm_clean:(0)
+():() then ed_doc_zip_size:(122) then ed_doc_zip_size:(-1) then ed_ppm_clean:(0)
+
+ed_doc_zip_absent() {
+  string ed_doc_zip_path_v = (import ed_doc_zip_path);
+  int r = fs_remove(ed_doc_zip_path_v);
+} return void;
+given ed_doc_zip_fixture ():() then ed_doc_zip_size:(-1) then ed_ppm_clean:(0)
+given ed_doc_zip_fixture ():() then ed_ppm_clean:(0) then ed_doc_zip_size:(-1)
+
+// Read once and then removed, so every case that reaches this leaves
+// nothing in /tmp.
+ed_doc_zip_size() {
+  string ed_doc_zip_path_v2 = (import ed_doc_zip_path);
+  int ret_i = fs_size(ed_doc_zip_path_v2);
+  int c = fs_remove(ed_doc_zip_path_v2);
+} return int ret_i;
+given ed_doc_zip_fixture ():(122) then ed_ppm_clean:(0)
+given ed_doc_zip_fixture given ed_doc_zip_absent ():(-1) then ed_ppm_clean:(0)

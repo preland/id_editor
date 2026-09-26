@@ -6,6 +6,8 @@ ed_bar4(int x, int lo, int hi) {
     lo = lo + 1;
   }
 } return void;
+given setup_page (0, 5, 5):() then calls ed_px:[0]
+given setup_page (2, 1, 6):() then calls ed_px:[5]
 
 // The caret at the end of the document: the last glyph's pen position plus
 // that glyph's own advance. The advance is recomputed rather than stored
@@ -15,9 +17,13 @@ ed_tail(int n) {
   int px = (import lay_px)[n - 1];
   ed_tail2(g, px, n);
 } return void;
+given ed_tail_fixture (1):() then calls ed_tail2:(0, 4, 1)
+given ed_tail_fixture (2):() then calls ed_tail2:(5, 6, 2)
 
 ed_tail2(int g, int px, int n) {
   int lay_adv_v = lay_adv(g, px);
   int x = ((import lay_x)[n - 1] + lay_adv_v) / 64;
   ed_bar3(x, (import lay_y)[n - 1], px);
 } return void;
+given ed_tail_fixture (0, 4, 1):() then calls lay_adv:(0, 4) then calls ed_bar3:[1]
+given ed_tail_fixture (5, 6, 2):() then calls lay_adv:(5, 6) then calls ed_bar3:[1]

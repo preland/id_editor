@@ -17,6 +17,8 @@ ed_total() {
   int n = odt_runs();
   int ret_i = ed_pre(n);
 } return int ret_i;
+given ed_step_fixture ():(0) then calls ed_pre:(0)
+given ed_step_fixture2 ():(2) then calls ed_pre:(1)
 
 // Backspace is the character before the caret, which is the character at the
 // caret once the caret has stepped back. Doing it in that order means the
@@ -28,3 +30,5 @@ ed_back() {
     ed_erase();
   }
 } return void;
+given ed_step_fixture ():() then calls ed_erase:[0]
+given ed_step_fixture2 ():() then calls ed_erase:[1]

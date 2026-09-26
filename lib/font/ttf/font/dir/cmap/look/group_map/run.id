@@ -2,3 +2,5 @@ tt_g12run(int[] tab, int c) {
   tt_g12find(tab, (import ttcm)[0], c);
   tt_g12get(tab, (import ttcm)[0], c);
 } return void;
+given tt_fixture ([0, 0, 0], 65):([36, 0, 0])
+given tt_fixture ([0, 0, 0], 1046):([939, 15, 15])

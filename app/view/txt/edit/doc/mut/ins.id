@@ -8,15 +8,21 @@ ed_type(int c) {
   ed_type1(c, k);
   ed_seek(k + 1);
 } return void;
+given ed_step_fixture2 (99):() then calls ed_set:(0, "hci")
+given ed_step_fixture2 (99):() then ed_car:(2)
 
 ed_type1(int c, int k) {
   int r = ed_run_of(k);
   int at = ed_off_of(r, k);
   ed_type2(c, r, at);
 } return void;
+given ed_step_fixture2 (88, 0):() then calls ed_set:(0, "Xhi")
+given ed_step_fixture2 (88, 1):() then calls ed_set:(0, "hXi")
 
 ed_type2(int c, int r, int at) {
   string ch = chr(c);
   string s = odt_run_text(r);
   ed_ins2(r, s, at, ch);
 } return void;
+given ed_step_fixture2 (88, 0, 0):() then calls ed_set:(0, "Xhi")
+given ed_step_fixture2 (89, 0, 1):() then calls ed_set:(0, "hYi")

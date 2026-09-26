@@ -6,8 +6,12 @@ ras_scale_done(int ok) {
   }
   int ret_i = ras_w() > 0 && ras_h() > 0;
 } return int ret_i;
+given ras_glyph_fixture (1):(1)
+given ras_space_fixture (0):(0)
 
 ras_met_upem(int[] tab) {
   int tt_upem_v = tt_upem();
   lset(tab, 1, tt_upem_v);
 } return void;
+given tt_fixture ([0, 0, 0, 0, 0, 0]):([0, 2048, 0, 0, 0, 0])
+given tt_fixture ([1, 2, 3, 4, 5, 6]):([1, 2048, 3, 4, 5, 6])

@@ -9,6 +9,8 @@ tt_loca(int g) {
     r = tt_u32((import ttbuf), at + g * 4);
   }
 } return int r;
+given tt_fixture (36):(5432)
+given tt_fixture (171):(24524)
 
 // A simple glyph, laid out in the file as: the contour end indices, the
 // hinting program, the run-length-encoded flags, then all the x deltas and
@@ -23,3 +25,5 @@ tt_simple(int at, int n, int x, int y) {
   int[] row = [tt_ends(at, n), 0];
   tt_pts(tab, row, x, y);
 } return void;
+given tt_fixture_clear (62046, 2, 0, 0):() then tt_endstr:("2,10")
+given tt_fixture_clear (62046, 2, 0, 0):() then tt_onstr:("11111111111")

@@ -2,8 +2,12 @@ tt_report_upem() {
   int tt_upem_v = tt_upem();
   print("upem " + tt_upem_v);
 } return void;
+given tt_fixture ():() then prints:("upem 2048\n")
+given tt_fixture2 ():() then prints:("upem 2048\n")
 
 tt_report_nglyph() {
   int tt_nglyph_v = tt_nglyph();
   print("nglyph " + tt_nglyph_v);
 } return void;
+given tt_fixture ():() then prints:("nglyph 6253\n")
+given tt_fixture2 ():() then prints:("nglyph 2620\n")

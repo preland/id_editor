@@ -12,11 +12,15 @@ ed_head(int fd) {
   string s = "P6\n" + ed_w() + " " + ed_h() + "\n255\n";
   ed_puts(fd, s);
 } return void;
+given ed_out_fixture (0):() then calls ed_puts:(0, "P6\n10 20\n255\n")
+given ed_out_fixture (5):() then calls ed_puts:(5, "P6\n10 20\n255\n")
 
 ed_puts(int fd, string s) {
   int[] buf = [];
   ed_bytes(buf, s, 0);
 } return void;
+given ed_out_fixture (0, "Hi"):() then calls ed_bytes:([72, 105], "Hi", 0)
+given ed_out_fixture (0, ""):() then calls ed_bytes:([], "", 0)
 
 // The row buffer ed_prow filled, flushed to the open file. Split out of
 // ed_prow so that function's own three actions stay under the limit.
@@ -25,3 +29,5 @@ ed_prow_out() {
   int ed_w_v = ed_w();
   fs_write(ed_fd_v, (import ed_line), ed_w_v * 3);
 } return void;
+given ed_out_fixture ():() then calls ed_fd:[1]
+given ed_out_fixture ():() then calls ed_w:[1]

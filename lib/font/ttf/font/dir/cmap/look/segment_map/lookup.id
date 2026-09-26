@@ -13,6 +13,8 @@ tt_g4(int c) {
   }
   int ret_i = tab[0];
 } return int ret_i;
+given tt_fixture2 (65):(36)
+given tt_fixture2 (1046):(967)
 
 // The first segment whose endCode is not below c. The scan terminates on the
 // 0xFFFF sentinel every format 4 subtable ends with, which is why it needs no
@@ -24,6 +26,8 @@ tt_g4seg(int[] tab, int at, int c) {
   }
   lset(tab, 1, i);
 } return void;
+given tt_fixture2 ([0, 0], 11028, 65):([0, 0], 11028, 65)
+given tt_fixture2 ([0, 0], 11028, 1046):([0, 8], 11028, 1046)
 
 // A segment covers c only if its startCode is also below it; the gaps between
 // segments are what makes that test necessary rather than implied.
@@ -32,3 +36,5 @@ tt_g4get(int[] tab, int at, int c) {
     tt_g4put(tab, at, c, tab[1]);
   }
 } return void;
+given tt_fixture2 ([0, 0], 11028, 65):([36, 0], 11028, 65)
+given tt_fixture2 ([0, 8], 11028, 1046):([967, 8], 11028, 1046)

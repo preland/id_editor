@@ -4,6 +4,8 @@ tt_pts(int[] tab, int[] row, int x, int y) {
   tt_pts_go(tab, row, tt_npts_v, x);
   tt_more(tab, row, y);
 } return void;
+given tt_npts_fixture ([], [62246, 0], 0, 0):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62286, 0], 0, 0)
+given tt_npts_fixture2 ([], [69410, 0], 0, 0):([1, 34, 6, 21, 20, 22, 51, 50, 54, 53, 52, 38, 39, 50, 0, 17, 16, 0, 35, 34, 0, 17, 16, 0], [69482, 1147], 0, 0)
 
 // The y run reads on from where the x run stopped, so the two calls cannot be
 // reordered and the second cannot start until the first has finished.
@@ -11,6 +13,8 @@ tt_more(int[] tab, int[] row, int y) {
   tt_coords(tab, row, (import ttpy), 4, y);
   tt_oncurve(tab);
 } return void;
+given tt_fixture_clear ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62274, 0], 0):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62286, 0], 0) then tt_onstr:("11111111111")
+given tt_fixture_clear ([1, 34, 6, 21, 20, 22, 51, 50, 54, 53, 52, 38, 39, 50, 0, 17, 16, 0, 35, 34, 0, 17, 16, 0], [69455, 386], 0):([1, 34, 6, 21, 20, 22, 51, 50, 54, 53, 52, 38, 39, 50, 0, 17, 16, 0, 35, 34, 0, 17, 16, 0], [69482, 1147], 0) then tt_onstr:("100100100100100100100100")
 
 tt_oncurve(int[] tab) {
   int i = 0;
@@ -18,3 +22,5 @@ tt_oncurve(int[] tab) {
     i = tt_on1(tab, i);
   }
 } return void;
+given tt_clear ([1, 0, 3, 2]):() then tt_onstr:("1010")
+given tt_clear ([]):() then tt_onstr:("")

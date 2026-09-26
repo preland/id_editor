@@ -4,11 +4,17 @@
 tt_upem() {
   int ret_i = (import ttmet)[0];
 } return int ret_i;
+given tt_fixture ():(2048)
+given tt_fixture_clear ():(2048)
 
 tt_nglyph() {
   int ret_i = (import ttmet)[6];
 } return int ret_i;
+given tt_fixture ():(6253)
+given tt_fixture2 ():(2620)
 
 tt_ascent() {
   int ret_i = (import ttmet)[3];
 } return int ret_i;
+given tt_fixture ():(1901)
+given tt_fixture2 ():(1854)

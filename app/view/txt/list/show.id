@@ -12,12 +12,16 @@ ed_show() {
     i = i + 1;
   }
 } return void;
+given ed_step_fixture ():() then prints:("")
+given ed_step_fixture ():() then calls ed_para:[0]
 
 ed_para(int i) {
   int odt_runs_of_v = odt_runs_of(i);
   print("[" + i + "] " + odt_runs_of_v + " run(s)");
   ed_runs(i, 0);
 } return void;
+given odt_doc_fixture (0):() then prints:("[0] 1 run(s)\n    bold 12pt DejaVu Sans: hi\n")
+given ed_step_fixture2 (0):() then calls ed_runs:(0, 0)
 
 ed_runs(int i, int k) {
   while(k < odt_runs_of(i)) {
@@ -26,3 +30,5 @@ ed_runs(int i, int k) {
     k = k + 1;
   }
 } return void;
+given odt_doc_fixture (0, 0):() then calls ed_run:[1]
+given odt_doc_fixture (0, 1):() then calls ed_run:[0]

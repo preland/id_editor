@@ -9,6 +9,8 @@ ed_bar() {
   int n = len((import lay_g));
   ed_bar2(k, n);
 } return void;
+given ed_bar_fixture ():() then calls ed_bar2:(0, 0)
+given ed_bar_fixture ():() then calls ed_car:[1]
 
 // Before glyph k, or past the last glyph when the caret is at the end of the
 // document. An empty document has no glyph to measure a caret against, so it
@@ -20,6 +22,8 @@ ed_bar2(int k, int n) {
     ed_tail(n);
   }
 } return void;
+(0, 0):() then calls ed_bar3:[0] then calls ed_tail:[0]
+given ed_bar_row_fixture (0, 1):() then calls ed_bar3:(2, 5, 4)
 
 // The bar runs from one em above the baseline to a quarter of one below it,
 // which is roughly the ascender and the descender of the size it stands in.
@@ -29,3 +33,4 @@ ed_bar3(int x, int y, int px) {
   ed_bar4(x, lo, hi);
 } return void;
 (0, 0, 0):()
+given setup_page (2, 5, 4):() then calls ed_bar4:(2, 1, 6)

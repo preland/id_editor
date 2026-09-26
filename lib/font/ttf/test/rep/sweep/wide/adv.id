@@ -8,9 +8,13 @@ tt_asweep() {
   }
   int ret_i = tab[0];
 } return int ret_i;
+given tt_fixture ():(106132)
+given tt_fixture2 ():(337539)
 
 tt_asw1(int[] tab) {
   int tt_advance_v = tt_advance(tab[1]);
   lset(tab, 0, (tab[0] * 31 + tt_advance_v) % 1000003);
   lset(tab, 1, tab[1] + 1);
 } return void;
+given tt_fixture ([0, 0]):([1229, 1])
+given tt_fixture ([0, 36]):([1401, 37])

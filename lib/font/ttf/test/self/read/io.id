@@ -1,0 +1,31 @@
+// A small file tt_bytes, tt_bytes_alloc, tt_bytes_go and tt_slurp can read
+// without embedding a whole TrueType file as a case literal. Each run's file
+// is unique (fs_mktemp), and tt_io_len below removes it once read, so a case
+// that reads back through tt_io_len leaves nothing behind.
+tt_io_fixture() {
+  export string tt_io_path = fs_mktemp("tt_io_case_", 0);
+  int h = fs_open(tt_io_path, "w");
+  fs_write(h, [65, 66, 67, 68], 4);
+} chain () {
+  int c = fs_close(h);
+} return void;
+():() then tt_io_len:(4)
+():() then tt_io_len:(4) then tt_io_len:(-1)
+
+tt_io_absent() {
+  string tt_io_path_v = (import tt_io_path);
+  int r = fs_remove(tt_io_path_v);
+} return void;
+given tt_io_fixture ():() then tt_io_len:(-1)
+given tt_io_fixture ():() then tt_io_len:(-1) then tt_io_len:(-1)
+
+// The file's size, or -1 once tt_io_absent has run, read once and then
+// removed -- fs_size is what tt_bytes_alloc itself reads, so this is the
+// same probe it uses, and every case that reaches it leaves nothing in /tmp.
+tt_io_len() {
+  string tt_io_path_v2 = (import tt_io_path);
+  int ret_i = fs_size(tt_io_path_v2);
+  int c = fs_remove(tt_io_path_v2);
+} return int ret_i;
+given tt_io_fixture ():(4)
+given tt_io_fixture given tt_io_absent ():(-1)

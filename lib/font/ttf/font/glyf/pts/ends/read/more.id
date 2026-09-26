@@ -4,7 +4,11 @@ tt_ends_loop(int at, int b, int n) {
     i = tt_end1(at, b, i);
   }
 } return void;
+given tt_fixture_clear (62046, 0, 2):() then tt_endstr:("2,10")
+given tt_fixture_clear (69330, 0, 2):() then tt_endstr:("11,23")
 
 tt_ends_after(int at, int n) {
   int ret_i = at + n * 2 + 2 + rd_be16((import ttbuf), at + n * 2);
 } return int ret_i;
+given tt_fixture (62046, 2):(62246)
+given tt_fixture (69330, 2):(69410)

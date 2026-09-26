@@ -6,6 +6,8 @@ tt_table(string name) {
   tt_tfind(xs, name);
   int ret_i = xs[0];
 } return int ret_i;
+given tt_fixture ("glyf"):(56604)
+given tt_fixture ("nope"):(-1)
 
 // The search runs to the end of the directory rather than stopping at the
 // hit, because `id` has no break and no early return: the loop's exit lives
@@ -16,6 +18,8 @@ tt_tfind(int[] xs, string name) {
     i = tt_tone(xs, name, i);
   }
 } return void;
+given tt_fixture ([-1], "glyf"):([56604], "glyf")
+given tt_fixture ([-1], "nope"):([-1], "nope")
 
 tt_tone(int[] xs, string name, int i) {
   if((import ttnames)[i] == name) {
@@ -23,3 +27,5 @@ tt_tone(int[] xs, string name, int i) {
   }
   int ret_i = i + 1;
 } return int ret_i;
+given tt_fixture ([-1], "GDEF", 0):(1)
+given tt_fixture ([-1], "nope", 3):(4)

@@ -10,6 +10,8 @@ tt_xform(int[] row, int b) {
     i = tt_xform1(row, i);
   }
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0):() then tt_px0:(10)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 32768, 0, 0, 16384], 0):() then tt_px0:(20)
 
 // x and y are read out before either is written, because the transform mixes
 // them: writing x first would feed the new x into the row for y.
@@ -17,8 +19,12 @@ tt_xform1(int[] row, int i) {
   tt_xform1_go(row, i);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0):(1) then tt_px0:(10)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 32768, 0, 0, 16384], 0):(1) then tt_px0:(20)
 
 tt_xput(int[] row, int i, int x, int y) {
   tt_xput_x(row, i, x, y);
   tt_xput_y(row, i, x, y);
 } return void;
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 10, 1):() then tt_px0:(10)
+given tt_pts_fixture ([0, 1, 0, 0, 0, 16384, 0, 0, 16384], 0, 10, 1):() then tt_py0:(1)

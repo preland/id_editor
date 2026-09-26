@@ -1,0 +1,16 @@
+// How many compressed sizes zip_init2 has cleared, and a dirty state to
+// clear it from -- the witness that zip_init2 resets zip_csz rather than
+// only creating it once.
+
+zip_csz_len() {
+  int n = len((import zip_csz));
+} return int n;
+given zip_init2 ():(0)
+given zip_init2_dirty ():(1)
+
+zip_init2_dirty() {
+  zip_init2();
+  push((import zip_csz), 99);
+} return void;
+():() then calls zip_init2:[1]
+():() then zip_csz_len:(1)

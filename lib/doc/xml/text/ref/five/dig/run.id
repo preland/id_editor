@@ -15,6 +15,8 @@ xml_val_step(string t, int j, int b, int[] row) {
   int xml_dv_v = xml_dv(charat_v, b);
   xml_digit(row, xml_dv_v, b);
 } return void;
+("7", 0, 10, [3, 1]):("7", 0, 10, [37, 1])
+("g", 0, 16, [2, 1]):("g", 0, 16, [2, 0])
 
 // Set up both entity document and buffer for entity parsing tests.
 xml_ent_buf_fixture() {

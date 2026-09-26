@@ -1,0 +1,40 @@
+// The directories ed_font_try_prefixes walks, loaded once from conf.id's
+// ed_font_dirs so production and a test run probe the same order the same
+// way; and a fixture that points the same export at the editor's own
+// checked-in fonts instead, so a case never needs the machine's real ones.
+
+ed_font_dirs_init() {
+  export string[] ed_font_search = [];
+  int i = 0;
+  while(i < len((import ed_font_dirs))) {
+    push(ed_font_search, (import ed_font_dirs)[i]);
+    i = i + 1;
+  }
+} return void;
+():() then ed_font_search_matches_conf:(1)
+():() then calls ed_font_search_matches_conf:[0]
+
+ed_font_test_dirs() {
+  ed_font_dirs_init();
+  string[] strs = (import ed_font_search);
+  while(len(strs) > 0) {
+    pop(strs);
+  }
+} chain () {
+  push(strs, "test_assets/");
+} return void;
+():() then ed_font_search_matches_conf:(0)
+():() then calls ed_font_dirs_init:[1]
+
+// Not a literal -- conf.id's ed_font_dirs is exported by 'conf.id', which no
+// case's `given` can ever reach (docs/TESTS.md), so the only way a case can
+// compare the two lists is through a function that reads both live.
+ed_font_search_matches_conf() {
+  int n = len((import ed_font_search));
+  int match = 0;
+  if(n == len((import ed_font_dirs)) && (import ed_font_search)[0] == (import ed_font_dirs)[0]) {
+    match = 1;
+  }
+} return int match;
+given ed_font_dirs_init ():(1)
+given ed_font_test_dirs ():(0)

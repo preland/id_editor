@@ -1,0 +1,26 @@
+// A real, correctly sized tab/row pair, exported so a case can pass one by
+// name: ras_rast and everything under it takes tab and row as plain
+// parameters rather than exports, and the sizes -- ras_w()*64+1 and ras_w()
+// -- are numbers only ras_rows_tab/ras_rows_row get right, not a literal a
+// case could write out by hand.
+ras_buf_fixture() {
+  export int[] rastab = [];
+  ras_rows_tab(rastab);
+  export int[] rasrow = [];
+} chain () {
+  ras_rows_row(rasrow);
+} return void;
+given ras_glyph_fixture ():() then ras_tab_len:(577)
+given ras_glyph_fixture2 ():() then ras_tab_len:(577)
+
+ras_tab_len() {
+  int n = len((import rastab));
+} return int n;
+given ras_glyph_fixture given ras_buf_fixture ():(577)
+given ras_glyph_fixture2 given ras_buf_fixture ():(577)
+
+ras_row_len() {
+  int n = len((import rasrow));
+} return int n;
+given ras_glyph_fixture given ras_buf_fixture ():(9)
+given ras_glyph_fixture2 given ras_buf_fixture ():(9)

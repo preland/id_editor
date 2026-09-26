@@ -5,6 +5,8 @@
 zip_row_fixture() {
   zip_init();
 } return void;
+():() then calls zip_init:[1]
+():() then calls zip_init2:[1]
 
 zip_row_name(int[] xs, int at) {
   int rd_le16_v = rd_le16(xs, at + 28);

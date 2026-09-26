@@ -14,6 +14,8 @@
 main(int argc, string[] argv) {
   ed_start(argc, argv);
 } return int 0;
+(1, ["editor"]):(0) then prints:("usage: editor DOC.odt [FONT.ttf] [--ppm OUT]\n")
+given ed_doc_zip_fixture (5, (import ed_deja_argv)):(0) then calls ed_start:(5, (import ed_deja_argv)) then ed_doc_zip_size:(122) then ed_ppm_clean:(0)
 
 ed_start(int argc, string[] argv) {
   if(argc < 2) {
@@ -22,9 +24,15 @@ ed_start(int argc, string[] argv) {
     ed_go(argc, argv);
   }
 } return void;
+(1, ["editor"]):() then prints:("usage: editor DOC.odt [FONT.ttf] [--ppm OUT]\n")
+given ed_doc_zip_fixture (5, (import ed_deja_argv)):() then calls ed_go:(5, (import ed_deja_argv)) then ed_doc_zip_size:(122) then ed_ppm_clean:(0)
 
 ed_go(int argc, string[] argv) {
+  ed_font_dirs_init();
   ed_load(argv[1]);
   string font_path = ed_font_arg(argc, argv);
+} chain (int argc, string[] argv) {
   ed_go_font(argc, argv, font_path);
 } return void;
+given ed_doc_zip_fixture (5, (import ed_deja_argv)):() then calls ed_go_font:(5, (import ed_deja_argv), "test_assets/DejaVuSans.ttf") then ed_doc_zip_size:(122) then ed_ppm_clean:(0)
+given ed_doc_zip_fixture (5, (import ed_lib_argv)):() then calls ed_go_font:(5, (import ed_lib_argv), "test_assets/LiberationSans-Regular.ttf") then ed_doc_zip_size:(122) then ed_ppm_clean:(0)

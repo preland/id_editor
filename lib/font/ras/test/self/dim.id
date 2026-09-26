@@ -3,14 +3,20 @@ ras_shot_dim(string[] argv, int i, int ok) {
   int h = ras_h();
   ras_shot_dim2(argv, i, ok, w, h);
 } return void;
+given ras_glyph_fixture (["prog", "font.ttf", "65", "12"], 2, 1):() then calls ras_shot_dim2:(["prog", "font.ttf", "65", "12"], 2, 1, 9, 9)
+given ras_space_fixture (["prog", "font.ttf", "32", "12"], 2, 0):() then calls ras_shot_dim2:(["prog", "font.ttf", "32", "12"], 2, 0, 0, 0)
 
 ras_shot_dim2(string[] argv, int i, int ok, int w, int h) {
   int bx = ras_bx();
   int by = ras_by();
   print("dim " + argv[i] + " " + argv[i + 1] + " " + w + " " + h + " " + bx + " " + by + " " + ok);
 } return void;
+given ras_glyph_fixture (["prog", "font.ttf", "65", "12"], 2, 1, 9, 9):() then prints:("dim 65 12 9 9 0 9 1\n")
+given ras_space_fixture (["prog", "font.ttf", "32", "12"], 2, 0, 0, 0):() then prints:("dim 32 12 0 0 0 0 0\n")
 
 ras_shot_dump(string[] argv, int i) {
   ras_dump(argv[i], argv[i + 1]);
   int ret_i = i + 2;
 } return int ret_i;
+given ras_glyph_fixture (["prog", "font.ttf", "65", "12"], 2):(4) then calls ras_dump:("65", "12")
+given ras_glyph_fixture2 (["prog", "font.ttf", "66", "16"], 2):(4) then calls ras_dump:("66", "16")

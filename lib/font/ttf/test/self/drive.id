@@ -11,6 +11,8 @@ tt_selftest(string[] argv) {
   int ok = tt_load(tt_bytes_v);
   tt_selftest_go(ok);
 } return void;
+(["prog", "test_assets/DejaVuSans.ttf"]):() then prints:("load 1\nupem 2048\nnglyph 6253\nvmet 1901 -483 0\nhmet 6238 loca 1\ncmap 12\ncp 65 g 36 adv 1401\ncp 103 g 74 adv 1300\ncp 48 g 19 adv 1303\ncp 32 g 3 adv 651\ncp 1046 g 939 adv 2206\ncp 8211 g 2806 adv 1024\nout 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\nout 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\nout 105 g 76 any 1 nc 2 np 8 bbox 193 0 377 1556 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 113 -29 1151 1638 ends 20,27,31 on 11100100110010010010010010011111\nsweep 16080 205976 135272\nmore 796423 106132\n")
+(["prog", "test_assets/LiberationSans-Regular.ttf"]):() then prints:("load 1\nupem 2048\nnglyph 2620\nvmet 1854 -434 67\nhmet 2620 loca 1\ncmap 4\ncp 65 g 36 adv 1366\ncp 103 g 74 adv 1139\ncp 48 g 19 adv 1139\ncp 32 g 3 adv 569\ncp 1046 g 967 adv 1891\ncp 8211 g 2015 adv 1139\nout 111 g 82 any 1 nc 2 np 23 bbox 86 -20 1053 1102 ends 10,22 on 10010010100100100100100\nout 65 g 36 any 1 nc 2 np 17 bbox 4 0 1362 1409 ends 7,16 on 11111111110111101\nout 105 g 76 any 1 nc 2 np 8 bbox 137 0 317 1484 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 87 -20 1048 1508 ends 18,25,31 on 10010011010010010111001001111111\nsweep 5288 71785 958570\nmore 825597 337539\n")
 
 // The whole file into one int[], one byte per cell. fs_read clamps to the
 // length of the list it is given, so the list is sized first.
@@ -18,9 +20,15 @@ tt_bytes(string path) {
   int[] xs = tt_bytes_alloc(path);
   tt_bytes_go(path, xs);
 } return int[] xs;
+given tt_io_fixture ((import tt_io_path)):([65, 66, 67, 68]) then tt_io_len:(4)
+given tt_io_fixture given tt_io_absent ((import tt_io_path)):([])
 
+// Takes an already-open handle. test/self/read/handle.id's tt_slurp_fixture
+// reopens tt_io_fixture's file for reading, so a case can hand one in.
 tt_slurp(int h, int[] xs) {
   int len_v = len(xs);
   fs_read(h, xs, len_v);
   fs_close(h);
 } return void;
+given tt_io_fixture given tt_slurp_fixture ((import tt_slurp_h), [0, 0, 0, 0]):((import tt_slurp_h), [65, 66, 67, 68]) then tt_io_len:(4)
+given tt_io_fixture given tt_slurp_fixture ((import tt_slurp_h), [0, 0]):((import tt_slurp_h), [65, 66]) then tt_io_len:(4)

@@ -1,0 +1,16 @@
+// The crossing accumulator's own first cell, read back -- the only way a
+// case can see what ras_add wrote without comparing all 577 cells of a
+// real glyph's tab.
+ras_tab_at0() {
+  int v = (import rastab)[0];
+} return int v;
+given ras_glyph_fixture given ras_buf_fixture ():(0)
+given ras_glyph_fixture2 given ras_buf_fixture ():(0)
+
+// The first edge's span, for cases that need a y device coordinate known to
+// fall inside a real edge rather than guessed at.
+ras_y0_at0() {
+  int v = (import rasy0)[0];
+} return int v;
+given ras_glyph_fixture ():(-485)
+given ras_glyph_fixture2 ():(-356)

@@ -1,0 +1,17 @@
+// tt_npts is read between the contour ends being pushed and the points that
+// go with them, so a case on it needs that exact half-done state: ends
+// pushed, points not yet. These two replay tt_ends_loop for real glyphs ('A'
+// and 'o', the same two test/shape/ends.id already uses) to build it.
+tt_npts_fixture() {
+  tt_fixture_clear();
+  tt_ends_loop(62046, 0, 2);
+} return void;
+():() then tt_endstr:("2,10")
+given tt_fixture_clear ():() then tt_endstr:("2,10")
+
+tt_npts_fixture2() {
+  tt_fixture_clear();
+  tt_ends_loop(69330, 0, 2);
+} return void;
+():() then tt_endstr:("11,23")
+given tt_fixture_clear ():() then tt_endstr:("11,23")

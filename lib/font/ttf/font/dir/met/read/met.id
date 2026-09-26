@@ -19,6 +19,8 @@ tt_metrics() {
   tt_met1(ttmet, (import ttbuf));
   tt_met2(ttmet, (import ttbuf));
 } return void;
+given tt_fixture ():() then tt_upem:(2048)
+given tt_fixture2 ():() then tt_ascent:(1854)
 
 // indexToLocFormat is signed in the file and is 0 or 1 in every font that
 // works, so a negative value here would be a corrupt `head` rather than a
@@ -28,9 +30,13 @@ tt_met1(int[] tab, int[] xs) {
   tt_met1b(tab, xs);
   tt_met1c(tab, xs);
 } return void;
+given tt_fixture ([], (import ttbuf)):([2048, 1, 6238])
+given tt_fixture ([7], (import ttbuf)):([7, 2048, 1, 6238])
 
 tt_met2(int[] tab, int[] xs) {
   tt_met2a(tab, xs);
   tt_met2b(tab, xs);
   tt_met3(tab, xs);
 } return void;
+given tt_fixture ([], (import ttbuf)):([1901, -483, 0, 6253])
+given tt_fixture ([7], (import ttbuf)):([7, 1901, -483, 0, 6253])

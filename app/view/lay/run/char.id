@@ -5,12 +5,16 @@ lay_char(int w, int r, string s, int at) {
   lay_put(w, r, c);
   int ret_i = lay_char_out(s, at);
 } return int ret_i;
+given lay_row_fixture (100, 0, "hi", 0):(1)
+given lay_row_fixture (100, 0, "hi", 1):(2)
 
 lay_put(int w, int r, int c) {
   int g = tt_glyph(c);
   int lay_pt_v = lay_pt(r);
   lay_put_out(w, g, r, c, lay_pt_v);
 } return void;
+given lay_row_fixture (100, 0, 104):() then calls lay_put_out:(100, 75, 0, 104, 12)
+given lay_row_fixture (100, 0, 105):() then calls lay_put_out:(100, 76, 0, 105, 12)
 
 // The pen, in 64ths of a pixel: font units times the size, times 64, over the
 // units per em. The multiplication comes before the division so that a glyph
@@ -18,3 +22,5 @@ lay_put(int w, int r, int c) {
 lay_adv(int g, int n) {
   int ret_i = tt_advance(g) * n * 64 / tt_upem();
 } return int ret_i;
+given lay_row_fixture (36, 12):(525)
+given lay_row_fixture (3, 12):(244)

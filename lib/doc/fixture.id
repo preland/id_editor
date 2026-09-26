@@ -1,0 +1,12 @@
+// A real (if small) document -- one style, one paragraph, one run of text
+// in that style -- for every case below odt_init_fixture in the call graph
+// that needs an actual run/paragraph/style row to read, not just an
+// initialised-but-empty table. Trimmed from idc/tests/fixtures/sample.odt's
+// own content.xml: same element and attribute names a real ODT uses, so a
+// case built on this exercises the real parse path, not a synthetic one.
+odt_doc_fixture() {
+  string s = "<office:document-content><office:automatic-styles><style:style style:name=\"T1\" style:family=\"text\"><style:text-properties style:font-name=\"DejaVu Sans\" fo:font-size=\"12pt\" fo:font-weight=\"bold\"/></style:style></office:automatic-styles><office:body><office:text><text:p text:style-name=\"P1\"><text:span text:style-name=\"T1\">hi</text:span></text:p></office:text></office:body></office:document-content>";
+  odt_parse(s);
+} return void;
+():() then odt_runs:(1)
+():() then odt_paras:(1)

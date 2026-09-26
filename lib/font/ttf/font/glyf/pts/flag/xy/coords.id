@@ -9,6 +9,8 @@ tt_coords(int[] tab, int[] row, int[] dst, int k, int v) {
     i = tt_coord1(tab, row, dst, k, i);
   }
 } return void;
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62257, 0], [], 2, 0):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62274, 16], [700, 426, 975, 586, 815, 1384, 1174, 1038, 365, 229, 16], 2, 0)
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62274, 0], [], 4, 0):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62286, 0], [1294, 551, 551, 1493, 1493, 0, 0, 383, 383, 0, 0], 4, 0)
 
 // tt_delta moves the cursor and the sum does not, so the order the two
 // operands of the + are evaluated in cannot matter here -- which is worth
@@ -18,9 +20,13 @@ tt_coord1(int[] tab, int[] row, int[] dst, int k, int i) {
   tt_coord1_go(tab, row, dst, k, i);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62257, 0], [], 2, 0):(1)
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62257, 0], [], 2, 5):(6)
 
 tt_coord1_go(int[] tab, int[] row, int[] dst, int k, int i) {
   int tt_delta_v = tt_delta(tab[i], k, row);
   lset(row, 1, row[1] + tt_delta_v);
   push(dst, row[1]);
 } return void;
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62257, 0], [], 2, 0):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62259, 700], [700], 2, 0)
+given tt_fixture ([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62259, 700], [700], 2, 1):([9, 9, 33, 1, 51, 1, 35, 3, 33, 3, 35], [62261, 426], [700, 426], 2, 1)

@@ -26,6 +26,8 @@ ras_fill() {
   int[] row = [];
   ras_rows(tab, row);
 } return void;
+given ras_glyph_fixture ():() then calls ras_rows:[1]
+given ras_glyph_fixture2 ():() then calls ras_rows:[1]
 
 // tab is the crossing accumulator, one cell per 1/64 pixel column plus one
 // for crossings that fall off the right-hand end. row is one pixel row's
@@ -37,6 +39,8 @@ ras_rows(int[] tab, int[] row) {
   ras_rows_row(row);
   ras_each(tab, row);
 } return void;
+given ras_glyph_fixture ([], []):() then calls ras_each:[1]
+given ras_glyph_fixture2 ([], []):() then calls ras_each:[1]
 
 ras_each(int[] tab, int[] row) {
   int r = 0;
@@ -44,3 +48,5 @@ ras_each(int[] tab, int[] row) {
     r = ras_rast(r, tab, row);
   }
 } return void;
+given ras_glyph_fixture given ras_buf_fixture ((import rastab), (import rasrow)):() then calls ras_rast:[9]
+given ras_glyph_fixture2 given ras_buf_fixture ((import rastab), (import rasrow)):() then calls ras_rast:[12]

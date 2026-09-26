@@ -1,0 +1,10 @@
+// A page size that keeps ed_win_out's gfx_open call inside the
+// w<=0||h<=0 guard (gfx_linux.c, gfx_open): asymmetric so a case built on it
+// still catches a w/h argument swap, but neither dimension is positive
+// enough to open a real window and start the frame loop.
+
+win_bound_fixture() {
+  ed_page(0, 99);
+} return void;
+():() then ed_w:(0)
+():() then ed_h:(99)

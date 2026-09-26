@@ -1,0 +1,19 @@
+// The rest of the layout tables, read back whole -- split from state.id so
+// that file stays under the limit.
+lay_px_state() {
+  int[] xs = (import lay_px);
+} return int[] xs;
+given lay_fixture ():([])
+given lay_fixture ():([]) then lay_y_state:([])
+
+lay_st_state() {
+  int[] xs = (import lay_st);
+} return int[] xs;
+given lay_fixture ():([])
+given lay_fixture ():([]) then lay_px_state:([])
+
+lay_pen_state() {
+  int[] xs = (import lay_pen);
+} return int[] xs;
+given lay_fixture ():([0, 0])
+given lay_fixture ():([0, 0]) then lay_st_state:([])

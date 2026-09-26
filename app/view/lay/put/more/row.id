@@ -6,12 +6,16 @@ lay_row2(int g, int r) {
   int lay_pt_v = lay_pt(r);
   lay_row3(r, lay_pt_v);
 } return void;
+given lay_row_fixture (36, 0):() then lay_y_state:([0])
+given lay_row_fixture (36, 0):() then lay_y_state:([0]) then lay_px_state:([12]) then lay_st_state:([1])
 
 lay_row3(int r, int lay_pt_v) {
   push((import lay_px), lay_pt_v);
   int lay_flag_v = lay_flag(r);
   push((import lay_st), lay_flag_v);
 } return void;
+given lay_row_fixture (0, 12):() then lay_px_state:([12]) then lay_st_state:([1])
+given lay_row_fixture (0, 24):() then lay_px_state:([24]) then lay_st_state:([1])
 
 // Layout state for a case that reads it. lay_init returns int, so it cannot
 // itself be a `given` (a setup returns void); this discards the result and

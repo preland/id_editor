@@ -14,3 +14,12 @@ odt_init_fixture() {
   push((import odt_flags), 0);
 } return void;
 ():() then xml_len:(0)
+():() then odt_runs:(0)
+
+// odt_st read back whole, for cases elsewhere that need to see what
+// odt_init5 leaves it holding rather than just a caller's return value.
+odt_st_state() {
+  int[] xs = (import odt_st);
+} return int[] xs;
+given odt_init ():([0])
+given odt_init_fixture ():([0])

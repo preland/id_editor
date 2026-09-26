@@ -16,6 +16,7 @@ ed_car() {
   int ret_i = (import ed_cur)[0];
 } return int ret_i;
 given ed_cur_init ():(0)
+given ed_step_fixture2 ():(1)
 
 ed_seek(int k) {
   lset((import ed_cur), 0, k);

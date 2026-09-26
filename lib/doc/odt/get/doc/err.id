@@ -5,6 +5,8 @@
 odt_run_text(int r) {
   string ret_s = (import odt_txts)[r];
 } return string ret_s;
+given odt_doc_fixture (0):("hi")
+given odt_doc_fixture (0):("hi") then odt_runs:(1)
 
 // The style name run r was written in -- a key for odt_font and the rest. It is
 // the innermost text:style-name in force, which for text with no span around it
@@ -12,6 +14,8 @@ odt_run_text(int r) {
 odt_run_style(int r) {
   string ret_s = (import odt_stys)[r];
 } return string ret_s;
+given odt_doc_fixture (0):("T1")
+given odt_doc_fixture (0):("T1") then odt_runs:(1)
 
 // The first malformed-input message, or "" if the document was well formed.
 // A document that reports one is incomplete, not empty: everything parsed
@@ -19,3 +23,5 @@ odt_run_style(int r) {
 odt_err() {
   string ret_s = xml_err();
 } return string ret_s;
+given odt_init_fixture ():("")
+given xml_doc_fixture ():("")

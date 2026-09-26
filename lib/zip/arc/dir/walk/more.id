@@ -4,6 +4,8 @@ zip_load2(int h, int[] xs, int len_v) {
   int len_v2 = len(xs);
   zip_grab(h, n, len_v2);
 } return void;
+given zip_io_fixture ((import zip_h), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 22):((import zip_h), [80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 22) then zip_io_size:(22)
+(99, [0, 0, 0, 0], 4):() then traps:("id: pop from empty list")
 
 // The rest of zip_dir, once the record is found and the tables are cleared.
 zip_dir2(int[] xs, int at) {

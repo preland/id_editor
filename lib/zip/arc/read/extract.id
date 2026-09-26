@@ -27,7 +27,7 @@ given zip_data_setup ([80, 75, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 zip_data(int[] xs, int at, int i) {
   int[] buf = [];
   if ((import zip_meth)[i] == 0) {
-    buf = zip_slice(xs, at, (import zip_csz)[i]);
+    buf = lst_slice(xs, at, (import zip_csz)[i]);
   } else {
     buf = zip_infl(xs, at, i);
   }

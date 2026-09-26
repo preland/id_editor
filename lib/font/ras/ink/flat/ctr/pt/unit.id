@@ -10,13 +10,19 @@
 ras_fu(int v) {
   int ret_i = v * (import rasmet)[0] * 64 / (import rasmet)[1];
 } return int ret_i;
+given ras_glyph_fixture (1000):(375)
+given ras_glyph_fixture (100):(37)
 
 ras_dx(int m) {
   int ret_i = ras_fu((import ttpx)[m]);
 } return int ret_i;
+given ras_glyph_fixture (0):(262)
+given ras_glyph_fixture2 (0):(201)
 
 // Font y points up and a raster row index counts down, so the sign flips
 // here, once, and the baseline stays at device y = 0.
 ras_dy(int m) {
   int ret_i = 0 - ras_fu((import ttpy)[m]);
 } return int ret_i;
+given ras_glyph_fixture (0):(-485)
+given ras_glyph_fixture2 (0):(-356)

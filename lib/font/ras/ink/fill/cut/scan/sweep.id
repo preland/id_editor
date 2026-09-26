@@ -10,6 +10,8 @@ ras_xat(int i, int y) {
   int at = (import rasx0)[i];
   int ret_i = at + ((import rasx1)[i] - at) * (y - lo) / ((import rasy1)[i] - lo);
 } return int ret_i;
+given ras_glyph_fixture (0, -485):(262)
+given ras_glyph_fixture (0, -400):(231)
 
 // The prefix sum across one sample line: a running winding number, and every
 // column where it is not zero is a column the glyph covers.
@@ -23,9 +25,13 @@ ras_scan(int[] tab, int[] row, int n) {
     ras_walk(tab, row, buf);
   }
 } return void;
+([0, 0, 0], [0], 3):() then calls ras_walk:[3]
+([1, 0, 0], [0], 1):() then calls ras_walk:[1]
 
 ras_walk(int[] tab, int[] row, int[] buf) {
   lset(buf, 1, buf[1] + tab[buf[0]]);
   ras_hit(tab, row, buf);
   lset(buf, 0, buf[0] + 1);
 } return void;
+([5, 5], [0, 0], [0, 0]):([0, 5], [1, 0], [1, 5])
+([3, 4], [0, 0], [1, 0]):([3, 0], [1, 0], [2, 4])

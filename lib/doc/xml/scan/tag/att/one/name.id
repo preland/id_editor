@@ -21,3 +21,5 @@ given setup_xml_attr (5, 0):(15)
 setup_xml_attr() {
   xml_open("name=\"value\" />");
 } return void;
+():() then xml_len:(15)
+():() then xml_at:(-1)

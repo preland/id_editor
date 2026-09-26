@@ -1,0 +1,17 @@
+// The coverage bitmap's own length, for cases elsewhere in this module that
+// need to see it emptied or filled rather than read one pixel of it -- a
+// ras_cov read traps on an empty bitmap, so this is the only safe probe
+// before ras_box/ras_fill have run.
+ras_cov_len() {
+  int n = len((import rascov));
+} return int n;
+given ras_edge0 ():(0)
+given ras_glyph_fixture ():(81)
+
+// The coverage bitmap's own first cell, read back -- for cases below that
+// write it directly with ras_put1_cov rather than through a whole ras_ink.
+ras_cov_at0() {
+  int v = (import rascov)[0];
+} return int v;
+given ras_glyph_fixture ():(0)
+given ras_glyph_fixture2 ():(83)

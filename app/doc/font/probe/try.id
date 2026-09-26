@@ -1,0 +1,47 @@
+// Candidate paths for a font name, and the name-to-filename squash.
+//
+// `id` can list a directory now (idstd's fs_list), but a font is still found
+// by probing a fixed list of places rather than by searching one: a stray
+// file dropped next to the real fonts should not get picked up by accident.
+// That is the same bargain the test harness makes in
+// idc/tests/editor_ras.sh, and the reason the list -- conf.id's
+// ed_font_dirs -- is short.
+
+ed_font_try_prefixes(string name) {
+  string p = "";
+  int i = 0;
+  while(p == "" && i < len((import ed_font_search))) {
+    p = ed_font_more(p, name, (import ed_font_search)[i]);
+    i = i + 1;
+  }
+} return string p;
+given ed_font_test_dirs ("DejaVuSans"):("test_assets/DejaVuSans.ttf")
+given ed_font_test_dirs ("LiberationSans"):("test_assets/LiberationSans-Regular.ttf")
+given ed_font_test_dirs ("NonExistent"):("")
+
+ed_font_try_suff(string name, string prefix) {
+  string p = prefix + name + ".ttf";
+  if(fs_size(p) < 0) {
+    p = prefix + name + "-Regular.ttf";
+  }
+  if(fs_size(p) < 0) {
+    p = "";
+  }
+} return string p;
+("DejaVuSans", "test_assets/"):("test_assets/DejaVuSans.ttf")
+("NonExistentFont", "/tmp/"):("")
+
+// An ODT names a face the way a person writes it -- "DejaVu Sans" -- and a
+// file is named the way a filesystem allows -- DejaVuSans.ttf. Dropping the
+// spaces is what turns one into the other, and without it the document's own
+// font never matches and every render silently falls back.
+ed_font_squash(string name) {
+  string out = "";
+  int i = 0;
+  while(i < len(name)) {
+    out = ed_font_keep(out, name, i);
+    i = i + 1;
+  }
+} return string out;
+("DejaVu Sans"):("DejaVuSans")
+("Liberation"):("Liberation")

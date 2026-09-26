@@ -8,6 +8,8 @@ tt_g4put(int[] tab, int at, int c, int i) {
     lset(tab, 0, (v + tt_g4arr_v) % 65536);
   }
 } return void;
+given tt_fixture2 ([0, 0], 11028, 65, 0):([36, 0], 11028, 65, 0)
+given tt_fixture2 ([0, 8], 11028, 1046, 8):([967, 8], 11028, 1046, 8)
 
 // idRangeOffset is a byte offset counted from the address of the
 // idRangeOffset entry itself, not from the start of the subtable -- which is
@@ -22,3 +24,5 @@ tt_g4raw(int at, int c, int i) {
     v = rd_be16((import ttbuf), tt_g4at_v + r + (c - tt_g4arr_v) * 2);
   }
 } return int v;
+given tt_fixture2 (11028, 65, 0):(65)
+given tt_fixture2 (11028, 1046, 8):(1046)

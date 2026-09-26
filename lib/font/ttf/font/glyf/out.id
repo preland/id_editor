@@ -30,6 +30,8 @@ tt_outline(int g) {
   tt_glyf(g, 0, 0);
   int ret_i = tt_any();
 } return int ret_i;
+given tt_fixture (36):(1) then tt_endstr:("2,10")
+given tt_fixture (3):(0)
 
 // The four lists are declared here rather than at load time because
 // re-running a declaration re-initialises the export (docs/SPEC.md 9), and
@@ -41,8 +43,12 @@ tt_clear() {
   export int[] ttpx = [];
   tt_clear2();
 } return void;
+():() then tt_any:(0)
+given tt_clear_marked ():() then tt_any:(0)
 
 tt_clear2() {
   export int[] ttpy = [];
   export int[] ttpon = [];
 } return void;
+():() then tt_pon_n:(0)
+given tt_clear2_marked ():() then tt_pon_n:(0)

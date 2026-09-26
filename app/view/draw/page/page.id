@@ -1,0 +1,23 @@
+// The laid-out page, drawn.
+ed_draw(int w, int h) {
+  ed_page(w, h);
+  ed_all(0);
+} return void;
+given setup_with_layout (640, 480):() then calls ed_page:(640, 480) then calls ed_all:(0)
+given setup_with_layout (800, 600):() then calls ed_page:(800, 600) then calls ed_all:(0)
+
+ed_all(int i) {
+  while(i < len((import lay_g))) {
+    ed_glyph(i);
+    i = i + 1;
+  }
+} return void;
+given setup_with_layout (0):() then calls ed_glyph:[0]
+given setup_page given lay_real_fixture (0):() then calls ed_glyph:[2]
+
+setup_with_layout() {
+  ed_page(10, 20);
+  lay_init();
+} return void;
+():() then ed_w:(10)
+():() then lay_g_state:([])

@@ -1,0 +1,8 @@
+// How many table records the directory holds right now, so a case on
+// tt_tabs or tt_recs can see the effect of a call it cannot otherwise read:
+// both are void, and ttnames has no other zero-argument reader.
+tt_tab_n() {
+  int ret_i = len((import ttnames));
+} return int ret_i;
+given tt_tabs ():(0)
+given tt_fixture ():(19)

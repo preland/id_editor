@@ -15,3 +15,5 @@ tt_glyph(int c) {
     r = tt_g12(c);
   }
 } return int r;
+given tt_fixture (1046):(939)
+given tt_fixture2 (1046):(967)

@@ -8,6 +8,8 @@ ed_place(int i, int x, int y, int v) {
   int at = (import lay_x)[i] / 64 + ras_bx() + x + ed_lean(i, y);
   ed_place_out(i, at, y, v);
 } return void;
+given ed_ink_fixture given setup_page (0, 0, 0, 100):() then calls ed_place_out:[1]
+given ed_ink_fixture given setup_page (1, 2, 3, 50):() then calls ed_place_out:[1]
 
 ed_bold(int i, int at, int y, int v) {
   if(((import lay_st)[i] & 1) == 1) {
@@ -15,6 +17,8 @@ ed_bold(int i, int at, int y, int v) {
     ed_over(at + 1, (import lay_y)[i] - ras_by_v + y, v);
   }
 } return void;
+given setup_page given ed_ink_fixture (0, 5, 3, 100):() then calls ed_over:[1]
+given lay_st_even_fixture (0, 5, 3, 100):() then calls ed_over:[0]
 
 // The shear: rows above the baseline move right, in proportion to how far
 // above they are. A fifth of the height is about twelve degrees, which is
@@ -25,3 +29,5 @@ ed_lean(int i, int y) {
     n = (ras_by() - y) / 5;
   }
 } return int n;
+given lay_real_fixture (0, 5):(0)
+given lay_st_even_fixture (0, 5):(1)

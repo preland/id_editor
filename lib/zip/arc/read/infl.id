@@ -8,19 +8,26 @@
 // -- are reported rather than guessed at, because an editor that shows a
 // document decompressed with the wrong algorithm is worse than one that stops.
 
-// Note: zip_load, zip_load2, zip_grab require file I/O - REFUSED
-// These functions depend on filesystem operations (fs_open, fs_read, fs_close)
-// which are not available in the test harness
-// Note: zip_infl requires inf_inflate and DEFLATE stream setup - not testable here
-// The inf module functions (inf_init, inf_stream_fixture) are not accessible
-// from read/infl.id, and zip_infl cannot call them directly.
-
 zip_infl(int[] xs, int at, int i) {
   int[] buf = [];
   if ((import zip_meth)[i] == 8) {
-    buf = inf_inflate(xs, at);
+    buf = zip_infl_defl(xs, at);
   } else {
-    inf_fail("zip: unsupported compression method " + (import zip_meth)[i]);
+    zip_fail("zip: unsupported compression method " + (import zip_meth)[i]);
   }
 } return int[] buf;
+given zip_infl_setup ([1, 5, 0, 250, 255, 65, 66, 67, 68, 69], 0, 0):([65, 66, 67, 68, 69])
+given zip_data_setup ([], 0, 0):() then traps:("id: pop from empty list")
+
+// idstd's inf_inflate reports a malformed DEFLATE stream through inf_failed
+// rather than trapping, so the trap this editor showed on a bad entry before
+// is reproduced here instead of being lost.
+zip_infl_defl(int[] xs, int at) {
+  int[] buf = inf_inflate(xs, at);
+  if (inf_failed() == 1) {
+    zip_fail("zip: corrupt DEFLATE stream");
+  }
+} return int[] buf;
+([1, 5, 0, 250, 255, 65, 66, 67, 68, 69], 0):([65, 66, 67, 68, 69])
+([6], 0):() then traps:("id: pop from empty list")
 

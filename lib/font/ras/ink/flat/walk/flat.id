@@ -11,6 +11,8 @@ ras_flat() {
     k = ras_ctr(k);
   }
 } return void;
+given ras_glyph_fixture ():() then calls ras_ctr:[2]
+given ras_glyph_fixture2 ():() then calls ras_ctr:[3]
 
 // Contour k runs from ras_lo(k) through ttends[k] inclusive: the file stores
 // only the last index of each contour, so the first is one past the previous
@@ -21,6 +23,8 @@ ras_lo(int k) {
     lo = (import ttends)[k - 1] + 1;
   }
 } return int lo;
+given ras_glyph_fixture (0):(0)
+given ras_glyph_fixture2 (1):(9)
 
 // One contour. buf is the whole of the pen's state, because `id` has no
 // record and a quadratic pen carries seven numbers at once -- see
@@ -30,3 +34,5 @@ ras_ctr(int k) {
   ras_ctr_open(buf, k);
   int ret_i = ras_ctr_run(buf, k);
 } return int ret_i;
+given ras_glyph_fixture (0):(1) then calls ras_ctr_run:[1]
+given ras_glyph_fixture2 (0):(1) then calls ras_ctr_open:[1]

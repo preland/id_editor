@@ -7,6 +7,8 @@ odt_style_now() {
     t = odt_top();
   }
 } return string t;
+given odt_init_fixture ():("")
+given odt_init_fixture ():("") then calls odt_top:[1]
 
 // The innermost style name, or "" outside every element that named one.
 odt_top() {
@@ -15,6 +17,8 @@ odt_top() {
     t = (import odt_stk)[len((import odt_stk)) - 1];
   }
 } return string t;
+given odt_init ():("")
+given odt_init_fixture ():("")
 
 // The guard is for an end tag with no matching start, which the XML scanner
 // does not check: popping an empty list aborts the process.
@@ -23,3 +27,5 @@ odt_pop() {
     pop((import odt_stk));
   }
 } return void;
+given odt_init ():() then odt_top:("")
+given odt_init_fixture ():() then odt_top:("")

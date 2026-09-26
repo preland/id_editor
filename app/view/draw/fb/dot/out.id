@@ -2,11 +2,15 @@
 setup_page() {
   ed_page(10, 20);
 } return void;
+():() then ed_w:(10)
+():() then ed_h:(20)
 
 // Fixture: initializes for empty page tests.
 setup_empty() {
   ed_page(0, 0);
 } return void;
+():() then ed_w:(0)
+():() then ed_h:(0)
 
 // The pixel at a resolved position, and its bold echo if the run asks for
 // one. Split out of ed_place so that function's own actions stay under the
@@ -16,3 +20,5 @@ ed_place_out(int i, int at, int y, int v) {
   ed_over(at, (import lay_y)[i] - ras_by_v + y, v);
   ed_bold(i, at, y, v);
 } return void;
+given ed_ink_fixture given setup_page (0, 5, 3, 100):() then calls ed_bold:(0, 5, 3, 100)
+given ed_ink_fixture given setup_page (1, 5, 3, 100):() then calls ed_bold:(1, 5, 3, 100)

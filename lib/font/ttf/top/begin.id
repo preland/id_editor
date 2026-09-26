@@ -4,3 +4,17 @@ tt_begin_check(int[] xs) {
   word rd_be32_v = rd_be32(xs, 0);
   int ok = tt_check(rd_be32_v);
 } return int ok;
+([0, 1, 0, 0]):(1)
+([0, 0, 0, 0]):(0)
+
+// A second real font, for the cases below that need two different values
+// out of the same zero-parameter setup rather than two different arguments
+// -- ascent, descent, lineGap and glyph count all differ from DejaVuSans's,
+// and its cmap is format 4 where DejaVuSans's is format 12
+// (test/rep/sweep/wide/cmap.id already relies on both being on this host).
+tt_fixture2() {
+  int[] xs = tt_bytes("test_assets/LiberationSans-Regular.ttf");
+  int ok = tt_load(xs);
+} return void;
+():() then tt_ascent:(1854)
+():() then tt_nglyph:(2620)

@@ -6,6 +6,8 @@ tt_g12get(int[] tab, int at, int c) {
     tt_g12put(tab, at + 16 + i * 12, c);
   }
 } return void;
+given tt_fixture ([0, 0, 0], 51998, 65):([36, 0, 0])
+given tt_fixture ([0, 15, 15], 51998, 1046):([939, 15, 15])
 
 // The group found is the first whose end is not below c, so c is inside it
 // only if the group also starts at or below c -- the gaps between groups are
@@ -17,3 +19,5 @@ tt_g12put(int[] tab, int at, int c) {
     lset(tab, 0, tt_u32_v + c - tt_u32_v2);
   }
 } return void;
+given tt_fixture ([0, 0, 0], 52014, 65):([36, 0, 0])
+given tt_fixture ([0, 15, 15], 52194, 1046):([939, 15, 15])

@@ -1,0 +1,23 @@
+// Companions for the cases on tt_clear and tt_clear2: both are void and
+// reset the four point lists, so a case that only ever sees them empty could
+// not tell a reset from a no-op. These leave one list non-empty first, and
+// tt_pon_n reads ttpon back the same way tt_any already reads ttends.
+tt_clear_marked() {
+  tt_clear();
+  push((import ttends), 5);
+} return void;
+():() then tt_any:(1)
+given tt_clear ():() then tt_any:(1)
+
+tt_clear2_marked() {
+  tt_clear2();
+  push((import ttpon), 1);
+} return void;
+():() then tt_pon_n:(1)
+given tt_clear2 ():() then tt_pon_n:(1)
+
+tt_pon_n() {
+  int ret_i = len((import ttpon));
+} return int ret_i;
+given tt_clear2 ():(0)
+given tt_clear2_marked ():(1)

@@ -11,6 +11,8 @@ tt_snum(int k) {
     n = tt_snum2(k);
   }
 } return int n;
+(8):(1)
+(64):(2)
 
 tt_snum2(int k) {
   int n = 0;
@@ -20,8 +22,12 @@ tt_snum2(int k) {
     n = 4;
   }
 } return int n;
+(64):(2)
+(0):(0)
 
 tt_sput4(int[] row) {
   tt_sput4a(row);
   tt_sput4b(row);
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0]):([81138, 0, 0, 0, 0, 0, 72, 0, 0])
+given tt_fixture ([81140, 0, 0, 0, 0, 0, 0, 0, 0]):([81140, 0, 0, 0, 0, 0, 0, 4103, 0])

@@ -3,6 +3,8 @@
 ras_bx() {
   int ret_i = (import rasmet)[4];
 } return int ret_i;
+given ras_glyph_fixture ():(0)
+given ras_space_fixture ():(0)
 
 // How many of the bitmap's rows stand above the baseline. The top row of the
 // bitmap is drawn at baseline - ras_by(), so a glyph that descends has
@@ -10,6 +12,8 @@ ras_bx() {
 ras_by() {
   int ret_i = (import rasmet)[5];
 } return int ret_i;
+given ras_glyph_fixture ():(9)
+given ras_space_fixture ():(0)
 
 // Floor division by 64, which is not what `id`'s division does: it truncates
 // towards zero, so -65/64 is -1 where the pixel containing -65 sixty-fourths

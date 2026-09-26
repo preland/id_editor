@@ -17,15 +17,22 @@ ed_present3(int w, int h, int pw, int ph) {
     ed_rerender(w, h);
   }
 } return void;
+given setup_page given ed_cur_init given ed_flush given lay_real_fixture (10, 20, 10, 20):() then calls ed_rerender:[0]
+given setup_page given ed_cur_init given lay_real_fixture (10, 20, 10, 20):() then calls ed_rerender:(10, 20)
 
 ed_rerender(int w, int h) {
   int lw = ed_lay_w(w);
   lay_doc(lw);
   ed_redraw(w, h);
 } return void;
+given setup_page given ed_cur_init given lay_real_fixture (10, 20):() then calls ed_redraw:(10, 20)
+given setup_page given ed_cur_init given lay_real_fixture (640, 480):() then calls ed_redraw:(640, 480)
 
 ed_redraw(int w, int h) {
   ed_draw(w, h);
   ed_bar();
   ed_flush();
 } return void;
+given setup_page given ed_cur_init given lay_real_fixture (10, 20):() then calls ed_draw:(10, 20)
+given setup_page given ed_cur_init given lay_real_fixture (640, 480):() then calls ed_draw:(640, 480)
+

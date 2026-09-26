@@ -7,9 +7,13 @@ ed_run_out(string key, int r, string ed_face_v) {
   string odt_font_v = odt_font(key);
   ed_run_out2(r, ed_face_v, ed_pt_v, odt_font_v);
 } return void;
+given odt_doc_fixture ("T1", 0, "bold"):() then prints:("    bold 12pt DejaVu Sans: hi\n")
+given odt_doc_fixture ("", 0, "regular"):() then prints:("    regular 12pt : hi\n")
 
 ed_run_out2(int r, string ed_face_v, int ed_pt_v, string odt_font_v) {
   string odt_run_text_v = odt_run_text(r);
   string ed_clip_v = ed_clip(odt_run_text_v);
   print("    " + ed_face_v + " " + ed_pt_v + "pt " + odt_font_v + ": " + ed_clip_v);
 } return void;
+given odt_doc_fixture (0, "bold", 12, "DejaVu Sans"):() then prints:("    bold 12pt DejaVu Sans: hi\n")
+given odt_doc_fixture (0, "italic", 10, "Times"):() then prints:("    italic 10pt Times: hi\n")

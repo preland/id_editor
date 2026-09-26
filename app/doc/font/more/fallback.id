@@ -20,3 +20,4 @@ ed_font_doc0() {
   }
 } return string ret;
 given odt_init3 ():("")
+given odt_doc_fixture ():("DejaVu Sans")

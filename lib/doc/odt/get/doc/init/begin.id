@@ -10,15 +10,21 @@
 odt_at() {
   int ret_i = xml_at();
 } return int ret_i;
+given odt_init_fixture ():(-1)
+given xml_doc_fixture ():(-1)
 
 odt_init() {
   export string[] odt_txts = [];
   export string[] odt_stys = [];
   odt_init2();
 } return void;
+():() then odt_runs:(0)
+():() then calls odt_init2:()
 
 odt_init2() {
   export int[] odt_plo = [];
   export int[] odt_phi = [];
   odt_init3();
 } return void;
+():() then odt_paras:(0)
+():() then calls odt_init3:()

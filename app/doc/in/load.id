@@ -10,6 +10,8 @@ ed_load(string path) {
   int i = zip_find(xs, "content.xml");
   ed_entry(xs, i);
 } return void;
+given zip_io_fixture ((import zip_io_path)):() then prints:("editor: no content.xml in the archive -- is this an .odt?\n") then zip_io_size:(22)
+("/tmp/ed_load_totally_missing_9f3k.bin"):() then traps:("id: pop from empty list")
 
 ed_entry(int[] xs, int i) {
   if(i < 0) {
@@ -20,6 +22,8 @@ ed_entry(int[] xs, int i) {
     odt_parse(ed_str_v);
   }
 } return void;
+([], -1):() then prints:("editor: no content.xml in the archive -- is this an .odt?\n")
+given zip_read_setup ([80, 75, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 0):() then calls odt_parse:[1]
 
 // Bytes to text. The archive hands back an int[] of bytes, because a ZIP can
 // hold a NUL and a `string` cannot (docs/SPEC.md 4); content.xml is XML and

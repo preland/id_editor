@@ -9,6 +9,8 @@ ed_rcp(int r) {
   string s = odt_run_text(r);
   int ret_i = ed_cps(s);
 } return int ret_i;
+given odt_doc_fixture (0):(2)
+given ed_step_fixture2 (0):(2)
 
 // Which run holds code point k. The last run is the answer for anything at or
 // past the end of the document, so that typing with the caret at the very end
@@ -20,6 +22,8 @@ ed_run_of(int k) {
     r = r + 1;
   }
 } return int r;
+given ed_step_fixture (0):(0) then calls ed_rcp:[0]
+given ed_step_fixture (999999):(0) then calls ed_rcp:[0]
 
 // How many code points precede run r.
 ed_pre(int r) {
@@ -30,3 +34,5 @@ ed_pre(int r) {
     i = i + 1;
   }
 } return int n;
+given ed_step_fixture (0):(0) then calls ed_rcp:[0]
+given odt_doc_fixture (1):(2) then calls ed_rcp:(0)

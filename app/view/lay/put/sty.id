@@ -4,6 +4,8 @@ lay_pt(int r) {
   string odt_run_style_v = odt_run_style(r);
   int ret_i = ed_pt(odt_run_style_v);
 } return int ret_i;
+given lay_row_fixture (0):(12)
+given lay_full_fixture (0):(12)
 
 lay_size(int i) {
   int n = 12;
@@ -12,6 +14,8 @@ lay_size(int i) {
     n = lay_pt(odt_run_at_v);
   }
 } return int n;
+given lay_row_fixture (0):(12)
+given lay_full_fixture (0):(12)
 
 // Bold is bit 0 and italic bit 1, which is how the model stores them and how
 // the renderer wants them: one number to carry rather than two.
@@ -20,3 +24,5 @@ lay_flag(int r) {
   int n = odt_bold(odt_run_style_v);
   int ret_i = n + odt_italic(odt_run_style_v) * 2;
 } return int ret_i;
+given lay_row_fixture (0):(1)
+given lay_full_fixture (0):(1)

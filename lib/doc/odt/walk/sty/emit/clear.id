@@ -4,3 +4,24 @@
 odt_clear() {
   export string[] odt_parts = [];
 } return void;
+given odt_parts_fixture ():() then odt_parts_state:([])
+given odt_init_fixture ():() then odt_parts_state:([])
+
+// odt_parts read back whole, for cases elsewhere that need to see what
+// odt_clear or odt_add leaves it holding rather than just a caller's return
+// value.
+odt_parts_state() {
+  string[] parts = (import odt_parts);
+} return string[] parts;
+given odt_init_fixture ():([])
+given odt_parts_fixture ():(["x"])
+
+// A paragraph already open with one pending piece in odt_parts, for cases
+// that need odt_flush's or odt_char's/odt_add's non-empty branch.
+odt_parts_fixture() {
+  odt_init_fixture();
+  odt_begin2();
+  odt_add("x");
+} return void;
+():() then odt_parts_state:(["x"])
+():() then odt_st_state:([1])

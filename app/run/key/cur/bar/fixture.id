@@ -1,0 +1,41 @@
+// State ed_bar, ed_bar2, ed_tail and ed_tail2 read through (import ...)
+// rather than as parameters: a caret and an exported (if empty) layout for
+// ed_bar's own boundary, one placed glyph on a real page for ed_bar2's true
+// branch, and a real font besides for ed_tail/ed_tail2, which ask it for an
+// advance.
+ed_bar_fixture() {
+  ed_cur_init();
+  lay_init();
+} return void;
+():() then ed_car:(0)
+():() then lay_g_state:([])
+
+ed_bar_row_fixture() {
+  lay_init();
+  ed_page(10, 20);
+  push((import lay_x), 128);
+} chain () {
+  push((import lay_y), 5);
+  push((import lay_px), 4);
+} return void;
+():() then lay_x_state:([128])
+():() then lay_y_state:([5])
+
+ed_tail_fixture() {
+  lay_init();
+  tt_fixture();
+  ed_page(10, 20);
+} chain () {
+  push((import lay_g), 0);
+  push((import lay_g), 5);
+  push((import lay_x), 0);
+} chain () {
+  push((import lay_x), 10);
+  push((import lay_y), 5);
+  push((import lay_y), 7);
+} chain () {
+  push((import lay_px), 4);
+  push((import lay_px), 6);
+} return void;
+():() then lay_g_state:([0, 5])
+():() then tt_upem:(2048)

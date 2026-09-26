@@ -8,6 +8,8 @@ ras_on(int[] buf, int x, int y) {
     ras_line(buf, x, y);
   }
 } return void;
+given ras_edge0 ([0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0], 5, 10):() then calls ras_line:[1]
+given ras_edge0 ([0, 0, 2, 3, 4, 5, 1, 0, 0, 0, 0], 5, 10):() then calls ras_quad:[1]
 
 // An off-curve point following another off-curve point is the implied
 // on-curve case: the two control points share a midpoint that the font does

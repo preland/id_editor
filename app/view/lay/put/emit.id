@@ -6,6 +6,8 @@ lay_emit(int g, int r, int c) {
   lay_row(g, r);
   lay_emit_out(g, r);
 } return void;
+given lay_row_fixture (36, 0, 104):() then lay_g_state:([36]) then lay_pen_state:([525, 0])
+given lay_row_fixture (3, 0, 104):() then lay_g_state:([3]) then lay_pen_state:([244, 0])
 
 // The advance ed_place needs found, and the pen moved past it. Split out of
 // lay_emit so that function's own actions stay under the limit.
@@ -14,9 +16,13 @@ lay_emit_out(int g, int r) {
   int lay_adv_v = lay_adv(g, lay_pt_v);
   lset((import lay_pen), 0, (import lay_pen)[0] + lay_adv_v);
 } return void;
+given lay_row_fixture (36, 0):() then lay_pen_state:([525, 0]) then lay_g_state:([])
+given lay_row_fixture (3, 0):() then lay_pen_state:([244, 0]) then lay_g_state:([])
 
 lay_row(int g, int r) {
   push((import lay_g), g);
   push((import lay_x), (import lay_pen)[0]);
   lay_row2(g, r);
 } return void;
+given lay_row_fixture (36, 0):() then lay_g_state:([36]) then lay_x_state:([0]) then lay_px_state:([12]) then lay_st_state:([1])
+given lay_row_fixture (3, 0):() then lay_g_state:([3]) then lay_x_state:([0]) then lay_px_state:([12]) then lay_st_state:([1])

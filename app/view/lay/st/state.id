@@ -1,0 +1,20 @@
+// Layout state read back whole, for cases elsewhere in this tree that need
+// to see what lay_init and its callers left in the exported tables rather
+// than just their return value.
+lay_g_state() {
+  int[] xs = (import lay_g);
+} return int[] xs;
+given lay_fixture ():([])
+given lay_fixture ():([]) then lay_x_state:([])
+
+lay_x_state() {
+  int[] xs = (import lay_x);
+} return int[] xs;
+given lay_fixture ():([])
+given lay_fixture ():([]) then lay_g_state:([])
+
+lay_y_state() {
+  int[] xs = (import lay_y);
+} return int[] xs;
+given lay_fixture ():([])
+given lay_fixture ():([]) then lay_g_state:([])

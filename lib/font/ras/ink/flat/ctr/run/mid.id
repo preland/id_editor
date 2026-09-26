@@ -5,15 +5,21 @@ ras_mid_from(int[] buf, int lo, int hi) {
   int y = ras_mid_y(lo, hi);
   ras_from(buf, x, y);
 } return void;
+given ras_glyph_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 1):() then calls ras_from:[1]
+given ras_glyph_fixture2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 1):() then calls ras_from:[1]
 
 ras_mid_x(int lo, int hi) {
   int ras_dx_v = ras_dx(lo);
   int ras_dx_v2 = ras_dx(hi);
   int x = (ras_dx_v + ras_dx_v2) / 2;
 } return int x;
+given ras_glyph_fixture (0, 1):(210)
+given ras_glyph_fixture2 (0, 1):(201)
 
 ras_mid_y(int lo, int hi) {
   int ras_dy_v = ras_dy(lo);
   int ras_dy_v2 = ras_dy(hi);
   int y = (ras_dy_v + ras_dy_v2) / 2;
 } return int y;
+given ras_glyph_fixture (0, 1):(-345)
+given ras_glyph_fixture2 (0, 1):(-219)

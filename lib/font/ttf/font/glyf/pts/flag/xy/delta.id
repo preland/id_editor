@@ -11,6 +11,8 @@ tt_delta(int b, int k, int[] row) {
     r = tt_dlong(b, k, row);
   }
 } return int r;
+given tt_fixture (51, 2, [62265, 586]):(229)
+given tt_fixture (9, 2, [62257, 0]):(700)
 
 tt_dshort(int b, int k, int[] row) {
   int r = (import ttbuf)[row[0]];
@@ -19,6 +21,8 @@ tt_dshort(int b, int k, int[] row) {
     r = 0 - r;
   }
 } return int r;
+given tt_fixture (51, 2, [62265, 586]):(229)
+given tt_fixture (35, 2, [62268, 1384]):(-210)
 
 tt_dlong(int b, int k, int[] row) {
   int r = 0;
@@ -27,3 +31,5 @@ tt_dlong(int b, int k, int[] row) {
     lset(row, 0, row[0] + 2);
   }
 } return int r;
+given tt_fixture (9, 2, [62257, 0]):(700)
+given tt_fixture (16, 2, [62257, 0]):(0)

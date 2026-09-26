@@ -5,12 +5,16 @@ odt_init3() {
   export string[] odt_fonts = [];
   odt_init4();
 } return void;
+():() then calls odt_init4:()
+():() then calls odt_clear:()
 
 odt_init4() {
   export int[] odt_nums = [];
   export int[] odt_flags = [];
   odt_init5();
 } return void;
+():() then calls odt_init5:()
+():() then calls odt_clear:()
 
 // odt_st holds one flag: whether a paragraph is open, which is what decides
 // that the indentation between two of them is not content. odt_stk is the
@@ -20,3 +24,5 @@ odt_init5() {
   export int[] odt_st = [0];
   odt_clear();
 } return void;
+():() then odt_st_state:([0])
+():() then calls odt_clear:()

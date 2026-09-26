@@ -2,6 +2,8 @@
 tt_any() {
   int ret_i = len((import ttends)) > 0;
 } return int ret_i;
+given tt_outline_a ():(1)
+given tt_outline_b ():(0)
 
 // One glyph appended to the point lists, translated by (x, y). A composite's
 // components come back through here with their own offsets, which is why the
@@ -18,6 +20,8 @@ tt_glyf(int g, int x, int y) {
     tt_body(tt_table_v + tt_loca_v, x, y);
   }
 } return void;
+given tt_fixture_clear (36, 0, 0):() then tt_endstr:("2,10")
+given tt_fixture_clear (171, 0, 0):() then tt_endstr:("20,27,31")
 
 // numberOfContours is the first field of a glyph and is negative for a
 // composite. Zero is legal and means a glyph with a bounding box and nothing
@@ -31,3 +35,5 @@ tt_body(int at, int x, int y) {
     tt_simple(at + 10, n, x, y);
   }
 } return void;
+given tt_fixture_clear (62036, 0, 0):() then tt_endstr:("2,10")
+given tt_fixture_clear (81128, 0, 0):() then tt_endstr:("20,27,31")

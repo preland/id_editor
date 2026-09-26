@@ -4,6 +4,8 @@ tt_args(int[] row, int k) {
   tt_args_flags(row);
   tt_args2(row, k);
 } return void;
+given tt_fixture ([81138, 0, 0, 0, 0, 0, 0, 0, 0], 4646):([81144, 0, 72, 0, 0, 0, 0, 0, 0], 4646)
+given tt_fixture ([81144, 0, 0, 0, 0, 0, 0, 0, 0], 4103):([81152, 0, 118, 139, 0, 0, 0, 0, 0], 4103)
 
 // ARG_1_AND_2_ARE_WORDS is bit 0.
 tt_args2(int[] row, int k) {
@@ -13,9 +15,13 @@ tt_args2(int[] row, int k) {
   }
   tt_args3(row, k, n);
 } return void;
+given tt_fixture ([81142, 0, 72, 0, 0, 0, 0, 0, 0], 4646):([81144, 0, 72, 0, 0, 0, 0, 0, 0], 4646)
+given tt_fixture ([81148, 0, 118, 0, 0, 0, 0, 0, 0], 4103):([81152, 0, 118, 139, 0, 0, 0, 0, 0], 4103)
 
 tt_args3(int[] row, int k, int n) {
   tt_args3a(row, k, n);
   tt_args3b(row, k, n);
   lset(row, 0, row[0] + n * 2);
 } return void;
+given tt_fixture ([81142, 0, 72, 0, 0, 0, 0, 0, 0], 4646, 1):([81144, 0, 72, 0, 0, 0, 0, 0, 0], 4646, 1)
+given tt_fixture ([81148, 0, 118, 0, 0, 0, 0, 0, 0], 4103, 2):([81152, 0, 118, 139, 0, 0, 0, 0, 0], 4103, 2)

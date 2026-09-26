@@ -3,3 +3,5 @@ ras_put1_cov(int r, int x, int[] row) {
   int ras_w_v = ras_w();
   lset((import rascov), r * ras_w_v + x, row[x] * 255 / 256);
 } return void;
+given ras_glyph_fixture (0, 0, [256, 0, 0, 0, 0, 0, 0, 0, 0]):() then ras_cov_at0:(255)
+given ras_glyph_fixture (0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0]):() then ras_cov_at0:(0)

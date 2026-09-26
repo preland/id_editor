@@ -1,4 +1,4 @@
-// Looking an entry up, and the one slice helper the whole module shares.
+// Looking an entry up.
 
 // -1 for a name that is not in the archive, which is a value rather than an
 // abort: a document reader asks for entries that are optional -- a thumbnail,
@@ -24,21 +24,14 @@ zip_hit(int[] buf, string name) {
   }
   lset(buf, 0, buf[0] + 1);
 } return void;
+given zip_hit_fixture ([0, -1], "alpha"):([1, 0])
+given zip_hit_fixture ([0, -1], "beta"):([1, -1])
 
-// -1 for a name that is not in the archive, which is a value rather than an
-// abort: a document reader asks for entries that are optional -- a thumbnail,
-// a settings file -- and has to be able to ask.
-
-// A stretch of a byte buffer, copied. Written once and shared with the
-// inflater, which needs it to cut one run of code lengths into two alphabets:
-// a second function with this body could not be defined anywhere in the tree.
-zip_slice(int[] xs, int at, int n) {
-  int[] buf = [];
-  int i = 0;
-  while (i < n) {
-    push(buf, xs[at + i]);
-    i = i + 1;
-  }
-} return int[] buf;
-([65, 66, 67, 68], 1, 2):([66, 67])
-([65, 66, 67, 68], 0, 4):([65, 66, 67, 68])
+// One name in the directory, so zip_hit has something at index 0 to compare
+// against.
+zip_hit_fixture() {
+  zip_init();
+  push((import zip_names), "alpha");
+} return void;
+():() then calls zip_init:[1]
+():() then calls zip_init2:[1]

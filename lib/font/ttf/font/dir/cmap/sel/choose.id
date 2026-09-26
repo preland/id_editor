@@ -17,6 +17,8 @@ tt_cmap() {
     tt_cmscan(ttcm, (import ttbuf), tt_table_v);
   }
 } return void;
+given tt_fixture ():() then tt_cm_fmt:(12)
+given tt_fixture2 ():() then tt_cm_fmt:(4)
 
 // Each encoding record is platform (2), encoding (2), and the subtable's
 // offset from the start of `cmap` (4).
@@ -26,9 +28,13 @@ tt_cmscan(int[] tab, int[] xs, int at) {
     i = tt_cmone(tab, xs, at, i);
   }
 } return void;
+given tt_fixture ([-1, 0, -1], (import ttbuf), 48852):([51998, 12, 4], (import ttbuf), 48852)
+given tt_fixture2 ([-1, 0, -1], (import ttbuf), 11000):([11028, 4, 3], (import ttbuf), 11000)
 
 tt_cmone(int[] tab, int[] xs, int at, int i) {
   int k = tt_cmone_rank(xs, at, i);
   tt_cmone_put(tab, xs, at, i, k);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_fixture ([-1, 0, -1], (import ttbuf), 48852, 4):(5)
+given tt_fixture ([-1, 0, -1], (import ttbuf), 48852, 0):(1)

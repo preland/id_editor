@@ -6,3 +6,5 @@ ed_bytes_out(int[] buf) {
   int len_v = len(buf);
   fs_write(ed_fd_v, buf, len_v);
 } return void;
+given ed_out_fixture ([72, 105]):() then calls ed_fd:[1]
+given ed_out_fixture ([]):() then calls ed_fd:[1]

@@ -36,6 +36,8 @@ ras_scale(int g, int px) {
   ras_reset(px);
   int ret_i = ras_scale_done(ok);
 } return int ret_i;
+given tt_fixture (36, 12):(1)
+given tt_fixture (3, 12):(0)
 
 // Every list this module owns is re-declared here, because re-running a
 // declaration is the only way `id` gives to empty a list (docs/FRICTION.md
@@ -50,6 +52,8 @@ ras_reset(int px) {
   ras_met(rasmet, px);
   ras_edge0();
 } return void;
+given tt_fixture (12):() then calls ras_met:[1]
+given tt_fixture (16):() then calls ras_met:[1]
 
 // The six numbers that describe the transform and its result, in one list
 // for the reason editor/lib/font/ttf/font/dir/met/read/met.id gives: an export is
@@ -69,3 +73,5 @@ ras_met(int[] tab, int px) {
   lset(tab, 0, px);
   ras_met_upem(tab);
 } return void;
+given tt_fixture ([], 12):([12, 2048, 0, 0, 0, 0])
+given tt_fixture ([], 16):([16, 2048, 0, 0, 0, 0])

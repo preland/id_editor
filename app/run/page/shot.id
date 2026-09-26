@@ -1,0 +1,32 @@
+// The --ppm output path main.id's cases pass, made by ed_doc_zip_fixture with
+// fs_mktemp since a real run writes an image there. Read once and then
+// removed, so a case that reaches this leaves nothing in /tmp.
+ed_ppm_clean() {
+  string ed_ppm_path_v = (import ed_ppm_path);
+  int c = fs_remove(ed_ppm_path_v);
+} return int c;
+given ed_doc_zip_fixture ():(0) then ed_doc_zip_size:(122)
+given ed_doc_zip_fixture ():(0) then ed_ppm_clean:(-1) then ed_doc_zip_size:(122)
+
+// The argv lists render.id's and save.id's cases pass, at the one ppm output
+// path this fixture makes with fs_mktemp. ed_save_ppm_argv is the 4-argument
+// (no font) shape save.id's own ed_save case needs; out/w/ and out/ are both
+// already full, so its case reuses this fixture rather than growing a new one.
+ed_render_argv_fixture() {
+  export string ed_render_ppm_path = fs_mktemp("ed_ppm_case_", 0);
+  export string[] ed_render_deja_argv = ["editor", "doc.odt", "test_assets/DejaVuSans.ttf", "--ppm", ed_render_ppm_path];
+  export string[] ed_render_lib_argv = ["editor", "doc.odt", "test_assets/LiberationSans-Regular.ttf", "--ppm", ed_render_ppm_path];
+} chain () {
+  export string[] ed_save_ppm_argv = ["editor", "doc.odt", "--ppm", ed_render_ppm_path];
+} return void;
+():() then ed_render_ppm_clean:(0)
+():() then ed_render_ppm_clean:(0) then ed_render_ppm_clean:(-1)
+
+// Read once and then removed, so a render.id case that reaches this leaves
+// nothing in /tmp.
+ed_render_ppm_clean() {
+  string ed_render_ppm_path_v = (import ed_render_ppm_path);
+  int c = fs_remove(ed_render_ppm_path_v);
+} return int c;
+given ed_render_argv_fixture ():(0)
+given ed_render_argv_fixture ():(0) then ed_render_ppm_clean:(-1)

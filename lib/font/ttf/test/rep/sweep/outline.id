@@ -9,6 +9,8 @@ tt_report4() {
   tt_sweep();
   tt_more2();
 } return void;
+given tt_fixture ():() then prints:("out 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\nout 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\nout 105 g 76 any 1 nc 2 np 8 bbox 193 0 377 1556 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 113 -29 1151 1638 ends 20,27,31 on 11100100110010010010010010011111\nsweep 16080 205976 135272\nmore 796423 106132\n")
+given tt_fixture2 ():() then prints:("out 111 g 82 any 1 nc 2 np 23 bbox 86 -20 1053 1102 ends 10,22 on 10010010100100100100100\nout 65 g 36 any 1 nc 2 np 17 bbox 4 0 1362 1409 ends 7,16 on 11111111110111101\nout 105 g 76 any 1 nc 2 np 8 bbox 137 0 317 1484 ends 3,7 on 11111111\nout 233 g 171 any 1 nc 3 np 32 bbox 87 -20 1048 1508 ends 18,25,31 on 10010011010010010111001001111111\nsweep 5288 71785 958570\nmore 825597 337539\n")
 
 // tab is [hash, contours, points, glyph]. The bias keeps the hash
 // non-negative through a negative coordinate: `%` takes the sign of its
@@ -21,9 +23,13 @@ tt_sweep() {
   }
   print("sweep " + tab[1] + " " + tab[2] + " " + tab[0]);
 } return void;
+given tt_fixture ():() then prints:("sweep 16080 205976 135272\n")
+given tt_fixture2 ():() then prints:("sweep 5288 71785 958570\n")
 
 tt_swp1(int[] tab) {
   tt_outline(tab[3]);
   lset(tab, 3, tab[3] + 1);
   tt_swpg(tab);
 } return void;
+given tt_fixture ([0, 0, 0, 0]):([814697, 2, 8, 1])
+given tt_fixture ([0, 0, 0, 36]):([182647, 2, 11, 37])

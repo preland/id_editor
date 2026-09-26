@@ -3,15 +3,21 @@ tt_shape1_go(int[] xs, int i) {
   int ok = tt_outline(g);
   tt_shape1_print(xs, i, g, ok);
 } return void;
+given tt_fixture ([111, 65, 105, 233], 0):() then prints:("out 111 g 82 any 1 nc 2 np 24 bbox 113 -29 1141 1147 ends 11,23 on 100100100100100100100100\n")
+given tt_fixture ([111, 65, 105, 233], 1):() then prints:("out 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
 
 tt_shape1_print(int[] xs, int i, int g, int ok) {
   int len_v = len((import ttends));
   int len_v2 = len((import ttpx));
   tt_shape1_bbox(xs, i, g, ok, len_v, len_v2);
 } return void;
+given tt_outline_a ([65], 0, 36, 1):() then prints:("out 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
+given tt_outline_a ([999], 0, 42, 0):() then prints:("out 999 g 42 any 0 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
 
 tt_shape1_bbox(int[] xs, int i, int g, int ok, int len_v, int len_v2) {
   int lst_min_v = lst_min((import ttpx));
   int lst_min_v2 = lst_min((import ttpy));
   tt_shape1_bbox2(xs, i, g, ok, len_v, len_v2, lst_min_v, lst_min_v2);
 } return void;
+given tt_outline_a ([65], 0, 36, 1, 2, 11):() then prints:("out 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
+given tt_outline_a ([999], 0, 42, 0, 2, 11):() then prints:("out 999 g 42 any 0 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")

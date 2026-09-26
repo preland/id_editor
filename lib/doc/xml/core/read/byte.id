@@ -15,6 +15,8 @@
 xml_base() {
   word ret_w = (import xml_mem)[0];
 } return word ret_w;
+given xml_doc_fixture ():(8)
+given xml_empty_fixture ():(8)
 
 // The length of the input, measured once at xml_open and kept. len(s) is a
 // strlen every time it is evaluated and is not memoised, so a scanner that

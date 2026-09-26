@@ -4,6 +4,8 @@ tt_swpg(int[] tab) {
   tt_swpg_pts(tab);
   tt_swph(tab);
 } return void;
+given tt_outline_a ([0, 0, 0, 0]):([182647, 2, 11, 0])
+given tt_outline_b ([0, 0, 0, 0]):([0, 0, 0, 0])
 
 tt_swph(int[] tab) {
   int i = 0;
@@ -11,8 +13,12 @@ tt_swph(int[] tab) {
     i = tt_swp2(tab, i);
   }
 } return void;
+given tt_outline_a ([0, 0, 0, 0]):([182647, 0, 0, 0])
+given tt_outline_b ([0, 0, 0, 0]):([0, 0, 0, 0])
 
 tt_swp2(int[] tab, int i) {
   tt_swp2_go(tab, i);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_outline_a ([0, 0, 0, 0], 0):(1)
+given tt_outline_a ([0, 0, 0, 0], 10):(11)

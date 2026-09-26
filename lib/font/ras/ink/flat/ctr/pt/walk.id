@@ -9,6 +9,8 @@ ras_run(int[] buf) {
   }
   ras_close(buf);
 } return void;
+given ras_edge0 ([5, 5, 2, 3, 0, 0, 0, 2, 3, 0, 0]):() then calls ras_close:[1]
+given ras_glyph_fixture ([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]):() then calls ras_next:[1]
 
 // The cursor advances after the point is consumed rather than before,
 // because ras_pt reads the point out of the lists by index and the two
@@ -19,6 +21,8 @@ ras_next(int[] buf) {
   ras_pt(buf, buf[0]);
   lset(buf, 0, buf[0] + 1);
 } return void;
+given ras_glyph_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]):() then calls ras_pt:[1]
+given ras_glyph_fixture2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]):() then calls ras_pt:[1]
 
 ras_pt(int[] buf, int m) {
   if((import ttpon)[m] == 1) {
@@ -31,3 +35,5 @@ ras_pt(int[] buf, int m) {
     ras_off(buf, ras_dx_v2, ras_dy_v2);
   }
 } return void;
+given ras_glyph_fixture ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0):() then calls ras_dx:[1]
+given ras_glyph_fixture2 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0):() then calls ras_dx:[1]

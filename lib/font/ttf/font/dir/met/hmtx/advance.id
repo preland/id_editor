@@ -3,6 +3,8 @@ tt_met3(int[] tab, int[] xs) {
   tt_met3a(tab, xs);
   tt_met3b(tab, xs);
 } return void;
+given tt_fixture ([], (import ttbuf)):([0, 6253])
+given tt_fixture ([7], (import ttbuf)):([7, 0, 6253])
 
 // The advance width of a glyph, in font units. `hmtx` stores a
 // (advance, lsb) pair for the first numberOfHMetrics glyphs and only a left
@@ -14,10 +16,17 @@ tt_advance(int g) {
   int tt_table_v = tt_table("hmtx");
   int ret_i = rd_be16((import ttbuf), tt_table_v + i * 4);
 } return int ret_i;
+given tt_fixture (36):(1401)
+given tt_fixture (3):(651)
 
+// Past numberOfHMetrics (6238 in DejaVuSans), every remaining glyph folds
+// back onto the last real entry -- the monospace tail the file comment
+// describes. 6238 itself is the first glyph id that folds.
 tt_advance_i(int g) {
   int i = g;
   if(i >= (import ttmet)[2]) {
     i = (import ttmet)[2] - 1;
   }
 } return int i;
+given tt_fixture (36):(36)
+given tt_fixture (6238):(6237)

@@ -10,6 +10,8 @@ tt_g12(int c) {
   tt_g12run(tab, c);
   int ret_i = tab[0];
 } return int ret_i;
+given tt_fixture (65):(36)
+given tt_fixture (1046):(939)
 
 tt_g12find(int[] tab, int at, int c) {
   int tt_u32_v = tt_u32((import ttbuf), at + 12);
@@ -18,6 +20,8 @@ tt_g12find(int[] tab, int at, int c) {
     tt_g12step(tab, at, c);
   }
 } return void;
+given tt_fixture ([0, 0, 0], 51998, 65):([0, 0, 0])
+given tt_fixture ([0, 0, 0], 51998, 1046):([0, 15, 15])
 
 // A group is 12 bytes at at + 16 + m * 12: startCharCode, endCharCode,
 // startGlyphID. The window shrinks every step because m is strictly below hi,
@@ -30,3 +34,5 @@ tt_g12step(int[] tab, int at, int c) {
     lset(tab, 2, m);
   }
 } return void;
+given tt_fixture ([0, 0, 18], 51998, 1046):([0, 10, 18])
+given tt_fixture ([0, 0, 18], 51998, 65):([0, 0, 9])

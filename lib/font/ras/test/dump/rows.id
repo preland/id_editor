@@ -7,12 +7,16 @@ ras_dump(string s, string t) {
     r = ras_dumpr(s, t, r);
   }
 } return void;
+given ras_glyph_fixture ("A", "B"):() then calls ras_dumpr:[9]
+given ras_glyph_fixture2 ("A", "B"):() then calls ras_dumpr:[12]
 
 ras_dumpr(string s, string t, int r) {
   string[] parts = [];
   ras_ch(parts, r);
   int ret_i = ras_dumpr_out(parts, s, t, r);
 } return int ret_i;
+given ras_glyph_fixture ("A", "B", 0):(1) then calls ras_dumpr_out:[1]
+given ras_glyph_fixture2 ("A", "B", 0):(1) then calls ras_dumpr_out:[1]
 
 ras_ch(string[] parts, int r) {
   int x = 0;
@@ -20,3 +24,5 @@ ras_ch(string[] parts, int r) {
     x = ras_ch1(parts, r, x);
   }
 } return void;
+given ras_glyph_fixture ([], 0):() then calls ras_ch1:[9]
+given ras_glyph_fixture2 ([], 0):() then calls ras_ch1:[9]

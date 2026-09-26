@@ -5,6 +5,8 @@ ras_line(int[] buf, int x, int y) {
   lset(buf, 2, x);
   lset(buf, 3, y);
 } return void;
+given ras_edge0 ([0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0], 5, 10):([0, 0, 5, 10, 0, 0, 0, 0, 0, 0, 0])
+given ras_edge0 ([0, 0, -1, -2, 0, 0, 0, 0, 0, 0, 0], 7, 8):([0, 0, 7, 8, 0, 0, 0, 0, 0, 0, 0])
 
 // Both ends are pushed, rather than the far end alone with the near one
 // read back from the previous edge, because a contour ends by joining a
@@ -16,8 +18,12 @@ ras_edge(int[] buf, int x, int y) {
   push((import rasy0), buf[3]);
   ras_to(x, y);
 } return void;
+given ras_edge0 ([0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0], 5, 10):() then ras_x0_len:(1)
+given ras_edge0 ([0, 0, -1, -2, 0, 0, 0, 0, 0, 0, 0], 7, 8):() then ras_x1_len:(1)
 
 ras_to(int x, int y) {
   push((import rasx1), x);
   push((import rasy1), y);
 } return void;
+given ras_edge0 (5, 10):() then ras_x1_len:(1)
+given ras_edge0 (-1, -2):() then ras_x1_len:(1)

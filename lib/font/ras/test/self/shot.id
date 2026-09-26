@@ -7,14 +7,20 @@ ras_shot(string[] argv, int i) {
   ras_shot_dim(argv, i, ok);
   int ret_i = ras_shot_dump(argv, i);
 } return int ret_i;
+given tt_fixture (["prog", "font.ttf", "65", "12"], 2):(4) then calls ras_shot_dump:[1]
+given tt_fixture (["prog", "font.ttf", "32", "12"], 2):(4) then calls ras_shot_dim:[1]
 
 ras_shot_scale(string[] argv, int i) {
   int g = ras_shot_glyph(argv, i);
   int px = to_int(argv[i + 1]);
   int ok = ras_scale(g, px);
 } return int ok;
+given tt_fixture (["prog", "font.ttf", "65", "12"], 2):(1)
+given tt_fixture (["prog", "font.ttf", "32", "12"], 2):(0)
 
 ras_shot_glyph(string[] argv, int i) {
   int to_int_v = to_int(argv[i]);
   int ret_i = tt_glyph(to_int_v);
 } return int ret_i;
+given tt_fixture (["prog", "font.ttf", "65", "12"], 2):(36)
+given tt_fixture (["prog", "font.ttf", "66", "16"], 2):(37)

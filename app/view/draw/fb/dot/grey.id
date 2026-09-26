@@ -17,9 +17,13 @@ ed_at(int x, int y) {
     v = (import ed_fb)[y * ed_w() + x];
   }
 } return int v;
+given setup_page (9, 19):(16777215)
+given setup_page (10, 19):(16777215)
 
 // The darker of what is there and what is being drawn, as coverage.
 ed_over(int x, int y, int v) {
   int n = 255 - (ed_at(x, y) & 255);
   ed_dark(x, y, n, v);
 } return void;
+given setup_page (5, 5, 100):() then calls ed_dark:(5, 5, 0, 100)
+given setup_page (50, 50, 100):() then calls ed_dark:(50, 50, 0, 100)

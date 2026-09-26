@@ -16,3 +16,5 @@ lay_put_out(int w, int g, int r, int c, int lay_pt_v) {
   lay_wrap(w, lay_adv_v);
   lay_emit(g, r, c);
 } return void;
+given lay_row_fixture (1000, 36, 0, 104, 12):() then lay_pen_state:([525, 0]) then lay_g_state:([36])
+given lay_row_fixture (1000, 3, 0, 105, 12):() then lay_pen_state:([244, 0]) then lay_g_state:([3])

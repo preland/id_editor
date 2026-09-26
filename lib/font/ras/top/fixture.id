@@ -1,0 +1,33 @@
+// A real glyph from a real font, scaled -- for everything below ras_scale
+// in this module, none of which can be driven honestly by hand: the edge
+// list, the coverage buffer and the box all have to agree with an outline
+// ras_ink actually flattened. 'A' at 12px, DejaVu Sans, has a real contour.
+ras_glyph_fixture() {
+  tt_fixture();
+  int g = tt_glyph(65);
+  int ok = ras_scale(g, 12);
+} return void;
+():() then ras_w:(9)
+():() then ras_h:(9)
+
+// The same, for a glyph with no contour at all -- a space -- so the empty
+// path (ras_scale_done's ok==0 branch, ras_ink's own no-op) has a real
+// witness too.
+ras_space_fixture() {
+  tt_fixture();
+  int g = tt_glyph(32);
+  int ok = ras_scale(g, 12);
+} return void;
+():() then ras_w:(0)
+():() then ras_h:(0)
+
+// A second real, non-empty glyph at a different size, for every case below
+// that needs two different boxes to be sure a number is read rather than
+// hard-coded: 'B' at 16px rather than 'A' at 12.
+ras_glyph_fixture2() {
+  tt_fixture();
+  int g = tt_glyph(66);
+  int ok = ras_scale(g, 16);
+} return void;
+():() then ras_w:(9)
+():() then ras_h:(12)

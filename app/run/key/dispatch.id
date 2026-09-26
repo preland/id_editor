@@ -13,6 +13,8 @@ ed_poll() {
   int v = gfx_poll();
   ed_key(v);
 } return int v;
+given ed_step_fixture ():(-1)
+given ed_step_fixture ():(-1) then calls ed_key:(-1)
 
 ed_key(int v) {
   if(v >= 32 && v < 127) {
@@ -21,6 +23,8 @@ ed_key(int v) {
     ed_key2(v);
   }
 } return void;
+given ed_step_fixture (8):() then calls ed_key2:(8)
+given ed_step_fixture (200):() then calls ed_key2:(200)
 
 ed_key2(int v) {
   if(v == 8 || v == 127) {
@@ -29,3 +33,5 @@ ed_key2(int v) {
     ed_key3(v);
   }
 } return void;
+given ed_step_fixture (8):() then calls ed_back:()
+given ed_step_fixture (200):() then calls ed_key3:(200)

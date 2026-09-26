@@ -6,6 +6,8 @@ ras_cross(int i, int y, int[] tab) {
   }
   int ret_i = i + 1;
 } return int ret_i;
+given ras_glyph_fixture given ras_buf_fixture (0, -485, (import rastab)):(1) then calls ras_add:[1]
+given ras_glyph_fixture given ras_buf_fixture (0, -1000, (import rastab)):(1) then calls ras_add:[0]
 
 // A half-open test -- the top of an edge counts, the bottom does not -- so
 // that two edges meeting at a point are counted once between them and not
@@ -23,6 +25,9 @@ ras_hits(int lo, int hi, int y) {
     v = 0 - 1;
   }
 } return int v;
+(0, 10, 5):(1)
+(10, 0, 5):(-1)
+(0, 10, 20):(0)
 
 // The crossing is recorded as a difference: +1 or -1 at the column where the
 // edge cuts the line, and the prefix sum in ras_scan turns the whole row's
@@ -37,3 +42,5 @@ ras_add(int i, int y, int[] tab, int v) {
   int n = ras_add_col(i, y);
   lset(tab, n, tab[n] + v);
 } return void;
+given ras_glyph_fixture given ras_buf_fixture (0, 288, (import rastab), 1):() then ras_tab_at0:(1)
+given ras_glyph_fixture given ras_buf_fixture (0, 288, (import rastab), -1):() then ras_tab_at0:(-1)

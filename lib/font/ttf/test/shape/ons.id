@@ -6,3 +6,22 @@ tt_onsl(string[] parts) {
     i = i + 1;
   }
 } return void;
+given tt_outline_a ([]):(["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"])
+given tt_outline_b ([]):([])
+
+// Real outlines for the single_setup cases below: glyph 36 is 'A' (a simple
+// contour, every point on-curve) and glyph 3 is the space (no contour at
+// all), the same two glyphs test/rep/look.id already looks up.
+tt_outline_a() {
+  tt_fixture();
+  tt_outline(36);
+} return void;
+():() then tt_any:(1)
+():() then tt_endstr:("2,10")
+
+tt_outline_b() {
+  tt_fixture();
+  tt_outline(3);
+} return void;
+():() then tt_any:(0)
+():() then tt_endstr:("")

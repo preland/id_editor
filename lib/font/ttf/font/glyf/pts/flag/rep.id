@@ -5,6 +5,8 @@ tt_rep(int[] tab, int[] row, int b) {
     tt_rep2(tab, row, b);
   }
 } return void;
+given tt_fixture ([9], [62246, 0], 9):([9, 9], [62248, 0], 9)
+given tt_fixture ([9, 9, 33], [62248, 0], 33):([9, 9, 33], [62249, 0], 33)
 
 // The flag itself was already pushed, so the count is how many more copies to
 // make -- a repeat of 0 is legal and means exactly one point.
@@ -13,8 +15,12 @@ tt_rep2(int[] tab, int[] row, int b) {
   lset(row, 0, row[0] + 1);
   lst_fill(tab, n, b);
 } return void;
+given tt_fixture ([9], [62247, 0], 9):([9, 9], [62248, 0], 9)
+given tt_fixture ([7], [62253, 0], 43):([7, 43, 43, 43], [62254, 0], 43)
 
 tt_on1(int[] tab, int i) {
   push((import ttpon), tab[i] & 1);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_clear2 ([5], 0):(1) then tt_onstr:("1")
+given tt_clear2 ([4], 0):(1) then tt_onstr:("0")

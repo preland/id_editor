@@ -1,0 +1,33 @@
+// A real font, a real one-run document, and a real layout pass over it --
+// for every function in ink/ and this directory's own ed_all, none of which
+// can be driven honestly with lay_g populated by hand: lay_st, lay_x, lay_y
+// and lay_px all have to agree with each other and with the font actually
+// loaded, which only lay_doc itself gets right.
+lay_real_fixture() {
+  tt_fixture();
+  odt_doc_fixture();
+  lay_doc(600);
+} return void;
+():() then lay_g_state:([75, 76])
+():() then lay_st_state:([1, 1])
+
+// lay_real_fixture plus the one glyph actually scaled into the rasteriser,
+// for ed_rows/ed_row/ed_dot/ed_glyph's own ed_ink call, none of which can
+// read ras_cov honestly without a real ras_scale behind them.
+ed_ink_fixture() {
+  lay_real_fixture();
+  int ras_scale_v = ras_scale(75, 12);
+} return void;
+():() then ras_w:(6)
+():() then ras_h:(10)
+
+// ed_ink_fixture's state with the first glyph's flags forced to italic and
+// not bold, for ed_bold/ed_lean's other branch -- neither can be reached
+// with real layout data alone, because DejaVu Sans's automatic style here is
+// bold and not italic.
+lay_st_even_fixture() {
+  ed_ink_fixture();
+  lset((import lay_st), 0, 2);
+} return void;
+():() then lay_st_state:([2, 1])
+():() then ras_w:(6)

@@ -8,6 +8,8 @@ lay_runs(int w, int i, int k) {
   }
   lay_runs_out(i);
 } return void;
+given lay_row_fixture (1000, 0, 0):() then calls lay_run:(1000, 0) then calls lay_runs_out:[1]
+given lay_row_fixture (1000, 0, 1):() then calls lay_run:[0] then calls lay_runs_out:[1]
 
 // One run, character by character. The text is UTF-8, so a character is one to
 // four bytes and the loop advances by however many it read.
@@ -16,9 +18,13 @@ lay_run(int w, int r) {
   int at = 0;
   lay_chars(w, r, s, at);
 } return void;
+given lay_row_fixture (1000, 0):() then calls lay_chars:(1000, 0, "hi", 0)
+given lay_row_fixture (2000, 0):() then calls lay_chars:(2000, 0, "hi", 0)
 
 lay_chars(int w, int r, string s, int at) {
   while(at < len(s)) {
     at = lay_char(w, r, s, at);
   }
 } return void;
+given lay_row_fixture (1000, 0, "hi", 0):() then calls lay_char:[2]
+given lay_row_fixture (1000, 0, "hi", 2):() then calls lay_char:[0]

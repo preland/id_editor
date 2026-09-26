@@ -12,6 +12,8 @@ ras_selftest(string[] argv) {
   int ok = tt_load(tt_bytes_v);
   ras_selftest_go(argv, ok);
 } return void;
+(["prog", "test_assets/DejaVuSans.ttf"]):() then prints:("load 1\n")
+(["prog", "test_assets/does-not-exist.ttf"]):() then traps:("id: index 0 out of bounds")
 
 ras_selftest_go(string[] argv, int ok) {
   print("load " + ok);
@@ -19,6 +21,8 @@ ras_selftest_go(string[] argv, int ok) {
     ras_report(argv);
   }
 } return void;
+(["prog"], 0):() then prints:("load 0\n")
+given tt_fixture (["prog", "test_assets/DejaVuSans.ttf", "65", "12"], 1):() then calls ras_report:[1]
 
 ras_report(string[] argv) {
   int i = 2;
@@ -26,3 +30,5 @@ ras_report(string[] argv) {
     i = ras_shot(argv, i);
   }
 } return void;
+given tt_fixture (["prog", "test_assets/DejaVuSans.ttf", "65", "12"]):() then calls ras_shot:[1]
+given tt_fixture (["prog", "test_assets/DejaVuSans.ttf", "65", "12", "66", "16"]):() then calls ras_shot:[2]

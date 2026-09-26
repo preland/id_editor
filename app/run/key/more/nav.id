@@ -8,6 +8,7 @@ ed_key3(int v) {
   }
 } return void;
 given ed_step_fixture (256):() then calls ed_key4:[1]
+given ed_step_fixture2 (265):() then calls ed_erase:[1]
 
 ed_key4(int v) {
   if(v == 256) {

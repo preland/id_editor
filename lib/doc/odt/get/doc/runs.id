@@ -4,11 +4,15 @@
 odt_runs() {
   int ret_i = len((import odt_txts));
 } return int ret_i;
+given odt_init ():(0)
+given odt_init_fixture ():(0)
 
 // How many runs paragraph i owns. Zero for an empty paragraph.
 odt_runs_of(int i) {
   int ret_i = (import odt_phi)[i] - (import odt_plo)[i];
 } return int ret_i;
+given odt_doc_fixture (0):(1)
+given odt_doc_fixture (0):(1) then odt_runs:(1)
 
 // The document-wide index of paragraph i's run number k, which is what
 // odt_run_text and odt_run_style take. Runs are numbered across the whole
@@ -17,3 +21,5 @@ odt_runs_of(int i) {
 odt_run_at(int i, int k) {
   int ret_i = (import odt_plo)[i] + k;
 } return int ret_i;
+given odt_doc_fixture (0, 0):(0)
+given odt_doc_fixture (0, 5):(5)

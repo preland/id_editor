@@ -5,12 +5,16 @@ ed_poke(int[] xs, word a, int i) {
     i = i + 1;
   }
 } return void;
+given xml_buf_fixture ([200], (import xml_buf), 0):() then xml_buf_first:(200)
+given xml_buf_fixture ([], (import xml_buf), 0):() then xml_buf_first:(65)
 
 // The font file, read whole. The same shape as the archive: a font is binary
 // and stays in an int[].
 ed_read(string path) {
   int[] xs = zip_bytes(path);
 } return int[] xs;
+given ed_read_fixture ((import ed_read_path)): ([97, 98, 99]) then ed_read_fixture_size:(3)
+("/dev/null"): ([])
 
 // What a run should be drawn in: its style's point size, or twelve when the
 // style says nothing. A document that names no size is not a document with a

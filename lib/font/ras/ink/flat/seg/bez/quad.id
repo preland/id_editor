@@ -11,6 +11,8 @@ ras_quad(int[] buf, int x, int y) {
   int ras_nseg_v = ras_nseg(buf, x, y);
   ras_arc(buf, x, y, ras_nseg_v);
 } return void;
+given ras_edge0 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 100, 100):() then calls ras_step:[2]
+given ras_edge0 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 10000, 10000):() then calls ras_step:[32]
 
 // Where the curve began. The pen walks along the curve as the steps are
 // emitted, so cells 2 and 3 stop being the start after the first one, and
@@ -19,6 +21,8 @@ ras_hold(int[] buf) {
   lset(buf, 9, buf[2]);
   lset(buf, 10, buf[3]);
 } return void;
+([0, 0, 5, 10, 0, 0, 0, 0, 0, 0, 0]):([0, 0, 5, 10, 0, 0, 0, 0, 0, 5, 10])
+([0, 0, -3, -7, 0, 0, 0, 0, 0, 0, 0]):([0, 0, -3, -7, 0, 0, 0, 0, 0, -3, -7])
 
 // Step n lands exactly on (x, y) -- with j = n the two ends of the
 // interpolation are the endpoint times n squared over n squared -- so the
@@ -30,3 +34,5 @@ ras_arc(int[] buf, int x, int y, int n) {
     j = ras_step(buf, x, y, j, n);
   }
 } return void;
+given ras_edge0 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 100, 100, 2):() then calls ras_step:[2]
+given ras_edge0 ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 50, 50, 4):() then calls ras_step:[4]

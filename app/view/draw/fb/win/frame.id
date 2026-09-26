@@ -5,6 +5,8 @@ ed_frame() {
   sleep_ms(16);
   int ret_i = ed_drain();
 } return int ret_i;
+given setup_page given ed_cur_init given ed_flush given lay_real_fixture ():(-1) then calls ed_present_frame:[1]
+given setup_page given ed_cur_init given lay_real_fixture ():(-1) then calls ed_present_frame:[1]
 
 // Every key that arrived, not one of them.
 //
@@ -24,6 +26,8 @@ ed_drain() {
     k = ed_poll();
   }
 } return int k;
+given ed_step_fixture ():(-1)
+given ed_step_fixture ():(-1) then calls ed_poll:[1]
 
 // The window opened, and the frame loop started. Split out of ed_win so
 // that function's own actions stay under the limit.
@@ -32,3 +36,5 @@ ed_win_out(int w, int h) {
   ed_cur_init();
   ed_frames(ok, 0);
 } return void;
+(0, 99):() then calls ed_frames:(0, 0)
+(99, 0):() then calls ed_cur_init:[1]

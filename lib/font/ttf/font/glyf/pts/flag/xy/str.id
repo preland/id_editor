@@ -1,0 +1,15 @@
+// Point 0's coordinates, so a case on a transform (tt_xform1_go, tt_xput_x,
+// tt_xput_y, tt_shift1, ...) can see what it left in ttpx/ttpy: those are
+// only ever written through lset, never returned, so there is nothing else
+// for a case to read them back through.
+tt_px0() {
+  int ret_i = (import ttpx)[0];
+} return int ret_i;
+given tt_pts_fixture ():(10)
+given tt_pts_fixture2 ():(7)
+
+tt_py0() {
+  int ret_i = (import ttpy)[0];
+} return int ret_i;
+given tt_pts_fixture ():(1)
+given tt_pts_fixture2 ():(3)

@@ -7,6 +7,8 @@ tt_cmput(int[] tab, int k, int at) {
   lset(tab, 0, at);
   tt_cmput_fmt(tab, at);
 } return void;
+given tt_fixture ([0, 0, 0], 4, 51998):([51998, 12, 4])
+given tt_fixture2 ([0, 0, 0], 3, 11028):([11028, 4, 3])
 
 // Platform 3 encoding 10 is Windows UCS-4 and is the only encoding that can
 // name a code point above U+FFFF; 3/1 is Windows BMP and is what almost every
@@ -23,6 +25,8 @@ tt_cmrank(int v, int k) {
     r = 2;
   }
 } return int r;
+(3, 10):(4)
+(1, 10):(0)
 
 tt_cmr3(int k) {
   int r = 1;
@@ -33,3 +37,5 @@ tt_cmr3(int k) {
     r = 3;
   }
 } return int r;
+(10):(4)
+(1):(3)

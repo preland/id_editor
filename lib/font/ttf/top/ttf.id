@@ -30,6 +30,8 @@ tt_load(int[] xs) {
     ok = tt_ready();
   }
 } return int ok;
+given tt_fixture ((import ttbuf)):(1)
+([0, 0, 0, 0, 0, 0]):(0)
 
 // The empty directory has to exist before the version is even looked at,
 // because a caller that gets 0 back may still call tt_table and must get -1
@@ -39,6 +41,8 @@ tt_begin(int[] xs) {
   export int[] ttbuf = xs;
   int ok = tt_begin_check(xs);
 } return int ok;
+given tt_fixture ((import ttbuf)):(1)
+([0, 0, 0, 0, 0, 0]):(0)
 
 // The tables this parser cannot do without. Passing the version check is not
 // enough: NotoColorEmoji is version 0x00010000 with CBDT/CBLC bitmaps, no
@@ -53,3 +57,5 @@ tt_ready() {
     print("tt_load: this font has no glyf outlines -- a bitmap font (CBDT/CBLC, sbix, EBDT) has pictures where the contours would be, and is not this parser's format");
   }
 } return int ok;
+given tt_fixture ():(1)
+given tt_tabs ():(0) then prints:("tt_load: this font has no glyf outlines -- a bitmap font (CBDT/CBLC, sbix, EBDT) has pictures where the contours would be, and is not this parser's format\n")

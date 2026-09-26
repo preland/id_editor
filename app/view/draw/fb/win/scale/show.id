@@ -9,9 +9,13 @@ ed_present_frame() {
   int h = gfx_height();
   ed_present2(w, h);
 } return void;
+given setup_page given ed_cur_init given ed_flush given lay_real_fixture ():() then calls ed_present2:[1]
+given setup_page given ed_cur_init given lay_real_fixture ():() then calls ed_present2:[1]
 
 ed_present2(int w, int h) {
   int pw = ed_w();
   int ph = ed_h();
   ed_present3(w, h, pw, ph);
 } return void;
+given setup_page given ed_cur_init given ed_flush given lay_real_fixture (10, 20):() then calls ed_present3:(10, 20, 10, 20)
+given setup_page given ed_cur_init given lay_real_fixture (5, 5):() then calls ed_present3:(5, 5, 10, 20)

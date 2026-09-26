@@ -5,6 +5,8 @@ tt_tag(int[] xs, int at) {
   string s = chr(xs[at]) + chr(xs[at + 1]);
   string ret_s = s + chr(xs[at + 2]) + chr(xs[at + 3]);
 } return string ret_s;
+([103, 108, 121, 102], 0):("glyf")
+([0, 103, 108, 121, 102, 0], 1):("glyf")
 
 // A 32-bit field as an int. rd_be32 returns a `word`, correctly -- a full
 // 32-bit value does not fit an int -- but every offset in a font small enough
@@ -13,6 +15,8 @@ tt_tag(int[] xs, int at) {
 tt_u32(int[] xs, int at) {
   int ret_i = rd_be16(xs, at) * 65536 + rd_be16(xs, at + 2);
 } return int ret_i;
+([0, 0, 0, 100], 0):(100)
+([0, 1, 0, 0], 0):(65536)
 
 // The only two version tags with a `glyf` table behind them: 0x00010000, and
 // the Apple spelling 'true'. 'OTTO' is a real font too, but its outlines are
@@ -28,3 +32,5 @@ tt_check(word a) {
     print("tt_load: this is an OTTO/CFF font -- its outlines are Type 2 charstrings, not glyf contours, and are out of scope");
   }
 } return int ok;
+(65536):(1)
+(0):(0)

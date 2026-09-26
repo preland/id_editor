@@ -1,0 +1,20 @@
+// tt_slurp only ever receives an already-open handle (docs/TESTS.md: a file
+// handle is untestable from a literal). Reopens tt_io_fixture's file for
+// reading, so a case can hand tt_slurp a real one.
+tt_slurp_fixture() {
+  string tt_io_path_v3 = (import tt_io_path);
+  export int tt_slurp_h = fs_open(tt_io_path_v3, "r");
+} return void;
+given tt_io_fixture ():() then tt_slurp_peek:(4) then tt_io_len:(4)
+given tt_io_fixture ():() then tt_slurp_peek:(4) then tt_slurp_peek:(0) then tt_io_len:(4)
+
+// Reads back through the handle tt_slurp_fixture exported, so a broken
+// fixture (wrong path, unopened handle) shows up as a wrong byte count
+// rather than a value nothing checks.
+tt_slurp_peek() {
+  int h = (import tt_slurp_h);
+  int[] buf = [0, 0, 0, 0];
+  int ret_i = fs_read(h, buf, 4);
+} return int ret_i;
+given tt_io_fixture given tt_slurp_fixture ():(4) then tt_io_len:(4)
+given tt_io_fixture given tt_slurp_fixture ():(4) then tt_slurp_peek:(0) then tt_io_len:(4)

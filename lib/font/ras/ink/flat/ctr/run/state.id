@@ -1,0 +1,14 @@
+// The edge lists' own lengths, for cases below ras_edge0 that push onto
+// them directly and need to see the push landed rather than read one
+// crossing back out through ras_xat.
+ras_x1_len() {
+  int n = len((import rasx1));
+} return int n;
+given ras_edge0 ():(0)
+given ras_glyph_fixture ():(11)
+
+ras_x0_len() {
+  int n = len((import rasx0));
+} return int n;
+given ras_edge0 ():(0)
+given ras_glyph_fixture ():(11)

@@ -15,6 +15,8 @@ odt_para(int k) {
     odt_end();
   }
 } return void;
+given odt_init_fixture (3):() then calls odt_end:[1]
+given odt_init_fixture (1):() then calls odt_end:[0]
 
 // A paragraph starts owning no runs; its end index is corrected when it
 // closes. Storing both ends rather than only the start means a consumer can
@@ -24,6 +26,8 @@ odt_begin() {
   push((import odt_plo), len_v);
   odt_begin2();
 } return void;
+given odt_init_fixture ():() then odt_paras:(1)
+given odt_init_fixture ():() then calls odt_begin2:[1]
 
 // The guard is for an end tag with no start: a document may be malformed in
 // ways the XML scanner cannot see, and a list write at -1 aborts the process.
@@ -35,3 +39,5 @@ odt_end() {
   }
   lset((import odt_st), 0, 0);
 } return void;
+given odt_init_fixture ():() then odt_st_state:([0])
+given odt_init_fixture ():() then calls lset:[1]

@@ -3,9 +3,13 @@ tt_shape1_bbox2(int[] xs, int i, int g, int ok, int len_v, int len_v2, int lst_m
   int lst_max_v2 = lst_max((import ttpy));
   tt_shape1_str(xs, i, g, ok, len_v, len_v2, lst_min_v, lst_min_v2, lst_max_v, lst_max_v2);
 } return void;
+given tt_outline_a ([65], 0, 36, 1, 2, 11, 16, 0):() then prints:("out 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
+given tt_outline_a ([999], 0, 42, 0, 2, 11, 16, 0):() then prints:("out 999 g 42 any 0 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
 
 tt_shape1_str(int[] xs, int i, int g, int ok, int len_v, int len_v2, int lst_min_v, int lst_min_v2, int lst_max_v, int lst_max_v2) {
   string tt_endstr_v = tt_endstr();
   string tt_onstr_v = tt_onstr();
   print("out " + xs[i] + " g " + g + " any " + ok + " nc " + len_v + " np " + len_v2 + " bbox " + lst_min_v + " " + lst_min_v2 + " " + lst_max_v + " " + lst_max_v2 + " ends " + tt_endstr_v + " on " + tt_onstr_v);
 } return void;
+given tt_outline_a ([65], 0, 36, 1, 2, 11, 16, 0, 1384, 1493):() then prints:("out 65 g 36 any 1 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")
+given tt_outline_a ([999], 0, 42, 0, 2, 11, 16, 0, 1384, 1493):() then prints:("out 999 g 42 any 0 nc 2 np 11 bbox 16 0 1384 1493 ends 2,10 on 11111111111\n")

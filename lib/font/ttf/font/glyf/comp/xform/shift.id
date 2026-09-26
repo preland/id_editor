@@ -5,9 +5,13 @@ tt_shift(int b, int x, int y) {
     i = tt_shift1(i, x, y);
   }
 } return void;
+given tt_pts_fixture (0, 5, 2):() then tt_px0:(15)
+given tt_pts_fixture (0, 0, 0):() then tt_px0:(10)
 
 tt_shift1(int i, int x, int y) {
   lset((import ttpx), i, (import ttpx)[i] + x);
   lset((import ttpy), i, (import ttpy)[i] + y);
   int ret_i = i + 1;
 } return int ret_i;
+given tt_pts_fixture (0, 5, 2):(1) then tt_px0:(15)
+given tt_pts_fixture (0, 0, 0):(1) then tt_px0:(10)

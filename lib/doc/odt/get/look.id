@@ -7,6 +7,8 @@ odt_bold(string key) {
     ok = (import odt_flags)[i] % 2;
   }
 } return int ok;
+given odt_init_fixture (""):(0)
+given odt_init_fixture ("bold"):(0)
 
 odt_italic(string key) {
   int i = odt_key(key);
@@ -15,8 +17,12 @@ odt_italic(string key) {
     ok = (import odt_flags)[i] / 2;
   }
 } return int ok;
+given odt_init_fixture (""):(0)
+given odt_init_fixture ("italic"):(0)
 
 // How many paragraphs the document has, empty ones included.
 odt_paras() {
   int ret_i = len((import odt_plo));
 } return int ret_i;
+given odt_init ():(0)
+given odt_init_fixture ():(0)

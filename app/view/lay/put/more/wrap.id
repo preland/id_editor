@@ -12,11 +12,15 @@ lay_wrap(int w, int n) {
     lay_break(lay_lead_v);
   }
 } return void;
+given lay_row_fixture (1, 0):() then lay_pen_state:([0, 0])
+given lay_row_fixture (1, 0):() then calls lay_break:[0]
 
 lay_break(int n) {
   lset((import lay_pen), 0, 0);
   lset((import lay_pen), 1, (import lay_pen)[1] + n);
 } return void;
+given lay_fixture (5):() then lay_pen_state:([0, 5])
+given lay_fixture (0):() then lay_pen_state:([0, 0])
 
 // The distance from one baseline to the next, from the font's own vertical
 // metrics rather than a guess: ascender above, descender below, and the gap
@@ -24,3 +28,5 @@ lay_break(int n) {
 lay_lead(int n) {
   int ret_i = (tt_ascent() - tt_descent() + tt_gap()) * n / tt_upem();
 } return int ret_i;
+given lay_doc_fixture (12):(13)
+given lay_doc_fixture (24):(27)

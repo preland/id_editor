@@ -1,0 +1,19 @@
+// How the zip reader gives up. Moved out of lib/zip/inf, which is gone now
+// that idstd holds the DEFLATE decoder: this was never about inflation, it is
+// the one abort path zip_bytes, zip_dir, zip_need, zip_sig and zip_infl all
+// share.
+//
+// There are no exceptions and no early return, so a malformed archive cannot
+// be reported upwards: it would have to be threaded through every frame as a
+// flag, and every caller would have to gate on it. Saying what is wrong and
+// aborting is the honest alternative -- an editor that opened a broken file
+// and showed an empty document would be worse than one that stopped. The pop
+// of an empty list is what does the aborting: it is `id`'s trap, so this
+// exits 1 with a line on stderr as well as the line above on stdout.
+zip_fail(string s) {
+  int[] xs = [];
+  print("id: " + s);
+  pop(xs);
+} return void;
+("zip: bad record signature"):() then traps:("id: pop from empty list")
+("zip: no end-of-central-directory record"):() then traps:("id: pop from empty list")

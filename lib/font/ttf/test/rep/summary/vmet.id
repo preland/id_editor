@@ -3,8 +3,12 @@ tt_report2_vmet() {
   int tt_descent_v = tt_descent();
   tt_report2_vmet2(tt_ascent_v, tt_descent_v);
 } return void;
+given tt_fixture ():() then prints:("vmet 1901 -483 0\n")
+given tt_fixture2 ():() then prints:("vmet 1854 -434 67\n")
 
 tt_report2_vmet2(int tt_ascent_v, int tt_descent_v) {
   int tt_gap_v = tt_gap();
   print("vmet " + tt_ascent_v + " " + tt_descent_v + " " + tt_gap_v);
 } return void;
+given tt_fixture (1901, -483):() then prints:("vmet 1901 -483 0\n")
+given tt_fixture2 (1854, -434):() then prints:("vmet 1854 -434 67\n")

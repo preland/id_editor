@@ -18,3 +18,24 @@ ed_str_out(int[] xs, word a, int n) {
   ed_poke(xs, a, 0);
   string ret_s = str_of_mem(a, n);
 } return string ret_s;
+given xml_buf_fixture ([72, 105], (import xml_buf), 2): ("Hi")
+given xml_buf_fixture ([], (import xml_buf), 0): ("")
+
+// A real file on disk, for ed_read: it goes through fs_open/fs_read like any
+// document does, so there is no way to test it without one. Wraps
+// ed_out_fixture too, only so this fixture's own cases below have something
+// already exported and safe to check alongside the file it writes. Each
+// run's file is unique (fs_mktemp); ed_read_fixture_size in out/fixture.id
+// removes it once read, so a case that reads back through it leaves nothing
+// behind.
+ed_read_fixture() {
+  ed_out_fixture();
+  export string ed_read_path = fs_mktemp("ed_read_fixture_", 0);
+  int h = fs_open(ed_read_path, "w");
+} chain () {
+  int[] bytes = [97, 98, 99];
+  int w = fs_write(h, bytes, 3);
+  int c = fs_close(h);
+} return void;
+():() then ed_fd:(0) then ed_read_fixture_size:(3)
+():() then ed_line_len:(30) then ed_read_fixture_size:(3)

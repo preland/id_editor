@@ -9,6 +9,8 @@ tt_sarg(int at, int n, int k) {
     r = tt_sarg2(at, n);
   }
 } return int r;
+given tt_fixture (81142, 1, 4646):(0)
+given tt_fixture (81148, 2, 4103):(139)
 
 tt_sarg2(int at, int n) {
   int r = rd_i16((import ttbuf), at);
@@ -16,6 +18,8 @@ tt_sarg2(int at, int n) {
     r = tt_i8((import ttbuf)[at]);
   }
 } return int r;
+given tt_fixture (81142, 1):(0)
+given tt_fixture (81148, 2):(139)
 
 // The sign of a one-byte argument, put back by hand. rd_i16 does this for the
 // two-byte form and there is no rd_i8 to pair with it, because a byte is read
@@ -28,3 +32,5 @@ tt_i8(int b) {
     r = r - 256;
   }
 } return int r;
+(100):(100)
+(200):(-56)

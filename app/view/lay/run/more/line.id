@@ -5,6 +5,8 @@ lay_doc_out(int w, int lay_lead_v) {
   lset((import lay_pen), 1, lay_lead_v);
   lay_paras(w, 0);
 } return void;
+given lay_row_fixture (100, 12):() then calls lay_paras:(100, 0)
+given lay_row_fixture (200, 24):() then calls lay_paras:(200, 0)
 
 // A line's own leading, from the size of its last run, spent as the break
 // past it. Split out of lay_runs so that function's own actions stay under
@@ -14,3 +16,5 @@ lay_runs_out(int i) {
   int lay_lead_v = lay_lead(lay_size_v);
   lay_break(lay_lead_v);
 } return void;
+given lay_row_fixture (0):() then calls lay_break:[1]
+given lay_row_fixture (0):() then calls lay_size:[1] then calls lay_break:[1]

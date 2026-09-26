@@ -10,6 +10,7 @@ ed_dirty() {
   int ret_i = (import ed_dty)[0];
 } return int ret_i;
 given ed_cur_init ():(1)
+given ed_out_fixture given ed_cur_init given ed_flush ():(0)
 
 ed_dirt(int v) {
   lset((import ed_dty), 0, v);
@@ -22,3 +23,5 @@ ed_flush() {
   ed_dirt(0);
   gfx_present((import ed_fb));
 } return void;
+given ed_out_fixture given ed_cur_init ():() then ed_dirty:(0)
+given ed_out_fixture given ed_cur_init ():() then calls ed_dirt:(0)

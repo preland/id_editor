@@ -12,6 +12,8 @@ odt_char() {
     push((import odt_parts), xml_text_v);
   }
 } return void;
+given odt_init_fixture ():() then calls xml_text:[0]
+given odt_parts_fixture ():() then calls xml_text:[1]
 
 // Text made by an element rather than by bytes -- a run of spaces, a tab. Same
 // guard, and separate from odt_char because the string is already in hand.
@@ -20,6 +22,8 @@ odt_add(string s) {
     push((import odt_parts), s);
   }
 } return void;
+given odt_init_fixture ("x"):() then odt_parts_state:([])
+given odt_parts_fixture ("y"):() then odt_parts_state:(["x", "y"])
 
 // A start or an empty element. The style stack moves first, because whether a
 // run ends here is the same question as whether the style in force changes.
@@ -27,3 +31,5 @@ odt_open(int k) {
   odt_stack(k);
   odt_elem(k);
 } return void;
+given odt_init_fixture (1):() then calls odt_stack:(1) then calls odt_elem:(1)
+given odt_init_fixture (2):() then calls odt_stack:(2) then calls odt_elem:(2)

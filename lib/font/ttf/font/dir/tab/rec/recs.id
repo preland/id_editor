@@ -5,6 +5,8 @@ tt_tabs() {
   export int[] ttoff = [];
   export int[] ttlen = [];
 } return void;
+():() then tt_tab_n:(0)
+given tt_fixture ():() then tt_tab_n:(0)
 
 // One 16-byte record per table: tag, checksum, offset, length. The checksum
 // is skipped deliberately -- verifying it means summing the whole file, and a
@@ -15,9 +17,13 @@ tt_recs(int[] xs, int n) {
     i = tt_rec(xs, i);
   }
 } return void;
+given tt_tabs ([103, 108, 121, 102, 0, 0, 0, 0, 0, 0, 0, 0, 103, 108, 121, 102, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 50], 1):() then tt_tab_n:(1)
+given tt_fixture ((import ttbuf), 19):() then tt_tab_n:(38)
 
 tt_rec(int[] xs, int i) {
   tt_rec_name(xs, i);
   tt_rec_off(xs, i);
   int ret_i = tt_rec_len(xs, i);
 } return int ret_i;
+given tt_tabs ([103, 108, 121, 102, 0, 0, 0, 0, 0, 0, 0, 0, 103, 108, 121, 102, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 50], 0):(1)
+given tt_fixture ((import ttbuf), 0):(1)

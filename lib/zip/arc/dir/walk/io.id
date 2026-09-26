@@ -1,0 +1,33 @@
+// A real 22-byte archive (an end-of-central-directory record with zero
+// entries) on disk, for zip_load/zip_load2/zip_bytes/zip_open/zip_size,
+// which take a path or a handle and cannot be tested any other way. The
+// chain opens it for reading too, once written, so zip_load2's cases have a
+// live handle to call with. Each run's file is unique (fs_mktemp); zip_io_size
+// below removes it once read, so a case that reads back through zip_io_size
+// leaves nothing behind.
+zip_io_fixture() {
+  export string zip_io_path = fs_mktemp("zip_io_case_", 0);
+  int h = fs_open(zip_io_path, "w");
+  fs_write(h, [80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 22);
+} chain () {
+  int c = fs_close(h);
+  export int zip_h = fs_open(zip_io_path, "r");
+} return void;
+():() then zip_io_size:(22)
+():() then zip_h_v:(0) then zip_io_size:(22)
+
+// The file's size, read once and then removed -- every case that reaches
+// this leaves nothing in /tmp behind it.
+zip_io_size() {
+  string zip_io_path_v = (import zip_io_path);
+  int ret_i = fs_size(zip_io_path_v);
+  int c = fs_remove(zip_io_path_v);
+} return int ret_i;
+given zip_io_fixture ():(22)
+given zip_io_fixture ():(22) then zip_h_v:(0)
+
+zip_h_v() {
+  int ret_i = (import zip_h);
+} return int ret_i;
+given zip_io_fixture ():(0) then zip_io_size:(22)
+given zip_io_fixture ():(0) then zip_io_size:(22) then zip_io_size:(-1)

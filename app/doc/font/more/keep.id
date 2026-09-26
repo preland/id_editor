@@ -30,3 +30,5 @@ ed_font_abort(string want) {
   print("editor: no font found for '" + want + "', and no fallback either -- tried /run/current-system/sw/share/X11/fonts/, /usr/share/fonts/TTF/ and /usr/share/fonts/truetype/");
   pop(none);
 } return void;
+("Arial"):() then traps:("id: pop from empty list")
+("Times"):() then traps:("id: pop from empty list")

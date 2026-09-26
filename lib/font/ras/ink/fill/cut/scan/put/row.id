@@ -20,6 +20,8 @@ ras_put(int r, int[] row) {
     x = ras_put1(r, x, row);
   }
 } return void;
+given ras_glyph_fixture given ras_buf_fixture (0, (import rasrow)):() then calls ras_put1:[9]
+given ras_glyph_fixture2 given ras_buf_fixture (0, (import rasrow)):() then calls ras_put1:[9]
 
 // 4 samples of 64 columns is a full pixel at 256, so the scale to 0..255 is
 // a multiply and a shift with nothing lost and nothing unreachable.
@@ -28,3 +30,5 @@ ras_put1(int r, int x, int[] row) {
   lset(row, x, 0);
   int ret_i = x + 1;
 } return int ret_i;
+given ras_glyph_fixture (0, 0, [256, 0, 0, 0, 0, 0, 0, 0, 0]):(1) then ras_cov_at0:(255)
+given ras_glyph_fixture (3, 2, [0, 0, 128, 0, 0, 0, 0, 0, 0]):(3)

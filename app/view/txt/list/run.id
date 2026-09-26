@@ -4,6 +4,8 @@ ed_run(int r) {
   string ed_face_v = ed_face(key);
   ed_run_out(key, r, ed_face_v);
 } return void;
+given odt_doc_fixture (0):() then calls ed_run_out:("T1", 0, "bold")
+given ed_step_fixture2 (0):() then calls ed_run_out:("T1", 0, "bold")
 
 // Which face a style asks for, in one word, so a line of this listing is one
 // line wide.
@@ -15,6 +17,8 @@ ed_face(string key) {
     s = "italic";
   }
 } return string s;
+given odt_init ("unknown"):("regular") then calls odt_bold:("unknown")
+given odt_init ("unknown"):("regular") then calls odt_italic:("unknown")
 
 // A run's first sixty characters. A paragraph is one run and a run is a
 // paragraph's worth of text, so printing them whole makes the listing

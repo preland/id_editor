@@ -16,6 +16,8 @@ odt_wt() {
   }
   int ret_i = v + odt_it();
 } return int ret_i;
+given odt_init_fixture ():(0)
+given odt_init_fixture ():(0) then calls odt_it:[1]
 
 odt_it() {
   int v = 0;
@@ -23,3 +25,5 @@ odt_it() {
     v = 2;
   }
 } return int v;
+given odt_init_fixture ():(0)
+given odt_init_fixture ():(0) then calls xml_attr:("fo:font-style")

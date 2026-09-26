@@ -10,15 +10,21 @@ ed_save(int argc, string[] argv) {
     ed_win();
   }
 } return void;
+given ed_out_fixture given ed_render_argv_fixture (4, (import ed_save_ppm_argv)):() then calls ed_write:((import ed_render_ppm_path)) then ed_render_ppm_clean:(0)
+given ed_out_fixture given ed_render_argv_fixture (5, (import ed_render_deja_argv)):() then calls ed_write:((import ed_render_ppm_path)) then ed_render_ppm_clean:(0)
 
 ed_write(string path) {
   int fs_open_v = fs_open(path, "w");
   ed_fd_set(fs_open_v);
   ed_write_out();
 } return void;
+given ed_out_fixture given ed_render_argv_fixture ((import ed_render_ppm_path)):() then calls ed_fd_set:(0) then ed_render_ppm_clean:(0)
+given ed_out_fixture given ed_render_argv_fixture ((import ed_render_ppm_path)):() then calls ed_write_out:[1] then ed_render_ppm_clean:(0)
 
 ed_write_out() {
   int ed_fd_v = ed_fd();
   ed_head(ed_fd_v);
   ed_body(ed_fd_v, 0);
 } return void;
+given ed_out_fixture ():() then calls ed_head:(0)
+given ed_out_fixture ():() then calls ed_body:(0, 0)

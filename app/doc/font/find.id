@@ -8,7 +8,7 @@ ed_font_arg(int argc, string[] argv) {
   string ret = ed_font_find(explicit);
 } return string ret;
 (3, ["editor", "file", "Arial"]):("Arial")
-given odt_init3 (2, ["editor", "file"]):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+given odt_init3 given ed_font_test_dirs (2, ["editor", "file"]):("test_assets/DejaVuSans.ttf")
 
 ed_font_find(string explicit) {
   string ret = "";
@@ -19,10 +19,11 @@ ed_font_find(string explicit) {
   }
 } return string ret;
 ("Arial"):("Arial")
-given odt_init3 (""):("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+given odt_init3 given ed_font_test_dirs (""):("test_assets/DejaVuSans.ttf")
 
 ed_font_resolve() {
   string doc = ed_font_doc0();
   string ret = ed_font_try_resolve(doc);
 } return string ret;
-given odt_init3 ():("/run/current-system/sw/share/X11/fonts/DejaVuSans.ttf")
+given odt_init3 given ed_font_test_dirs ():("test_assets/DejaVuSans.ttf") then calls ed_font_warn:[1]
+given odt_doc_fixture given ed_font_test_dirs ():("test_assets/DejaVuSans.ttf") then calls ed_font_warn:[0]

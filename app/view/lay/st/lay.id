@@ -20,14 +20,20 @@ lay_init() {
   export int[] lay_x = [];
   lay_init2();
 } return int 0;
+():(0) then lay_g_state:([])
+():(0) then lay_x_state:([])
 
 lay_init2() {
   export int[] lay_y = [];
   export int[] lay_px = [];
   lay_init3();
 } return void;
+():() then lay_y_state:([])
+():() then lay_px_state:([])
 
 lay_init3() {
   export int[] lay_st = [];
   export int[] lay_pen = [0, 0];
 } return void;
+():() then lay_st_state:([])
+():() then lay_pen_state:([0, 0])

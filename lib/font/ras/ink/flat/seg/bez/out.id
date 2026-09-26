@@ -4,3 +4,5 @@ ras_step_out(int[] buf, int px, int py, int j) {
   ras_line(buf, px, py);
   int ret_i = j + 1;
 } return int ret_i;
+given ras_edge0 ([0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0], 5, 10, 3):(4) then calls ras_line:[1]
+given ras_edge0 ([0, 0, -1, -2, 0, 0, 0, 0, 0, 0, 0], 7, 8, 0):(1) then calls ras_line:[1]

@@ -1,0 +1,34 @@
+// The output state ed_out_init creates and ed_page fills, combined: a case
+// touching ed_out, ed_line, ed_fb or ed_w()/ed_h() needs all of it, and
+// ed_grow_row runs here once so every writer downstream sees a correctly
+// sized row buffer instead of tripping the bounds check lset already has on
+// an empty one.
+ed_out_fixture() {
+  ed_out_init();
+  ed_page(10, 20);
+  ed_grow_row();
+} return void;
+():() then ed_fd:(0)
+():() then ed_w:(10)
+
+// The row buffer's length. ed_grow_row's whole job is getting this number
+// right, and nothing else here can see it by indexing instead: an index
+// read traps on the empty list ed_out_init leaves behind before anything
+// has grown it.
+ed_line_len() {
+  int ret_i = len((import ed_line));
+} return int ret_i;
+given ed_out_fixture ():(30)
+given ed_out_fixture ():(30) then ed_w:(10)
+
+// The size of the file ed_read_fixture writes, read back through fs_size
+// rather than fs_open -- ed_read's own cases already exercise reading the
+// bytes back, so this only has to confirm the write landed -- and then
+// removed, so every case that reaches this leaves nothing in /tmp.
+ed_read_fixture_size() {
+  string ed_read_path_v = (import ed_read_path);
+  int ret_i = fs_size(ed_read_path_v);
+  int c = fs_remove(ed_read_path_v);
+} return int ret_i;
+given ed_read_fixture ():(3)
+given ed_read_fixture ():(3) then ed_fd:(0)

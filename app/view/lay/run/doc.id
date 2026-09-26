@@ -8,6 +8,8 @@ lay_doc(int w) {
   int lay_lead_v = lay_lead(12);
   lay_doc_out(w, lay_lead_v);
 } return void;
+given lay_doc_fixture (100):() then calls lay_paras:(100, 0) then calls lay_run:[0]
+given lay_full_fixture (100):() then calls lay_paras:(100, 0) then calls lay_run:(100, 0)
 
 lay_paras(int w, int i) {
   while(i < odt_paras()) {
@@ -15,8 +17,12 @@ lay_paras(int w, int i) {
     i = i + 1;
   }
 } return void;
+given lay_row_fixture (1000, 0):() then calls lay_para:(1000, 0) then calls lay_para:[1]
+given lay_row_fixture (1000, 1):() then calls lay_para:[0]
 
 lay_para(int w, int i) {
   lset((import lay_pen), 0, 0);
   lay_runs(w, i, 0);
 } return void;
+given lay_row_fixture (1000, 0):() then calls lay_runs:(1000, 0, 0)
+given lay_row_fixture (2000, 0):() then calls lay_runs:(2000, 0, 0)
